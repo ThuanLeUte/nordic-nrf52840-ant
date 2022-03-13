@@ -80,5 +80,5 @@ void app_usbd_serial_num_generate(void)
                    serial_num_high_bytes,
                    serial_num_low_bytes);
 
-    string_create(serial_number_string);
+    string_create("123");
 }

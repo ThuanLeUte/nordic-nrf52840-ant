@@ -7085,7 +7085,7 @@
 // <i> Note: This value is not editable in Configuration Wizard.
 // <i> Vendor ID ordered from USB IF: http://www.usb.org/developers/vendor/
 #ifndef APP_USBD_VID
-#define APP_USBD_VID 0x1915
+#define APP_USBD_VID 0x0FCF
 #endif
 
 // <s> APP_USBD_PID - Product ID.
@@ -7093,7 +7093,7 @@
 // <i> Note: This value is not editable in Configuration Wizard.
 // <i> Selected Product ID
 #ifndef APP_USBD_PID
-#define APP_USBD_PID 0x521A
+#define APP_USBD_PID 0x1008
 #endif
 
 // <o> APP_USBD_DEVICE_VER_MAJOR - Major device version  <0-99> 
