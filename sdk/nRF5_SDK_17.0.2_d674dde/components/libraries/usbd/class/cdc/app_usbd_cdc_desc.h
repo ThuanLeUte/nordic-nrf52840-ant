@@ -111,7 +111,7 @@ extern "C" {
     /*.bInterfaceClass =    */ APP_USBD_CDC_DATA_CLASS,                       \
     /*.bInterfaceSubClass = */ subclass,                                      \
     /*.bInterfaceProtocol = */ protocol,                                      \
-    /*.iInterface = 0,      */ 0x00,                                          \
+    /*.iInterface = 0,      */ 0x02,                                          \
 
 
 

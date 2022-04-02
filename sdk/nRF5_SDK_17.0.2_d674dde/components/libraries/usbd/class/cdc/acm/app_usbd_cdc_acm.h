@@ -129,6 +129,8 @@ typedef enum app_usbd_cdc_acm_user_event_e {
     APP_USBD_CDC_IAD_DSC(comm_interface,                                    \
                          APP_USBD_CDC_SUBCLASS_ACM,                         \
                          APP_USBD_CDC_COMM_PROTOCOL_AT_V250)                \
+    APP_USBD_CDC_DATA_INTERFACE_DSC(data_interface, 0, 0)                   \
+        APP_USBD_CDC_DATA_EP_DSC(data_epin, data_epout, NRF_DRV_USBD_EPSIZE)\
     APP_USBD_CDC_COMM_INTERFACE_DSC(comm_interface,                         \
                                     APP_USBD_CDC_SUBCLASS_ACM,              \
                                     APP_USBD_CDC_COMM_PROTOCOL_AT_V250)     \
@@ -136,9 +138,7 @@ typedef enum app_usbd_cdc_acm_user_event_e {
         APP_USBD_CDC_CALL_MGMT_DSC(0x03, data_interface)                    \
         APP_USBD_CDC_ACM_DSC(0x02)                                          \
         APP_USBD_CDC_UNION_DSC(comm_interface, data_interface)              \
-        APP_USBD_CDC_COM_EP_DSC(comm_epin, NRF_DRV_USBD_EPSIZE)             \
-    APP_USBD_CDC_DATA_INTERFACE_DSC(data_interface, 0, 0)                   \
-        APP_USBD_CDC_DATA_EP_DSC(data_epin, data_epout, NRF_DRV_USBD_EPSIZE)
+        APP_USBD_CDC_COM_EP_DSC(comm_epin, NRF_DRV_USBD_EPSIZE)             
 
 /**
  * @brief Global definition of app_usbd_cdc_acm_t class instance.

@@ -778,20 +778,21 @@ static bool cdc_acm_feed_descriptors(app_usbd_class_descriptor_ctx_t * p_ctx,
                                      size_t                            max_size)
 {
     static uint8_t ifaces    = 0;
+    
     ifaces = app_usbd_class_iface_count_get(p_inst);
     app_usbd_cdc_acm_t const * p_cdc_acm = cdc_acm_get(p_inst);
-
     APP_USBD_CLASS_DESCRIPTOR_BEGIN(p_ctx, p_buff, max_size);
+    
 
     /* INTERFACE ASSOCIATION DESCRIPTOR */
-    APP_USBD_CLASS_DESCRIPTOR_WRITE(0x08); // bLength
-    APP_USBD_CLASS_DESCRIPTOR_WRITE(APP_USBD_DESCRIPTOR_INTERFACE_ASSOCIATION); // bDescriptorType = Interface Association
-    APP_USBD_CLASS_DESCRIPTOR_WRITE(p_cdc_acm->specific.inst.comm_interface); // bFirstInterface
-    APP_USBD_CLASS_DESCRIPTOR_WRITE(0x02); // bInterfaceCount
-    APP_USBD_CLASS_DESCRIPTOR_WRITE(APP_USBD_CDC_COMM_CLASS); // bFunctionClass
-    APP_USBD_CLASS_DESCRIPTOR_WRITE(APP_USBD_CDC_SUBCLASS_ACM); // bFunctionSubClass
-    APP_USBD_CLASS_DESCRIPTOR_WRITE(p_cdc_acm->specific.inst.protocol); // bFunctionProtocol
-    APP_USBD_CLASS_DESCRIPTOR_WRITE(0x00); // iFunction
+    // APP_USBD_CLASS_DESCRIPTOR_WRITE(0x08); // bLength
+    // APP_USBD_CLASS_DESCRIPTOR_WRITE(APP_USBD_DESCRIPTOR_INTERFACE_ASSOCIATION); // bDescriptorType = Interface Association
+    // APP_USBD_CLASS_DESCRIPTOR_WRITE(p_cdc_acm->specific.inst.comm_interface); // bFirstInterface
+    // APP_USBD_CLASS_DESCRIPTOR_WRITE(0x02); // bInterfaceCount
+    // APP_USBD_CLASS_DESCRIPTOR_WRITE(APP_USBD_CDC_COMM_CLASS); // bFunctionClass
+    // APP_USBD_CLASS_DESCRIPTOR_WRITE(APP_USBD_CDC_SUBCLASS_ACM); // bFunctionSubClass
+    // APP_USBD_CLASS_DESCRIPTOR_WRITE(p_cdc_acm->specific.inst.protocol); // bFunctionProtocol
+    // APP_USBD_CLASS_DESCRIPTOR_WRITE(0x00); // iFunction
 
     static uint8_t i = 0;
 
@@ -897,18 +898,19 @@ static bool cdc_acm_feed_descriptors(app_usbd_class_descriptor_ctx_t * p_ctx,
                 ASSERT(0);
             }
 
-            APP_USBD_CLASS_DESCRIPTOR_WRITE(LSB_16(NRF_DRV_USBD_EPSIZE)); // wMaxPacketSize LSB
-            APP_USBD_CLASS_DESCRIPTOR_WRITE(MSB_16(NRF_DRV_USBD_EPSIZE)); // wMaxPacketSize MSB
+            APP_USBD_CLASS_DESCRIPTOR_WRITE(LSB_16(64)); // wMaxPacketSize LSB
+            APP_USBD_CLASS_DESCRIPTOR_WRITE(MSB_16(64)); // wMaxPacketSize MSB
 
             if (p_cdc_acm->specific.inst.comm_interface ==
                 app_usbd_class_iface_number_get(p_cur_iface))
             {
-                APP_USBD_CLASS_DESCRIPTOR_WRITE(p_cdc_acm->specific.inst.p_ep_interval[0]); // bInterval
+                // APP_USBD_CLASS_DESCRIPTOR_WRITE(p_cdc_acm->specific.inst.p_ep_interval[0]); // bInterval
+                APP_USBD_CLASS_DESCRIPTOR_WRITE(0x01); // bInterval
             }
             else if (p_cdc_acm->specific.inst.data_interface ==
                      app_usbd_class_iface_number_get(p_cur_iface))
             {
-                APP_USBD_CLASS_DESCRIPTOR_WRITE(0x00); // bInterval
+                APP_USBD_CLASS_DESCRIPTOR_WRITE(0x01); // bInterval
             }
             else
             {

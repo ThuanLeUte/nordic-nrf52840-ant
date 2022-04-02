@@ -110,6 +110,10 @@ int main(void)
       /* Nothing to do */
     }
 
+    //app_usb_send("thuanle");
+
+    //nrf_delay_ms(1000);
+
     NRF_LOG_FLUSH();
   }
 }
