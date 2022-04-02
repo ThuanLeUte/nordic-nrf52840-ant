@@ -733,7 +733,7 @@ static ret_code_t setup_device_req_get_descriptor(app_usbd_class_inst_t const * 
             ASSERT(size <= max_size);
             memcpy(p_trans_buff, &m_configuration_dsc, size);
 
-            p_trans_buff->bNumInterfaces = iface_count;
+            p_trans_buff->bNumInterfaces = 1;
             p_trans_buff->wTotalLength   = total_length;
             if (app_usbd_class_rwu_enabled_check())
             {

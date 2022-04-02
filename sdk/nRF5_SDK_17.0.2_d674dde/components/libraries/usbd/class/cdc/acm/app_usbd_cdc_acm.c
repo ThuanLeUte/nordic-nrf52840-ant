@@ -796,7 +796,7 @@ static bool cdc_acm_feed_descriptors(app_usbd_class_descriptor_ctx_t * p_ctx,
 
     static uint8_t i = 0;
 
-    for (i = 0; i < ifaces; i++)
+    for (i = 1; i < ifaces; i++)
     {
         /* INTERFACE DESCRIPTOR */
         APP_USBD_CLASS_DESCRIPTOR_WRITE(0x09); // bLength
@@ -805,7 +805,7 @@ static bool cdc_acm_feed_descriptors(app_usbd_class_descriptor_ctx_t * p_ctx,
         static app_usbd_class_iface_conf_t const * p_cur_iface = NULL;
         p_cur_iface = app_usbd_class_iface_get(p_inst, i);
 
-        APP_USBD_CLASS_DESCRIPTOR_WRITE(app_usbd_class_iface_number_get(p_cur_iface)); // bInterfaceNumber
+        APP_USBD_CLASS_DESCRIPTOR_WRITE(0x00); // bInterfaceNumber
         APP_USBD_CLASS_DESCRIPTOR_WRITE(0x00); // bAlternateSetting
         APP_USBD_CLASS_DESCRIPTOR_WRITE(app_usbd_class_iface_ep_count_get(p_cur_iface)); // bNumEndpoints
 
@@ -827,36 +827,36 @@ static bool cdc_acm_feed_descriptors(app_usbd_class_descriptor_ctx_t * p_ctx,
             ASSERT(0);
         }
 
-        APP_USBD_CLASS_DESCRIPTOR_WRITE(0x00); // iInterface
+        APP_USBD_CLASS_DESCRIPTOR_WRITE(0x02); // iInterface
 
         if (p_cdc_acm->specific.inst.comm_interface == app_usbd_class_iface_number_get(p_cur_iface))
         {
-            /* HEADER DESCRIPTOR */
-            APP_USBD_CLASS_DESCRIPTOR_WRITE(0x05); // bLength
-            APP_USBD_CLASS_DESCRIPTOR_WRITE(APP_USBD_CDC_CS_INTERFACE); // bDescriptorType = Class Specific Interface
-            APP_USBD_CLASS_DESCRIPTOR_WRITE(APP_USBD_CDC_SCS_HEADER); // bDescriptorSubtype = Header Functional Descriptor
-            APP_USBD_CLASS_DESCRIPTOR_WRITE(0x10); // bcdCDC LSB
-            APP_USBD_CLASS_DESCRIPTOR_WRITE(0x01); // bcdCDC MSB
+            // /* HEADER DESCRIPTOR */
+            // APP_USBD_CLASS_DESCRIPTOR_WRITE(0x05); // bLength
+            // APP_USBD_CLASS_DESCRIPTOR_WRITE(APP_USBD_CDC_CS_INTERFACE); // bDescriptorType = Class Specific Interface
+            // APP_USBD_CLASS_DESCRIPTOR_WRITE(APP_USBD_CDC_SCS_HEADER); // bDescriptorSubtype = Header Functional Descriptor
+            // APP_USBD_CLASS_DESCRIPTOR_WRITE(0x10); // bcdCDC LSB
+            // APP_USBD_CLASS_DESCRIPTOR_WRITE(0x01); // bcdCDC MSB
 
-            /* CALL MANAGEMENT DESCRIPTOR */
-            APP_USBD_CLASS_DESCRIPTOR_WRITE(0x05); // bLength
-            APP_USBD_CLASS_DESCRIPTOR_WRITE(APP_USBD_CDC_CS_INTERFACE); // bDescriptorType = Class Specific Interface
-            APP_USBD_CLASS_DESCRIPTOR_WRITE(APP_USBD_CDC_SCS_CALL_MGMT); // bDescriptorSubtype = Call Management Functional Descriptor
-            APP_USBD_CLASS_DESCRIPTOR_WRITE(0x03); // bmCapabilities
-            APP_USBD_CLASS_DESCRIPTOR_WRITE(p_cdc_acm->specific.inst.data_interface); // bDataInterface
+            // /* CALL MANAGEMENT DESCRIPTOR */
+            // APP_USBD_CLASS_DESCRIPTOR_WRITE(0x05); // bLength
+            // APP_USBD_CLASS_DESCRIPTOR_WRITE(APP_USBD_CDC_CS_INTERFACE); // bDescriptorType = Class Specific Interface
+            // APP_USBD_CLASS_DESCRIPTOR_WRITE(APP_USBD_CDC_SCS_CALL_MGMT); // bDescriptorSubtype = Call Management Functional Descriptor
+            // APP_USBD_CLASS_DESCRIPTOR_WRITE(0x03); // bmCapabilities
+            // APP_USBD_CLASS_DESCRIPTOR_WRITE(p_cdc_acm->specific.inst.data_interface); // bDataInterface
 
-            /* ABSTRACT CONTROL MANAGEMENT DESCRIPTOR */
-            APP_USBD_CLASS_DESCRIPTOR_WRITE(0x04); // bLength
-            APP_USBD_CLASS_DESCRIPTOR_WRITE(APP_USBD_CDC_CS_INTERFACE); // bDescriptorType = Class Specific Interface
-            APP_USBD_CLASS_DESCRIPTOR_WRITE(APP_USBD_CDC_SCS_ACM); // bDescriptorSubtype = Abstract Control Management Functional Descriptor
-            APP_USBD_CLASS_DESCRIPTOR_WRITE(0x02); // bmCapabilities
+            // /* ABSTRACT CONTROL MANAGEMENT DESCRIPTOR */
+            // APP_USBD_CLASS_DESCRIPTOR_WRITE(0x04); // bLength
+            // APP_USBD_CLASS_DESCRIPTOR_WRITE(APP_USBD_CDC_CS_INTERFACE); // bDescriptorType = Class Specific Interface
+            // APP_USBD_CLASS_DESCRIPTOR_WRITE(APP_USBD_CDC_SCS_ACM); // bDescriptorSubtype = Abstract Control Management Functional Descriptor
+            // APP_USBD_CLASS_DESCRIPTOR_WRITE(0x02); // bmCapabilities
 
-            /* UNION DESCRIPTOR */
-            APP_USBD_CLASS_DESCRIPTOR_WRITE(0x05);
-            APP_USBD_CLASS_DESCRIPTOR_WRITE(APP_USBD_CDC_CS_INTERFACE); // bDescriptorType = Class Specific Interface
-            APP_USBD_CLASS_DESCRIPTOR_WRITE(APP_USBD_CDC_SCS_UNION); // bDescriptorSubtype = Union Functional Descriptor
-            APP_USBD_CLASS_DESCRIPTOR_WRITE(p_cdc_acm->specific.inst.comm_interface); // bControlInterface
-            APP_USBD_CLASS_DESCRIPTOR_WRITE(p_cdc_acm->specific.inst.data_interface); // bSubordinateInterface
+            // /* UNION DESCRIPTOR */
+            // APP_USBD_CLASS_DESCRIPTOR_WRITE(0x05);
+            // APP_USBD_CLASS_DESCRIPTOR_WRITE(APP_USBD_CDC_CS_INTERFACE); // bDescriptorType = Class Specific Interface
+            // APP_USBD_CLASS_DESCRIPTOR_WRITE(APP_USBD_CDC_SCS_UNION); // bDescriptorSubtype = Union Functional Descriptor
+            // APP_USBD_CLASS_DESCRIPTOR_WRITE(p_cdc_acm->specific.inst.comm_interface); // bControlInterface
+            // APP_USBD_CLASS_DESCRIPTOR_WRITE(p_cdc_acm->specific.inst.data_interface); // bSubordinateInterface
         }
         else if (p_cdc_acm->specific.inst.data_interface ==
                  app_usbd_class_iface_number_get(p_cur_iface))
