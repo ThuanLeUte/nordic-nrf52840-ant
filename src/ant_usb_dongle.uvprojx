@@ -403,6 +403,11 @@
               <FileType>1</FileType>
               <FilePath>.\user\app_usb.c</FilePath>
             </File>
+            <File>
+              <FileName>nrf_drv_usbd_errata.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\sdk\nRF5_SDK_17.0.2_d674dde\integration\nrfx\legacy\nrf_drv_usbd_errata.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
