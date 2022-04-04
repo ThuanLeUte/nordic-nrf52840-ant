@@ -143,9 +143,9 @@ static bool m_send_flag = 0;
     0x00,                        /* bDeviceSubClass ¦ device sub-class (must be set to 0 because class code is 0) */\
     0x00,                        /* bDeviceProtocol | device protocol (no class specific protocol)                */\
     EP0_MAXPACKETSIZE,           /* bMaxPacketSize0 | maximum packet size (64 bytes)                              */\
-    0x15, 0x19,                  /* vendor ID  (0x1915 Nordic)                                                    */\
-    0x0A, 0x52,                  /* product ID (0x520A nRF52 HID mouse on nrf_drv)                                */\
-    0x01, 0x01,                  /* bcdDevice | final device release number in BCD Format                         */\
+    0xCF, 0x0F,                  /* vendor ID  (0x1915 Nordic)                                                    */\
+    0x08, 0x10,                  /* product ID (0x520A nRF52 HID mouse on nrf_drv)                                */\
+    0x00, 0x01,                  /* bcdDevice | final device release number in BCD Format                         */\
     USBD_STRING_MANUFACTURER_IX, /* iManufacturer | index of manufacturer string                                  */\
     USBD_STRING_PRODUCT_IX,      /* iProduct | index of product string                                            */\
     USBD_STRING_SERIAL_IX,       /* iSerialNumber | Serial Number string                                          */\
@@ -163,20 +163,20 @@ static bool m_send_flag = 0;
     USBD_CONFIG_DESCRIPTOR_FULL_SIZE, 0x00,    /* wTotalLength | total length of descriptor(s)  */\
     0x01,         /* bNumInterfaces                                                             */\
     0x01,         /* bConfigurationValue                                                        */\
-    0x00,         /* index of string Configuration | configuration string index (not supported) */\
-    0x80| (((DEVICE_SELF_POWERED) ? 1U:0U)<<6) | (((REMOTE_WU) ? 1U:0U)<<5), /* bmAttributes    */\
-    49            /* maximum power in steps of 2mA (98mA)                                       */
+    0x02,         /* index of string Configuration | configuration string index (not supported) */\
+    0x80, /* bmAttributes    */\
+    0x32            /* maximum power in steps of 2mA (98mA)                                       */
 
 #define USBD_INTERFACE0_DESCRIPTOR  \
     0x09,         /* bLength                                                                          */\
     0x04,         /* bDescriptorType | descriptor type (INTERFACE)                                    */\
     0x00,         /* bInterfaceNumber                                                                 */\
     0x00,         /* bAlternateSetting                                                                */\
-    0x01,         /* bNumEndpoints | number of endpoints (1)                                          */\
-    0x03,         /* bInterfaceClass | interface class (3..defined by USB spec: HID)                  */\
+    0x02,         /* bNumEndpoints | number of endpoints (1)                                          */\
+    0xFF,         /* bInterfaceClass | interface class (3..defined by USB spec: HID)                  */\
     0x00,         /* bInterfaceSubClass |interface sub-class (0.. no boot interface)                  */\
-    0x02,         /* bInterfaceProtocol | interface protocol (1..defined by USB spec: mouse)          */\
-    0x00          /* interface string index (not supported)                                           */
+    0x00,         /* bInterfaceProtocol | interface protocol (1..defined by USB spec: mouse)          */\
+    0x02          /* interface string index (not supported)                                           */
 
 /**
  * HID Table must normally be between Interface and EndPoint Descriptor
@@ -213,70 +213,56 @@ static bool m_send_flag = 0;
 
 #define USBD_STRING_MANUFACTURER_IX  0x01
 #define USBD_STRING_MANUFACTURER \
-    42,           /* length of descriptor (? bytes)   */\
+    46,           /* length of descriptor (? bytes)   */\
     0x03,         /* descriptor type                  */\
-    'N', 0x00,    /* Define Unicode String "Nordic Semiconductor  */\
-    'o', 0x00, \
+    'D', 0x00,    /* Define Unicode String "Nordic Semiconductor  Dynastream Innovations*/  \
+    'y', 0x00, \
+    'n', 0x00, \
+    'a', 0x00, \
+    's', 0x00, \
+    't', 0x00, \
     'r', 0x00, \
-    'd', 0x00, \
-    'i', 0x00, \
-    'c', 0x00, \
-    ' ', 0x00, \
-    'S', 0x00, \
     'e', 0x00, \
+    'a', 0x00, \
     'm', 0x00, \
+    ' ', 0x00, \
+    'I', 0x00, \
+    'n', 0x00, \
+    'n', 0x00, \
+    'o', 0x00, \
+    'v', 0x00, \
+    'a', 0x00, \
+    't', 0x00, \
     'i', 0x00, \
-    'c', 0x00, \
     'o', 0x00, \
     'n', 0x00, \
-    'd', 0x00, \
-    'u', 0x00, \
-    'c', 0x00, \
-    't', 0x00, \
-    'o', 0x00, \
-    'r', 0x00
+    's', 0x00
 
 #define USBD_STRING_PRODUCT_IX  0x02
 #define USBD_STRING_PRODUCT \
-    72,           /* length of descriptor (? bytes)         */\
+    28,           /* length of descriptor (? bytes)         */\
     0x03,         /* descriptor type                        */\
-    'n', 0x00,    /* generic unicode string for all devices */\
-    'R', 0x00, \
-    'F', 0x00, \
-    '5', 0x00, \
-    '2', 0x00, \
+    'A', 0x00,    /* generic unicode string for all devices ANT USBStick2 */\
+    'N', 0x00, \
+    'T', 0x00, \
     ' ', 0x00, \
     'U', 0x00, \
     'S', 0x00, \
     'B', 0x00, \
-    ' ', 0x00, \
-    'H', 0x00, \
-    'I', 0x00, \
-    'D', 0x00, \
-    ' ', 0x00, \
-    'm', 0x00, \
-    'o', 0x00, \
-    'u', 0x00, \
-    's', 0x00, \
-    'e', 0x00, \
-    ' ', 0x00, \
-    'o', 0x00, \
-    'n', 0x00, \
-    ' ', 0x00, \
-    'n', 0x00, \
-    'r', 0x00, \
-    'f', 0x00, \
-    '_', 0x00, \
-    'd', 0x00, \
-    'r', 0x00, \
-    'v', 0x00, \
-    ' ', 0x00, \
-    'D', 0x00, \
-    'e', 0x00, \
-    'm', 0x00, \
-    'o', 0x00, \
+    'S', 0x00, \
+    't', 0x00, \
+    'i', 0x00, \
+    'c', 0x00, \
+    'k', 0x00, \
+    '2', 0x00, \
 
-#define USBD_STRING_SERIAL_IX  0x00
+#define USBD_STRING_SERIAL_IX  0x03
+#define USBD_STRING_SERIAL \
+    8,           /* length of descriptor (? bytes)         */\
+    0x03,         /* descriptor type                        */\
+    '1', 0x00,    /* generic unicode string for all devices ANT USBStick2 */\
+    '2', 0x00, \
+    '3', 0x00, \
 
 #define USBD_MOUSE_REPORT_DESCRIPTOR_SIZE  46
 #define USBD_MOUSE_REPORT_DESCRIPTOR \
@@ -324,6 +310,9 @@ static const uint8_t get_descriptor_string_manuf[] = {
 };
 static const uint8_t get_descriptor_string_prod[] = {
     USBD_STRING_PRODUCT
+};
+static const uint8_t get_descriptor_string_serial[] = {
+    USBD_STRING_SERIAL
 };
 static const uint8_t get_descriptor_report_interface_0[] = {
     USBD_MOUSE_REPORT_DESCRIPTOR
@@ -672,6 +661,11 @@ static void usbd_setup_GetDescriptor(nrf_drv_usbd_setup_t const * const p_setup)
                 respond_setup_data(p_setup,
                     get_descriptor_string_prod,
                     sizeof(get_descriptor_string_prod));
+                return;
+            case USBD_STRING_SERIAL_IX:
+                respond_setup_data(p_setup,
+                                   get_descriptor_string_serial,
+                                   sizeof(get_descriptor_string_serial));
                 return;
             default:
                 break;
