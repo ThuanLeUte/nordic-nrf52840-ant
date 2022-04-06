@@ -143,9 +143,9 @@ static bool m_send_flag = 0;
     0x00,                        /* bDeviceSubClass ¦ device sub-class (must be set to 0 because class code is 0) */\
     0x00,                        /* bDeviceProtocol | device protocol (no class specific protocol)                */\
     EP0_MAXPACKETSIZE,           /* bMaxPacketSize0 | maximum packet size (64 bytes)                              */\
-    0x15, 0x19,                  /* vendor ID  (0x1915 Nordic)                                                    */\
-    0x0A, 0x52,                  /* product ID (0x520A nRF52 HID mouse on nrf_drv)                                */\
-    0x01, 0x01,                  /* bcdDevice | final device release number in BCD Format                         */\
+    0xCF, 0x0f,                  /* vendor ID  (0x1915 Nordic)                                                    */\
+    0x08, 0x10,                  /* product ID (0x520A nRF52 HID mouse on nrf_drv)                                */\
+    0x00, 0x01,                  /* bcdDevice | final device release number in BCD Format                         */\
     USBD_STRING_MANUFACTURER_IX, /* iManufacturer | index of manufacturer string                                  */\
     USBD_STRING_PRODUCT_IX,      /* iProduct | index of product string                                            */\
     USBD_STRING_SERIAL_IX,       /* iSerialNumber | Serial Number string                                          */\
@@ -163,9 +163,9 @@ static bool m_send_flag = 0;
     USBD_CONFIG_DESCRIPTOR_FULL_SIZE, 0x00,    /* wTotalLength | total length of descriptor(s)  */\
     0x01,         /* bNumInterfaces                                                             */\
     0x01,         /* bConfigurationValue                                                        */\
-    0x00,         /* index of string Configuration | configuration string index (not supported) */\
-    0x80| (((DEVICE_SELF_POWERED) ? 1U:0U)<<6) | (((REMOTE_WU) ? 1U:0U)<<5), /* bmAttributes    */\
-    49            /* maximum power in steps of 2mA (98mA)                                       */
+    0x02,         /* index of string Configuration | configuration string index (not supported) */\
+    0x80,                                                                                           \
+    0x32            /* maximum power in steps of 2mA (98mA)                                       */
 
 #define USBD_INTERFACE0_DESCRIPTOR  \
     0x09,         /* bLength                                                                          */\
