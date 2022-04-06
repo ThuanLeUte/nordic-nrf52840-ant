@@ -211,68 +211,48 @@ static bool m_send_flag = 0;
 
 #define USBD_STRING_MANUFACTURER_IX  0x01
 #define USBD_STRING_MANUFACTURER \
-    42,           /* length of descriptor (? bytes)   */\
+    46,           /* length of descriptor (? bytes)   */\
     0x03,         /* descriptor type                  */\
-    'N', 0x00,    /* Define Unicode String "Nordic Semiconductor  */\
-    'o', 0x00, \
+    'D', 0x00,    /* Define Unicode String "Nordic Semiconductor  */\
+    'y', 0x00, \
+    'n', 0x00, \
+    'a', 0x00, \
+    's', 0x00, \
+    't', 0x00, \
     'r', 0x00, \
-    'd', 0x00, \
-    'i', 0x00, \
-    'c', 0x00, \
-    ' ', 0x00, \
-    'S', 0x00, \
     'e', 0x00, \
+    'a', 0x00, \
     'm', 0x00, \
+    ' ', 0x00, \
+    'I', 0x00, \
+    'n', 0x00, \
+    'n', 0x00, \
+    'o', 0x00, \
+    'v', 0x00, \
+    'a', 0x00, \
+    't', 0x00, \
     'i', 0x00, \
-    'c', 0x00, \
     'o', 0x00, \
     'n', 0x00, \
-    'd', 0x00, \
-    'u', 0x00, \
-    'c', 0x00, \
-    't', 0x00, \
-    'o', 0x00, \
-    'r', 0x00
+    's', 0x00
 
 #define USBD_STRING_PRODUCT_IX  0x02
 #define USBD_STRING_PRODUCT \
-    72,           /* length of descriptor (? bytes)         */\
+    28,           /* length of descriptor (? bytes)         */\
     0x03,         /* descriptor type                        */\
-    'n', 0x00,    /* generic unicode string for all devices */\
-    'R', 0x00, \
-    'F', 0x00, \
-    '5', 0x00, \
-    '2', 0x00, \
+    'A', 0x00,    /* generic unicode string for all devices */\
+    'N', 0x00, \
+    'T', 0x00, \
     ' ', 0x00, \
     'U', 0x00, \
     'S', 0x00, \
     'B', 0x00, \
-    ' ', 0x00, \
-    'H', 0x00, \
-    'I', 0x00, \
-    'D', 0x00, \
-    ' ', 0x00, \
-    'm', 0x00, \
-    'o', 0x00, \
-    'u', 0x00, \
-    's', 0x00, \
-    'e', 0x00, \
-    ' ', 0x00, \
-    'o', 0x00, \
-    'n', 0x00, \
-    ' ', 0x00, \
-    'n', 0x00, \
-    'r', 0x00, \
-    'f', 0x00, \
-    '_', 0x00, \
-    'd', 0x00, \
-    'r', 0x00, \
-    'v', 0x00, \
-    ' ', 0x00, \
-    'D', 0x00, \
-    'e', 0x00, \
-    'm', 0x00, \
-    'o', 0x00, \
+    'S', 0x00, \
+    't', 0x00, \
+    'i', 0x00, \
+    'c', 0x00, \
+    'k', 0x00, \
+    '2', 0x00
 
 #define USBD_STRING_SERIAL_IX  0x03
 #define USBD_STRING_SERIAL \
