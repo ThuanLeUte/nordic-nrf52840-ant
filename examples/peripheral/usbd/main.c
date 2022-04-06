@@ -156,7 +156,7 @@ static bool m_send_flag = 0;
 #define REMOTE_WU           1
 
 #define USBD_CONFIG_DESCRIPTOR_SIZE   9
-#define USBD_CONFIG_DESCRIPTOR_FULL_SIZE   (9 + (9 + 9 + 7))
+#define USBD_CONFIG_DESCRIPTOR_FULL_SIZE   (9 + (9 + 7 + 7))
 #define USBD_CONFIG_DESCRIPTOR  \
     0x09,         /* bLength | length of descriptor                                             */\
     0x02,         /* bDescriptorType | descriptor type (CONFIGURATION)                          */\
@@ -172,33 +172,31 @@ static bool m_send_flag = 0;
     0x04,         /* bDescriptorType | descriptor type (INTERFACE)                                    */\
     0x00,         /* bInterfaceNumber                                                                 */\
     0x00,         /* bAlternateSetting                                                                */\
-    0x01,         /* bNumEndpoints | number of endpoints (1)                                          */\
-    0x03,         /* bInterfaceClass | interface class (3..defined by USB spec: HID)                  */\
+    0x02,         /* bNumEndpoints | number of endpoints (1)                                          */\
+    0xFF,         /* bInterfaceClass | interface class (3..defined by USB spec: HID)                  */\
     0x00,         /* bInterfaceSubClass |interface sub-class (0.. no boot interface)                  */\
-    0x02,         /* bInterfaceProtocol | interface protocol (1..defined by USB spec: mouse)          */\
-    0x00          /* interface string index (not supported)                                           */
+    0x00,         /* bInterfaceProtocol | interface protocol (1..defined by USB spec: mouse)          */\
+    0x02          /* interface string index (not supported)                                           */
 
 /**
  * HID Table must normally be between Interface and EndPoint Descriptor
  * as written in HID spec§7.1 but it doesn't work with OSR2.1
  */
 #define USBD_HID0_DESCRIPTOR  \
-    0x09,         /* bLength | length of descriptor (9 bytes)                    */\
-    0x21,         /* bHIDDescriptor | descriptor type (HID)                      */\
-    0x11, 0x01,   /* HID wBcdHID | Spec version 01.11                            */\
-    0x00,         /* bCountryCode | HW Target country                            */\
-    0x01,         /* bNumDescriptors | Number of HID class descriptors to follow */\
-    0x22,         /* bDescriptorType | Report descriptor type is 0x22 (report)   */\
-    (uint8_t)(USBD_MOUSE_REPORT_DESCRIPTOR_SIZE),      /* Total length of Report descr., low byte */ \
-    (uint8_t)(USBD_MOUSE_REPORT_DESCRIPTOR_SIZE / 256) /* Total length of Report descr., high byte */
+    0x07,         /* bLength | length of descriptor (7 bytes)                                     */\
+    0x05,         /* bDescriptorType | descriptor type (ENDPOINT)                                 */\
+    0x81,         /* bEndpointAddress | endpoint address (IN endpoint, endpoint 1)                */\
+    0x02,         /* bmAttributes | endpoint attributes (interrupt)                               */\
+    0x40,0x00,    /* bMaxPacketSizeLowByte,bMaxPacketSizeHighByte | maximum packet size (8 bytes) */\
+    0x01          /* bInterval | polling interval (10ms)                                          */
 
 #define USBD_ENDPOINT1_DESCRIPTOR  \
     0x07,         /* bLength | length of descriptor (7 bytes)                                     */\
     0x05,         /* bDescriptorType | descriptor type (ENDPOINT)                                 */\
-    0x81,         /* bEndpointAddress | endpoint address (IN endpoint, endpoint 1)                */\
-    0x03,         /* bmAttributes | endpoint attributes (interrupt)                               */\
-    0x08,0x00,    /* bMaxPacketSizeLowByte,bMaxPacketSizeHighByte | maximum packet size (8 bytes) */\
-    0x08          /* bInterval | polling interval (10ms)                                          */
+    0x01,         /* bEndpointAddress | endpoint address (IN endpoint, endpoint 1)                */\
+    0x02,         /* bmAttributes | endpoint attributes (interrupt)                               */\
+    0x40,0x00,    /* bMaxPacketSizeLowByte,bMaxPacketSizeHighByte | maximum packet size (8 bytes) */\
+    0x01          /* bInterval | polling interval (10ms)                                          */
 
 
 /**
