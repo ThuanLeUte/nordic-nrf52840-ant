@@ -274,7 +274,13 @@ static bool m_send_flag = 0;
     'm', 0x00, \
     'o', 0x00, \
 
-#define USBD_STRING_SERIAL_IX  0x00
+#define USBD_STRING_SERIAL_IX  0x03
+#define USBD_STRING_SERIAL \
+    8,           /* length of descriptor (? bytes)         */\
+    0x03,         /* descriptor type                        */\
+    '1', 0x00,    /* generic unicode string for all devices */\
+    '2', 0x00, \
+    '3', 0x00
 
 #define USBD_MOUSE_REPORT_DESCRIPTOR_SIZE  46
 #define USBD_MOUSE_REPORT_DESCRIPTOR \
@@ -323,6 +329,11 @@ static const uint8_t get_descriptor_string_manuf[] = {
 static const uint8_t get_descriptor_string_prod[] = {
     USBD_STRING_PRODUCT
 };
+
+static const uint8_t get_descriptor_string_serial[] = {
+    USBD_STRING_SERIAL
+};
+
 static const uint8_t get_descriptor_report_interface_0[] = {
     USBD_MOUSE_REPORT_DESCRIPTOR
 };
@@ -670,6 +681,11 @@ static void usbd_setup_GetDescriptor(nrf_drv_usbd_setup_t const * const p_setup)
                 respond_setup_data(p_setup,
                     get_descriptor_string_prod,
                     sizeof(get_descriptor_string_prod));
+                return;
+            case USBD_STRING_SERIAL_IX:
+                respond_setup_data(p_setup,
+                                   get_descriptor_string_serial,
+                                   sizeof(get_descriptor_string_serial));
                 return;
             default:
                 break;
