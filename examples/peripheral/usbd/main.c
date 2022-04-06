@@ -183,27 +183,20 @@ static bool m_send_flag = 0;
  * as written in HID spec§7.1 but it doesn't work with OSR2.1
  */
 #define USBD_HID0_DESCRIPTOR  \
-    0x07,         /* bLength | length of descriptor (7 bytes)                                     */\
-    0x05,         /* bDescriptorType | descriptor type (ENDPOINT)                                 */\
-    0x01,         /* bEndpointAddress | endpoint address (IN endpoint, endpoint 1)                */\
-    0x02,         /* bmAttributes | endpoint attributes (interrupt)                               */\
-    0x08,0x00,    /* bMaxPacketSizeLowByte,bMaxPacketSizeHighByte | maximum packet size (8 bytes) */\
-    0x08          /* bInterval | polling interval (10ms)                                          */
-
-    // 0x09,         /* bLength | length of descriptor (9 bytes)                    */\
-    // 0x21,         /* bHIDDescriptor | descriptor type (HID)                      */\
-    // 0x11, 0x01,   /* HID wBcdHID | Spec version 01.11                            */\
-    // 0x00,         /* bCountryCode | HW Target country                            */\
-    // 0x01,         /* bNumDescriptors | Number of HID class descriptors to follow */\
-    // 0x22,         /* bDescriptorType | Report descriptor type is 0x22 (report)   */\
-    // (uint8_t)(USBD_MOUSE_REPORT_DESCRIPTOR_SIZE),      /* Total length of Report descr., low byte */ \
-    // (uint8_t)(USBD_MOUSE_REPORT_DESCRIPTOR_SIZE / 256) /* Total length of Report descr., high byte */
+    0x09,         /* bLength | length of descriptor (9 bytes)                    */\
+    0x21,         /* bHIDDescriptor | descriptor type (HID)                      */\
+    0x11, 0x01,   /* HID wBcdHID | Spec version 01.11                            */\
+    0x00,         /* bCountryCode | HW Target country                            */\
+    0x01,         /* bNumDescriptors | Number of HID class descriptors to follow */\
+    0x22,         /* bDescriptorType | Report descriptor type is 0x22 (report)   */\
+    (uint8_t)(USBD_MOUSE_REPORT_DESCRIPTOR_SIZE),      /* Total length of Report descr., low byte */ \
+    (uint8_t)(USBD_MOUSE_REPORT_DESCRIPTOR_SIZE / 256) /* Total length of Report descr., high byte */
 
 #define USBD_ENDPOINT1_DESCRIPTOR  \
     0x07,         /* bLength | length of descriptor (7 bytes)                                     */\
     0x05,         /* bDescriptorType | descriptor type (ENDPOINT)                                 */\
     0x81,         /* bEndpointAddress | endpoint address (IN endpoint, endpoint 1)                */\
-    0x02,         /* bmAttributes | endpoint attributes (interrupt)                               */\
+    0x03,         /* bmAttributes | endpoint attributes (interrupt)                               */\
     0x08,0x00,    /* bMaxPacketSizeLowByte,bMaxPacketSizeHighByte | maximum packet size (8 bytes) */\
     0x08          /* bInterval | polling interval (10ms)                                          */
 
