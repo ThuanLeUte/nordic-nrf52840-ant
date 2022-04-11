@@ -2249,12 +2249,15 @@ static void usbd_event_handler(nrf_drv_usbd_evt_t const *const p_event)
             if (NRF_USBD_EP_OK == p_event->data.eptransfer.status)
             {
                 /* Transfer ok - allow status stage */
-                // uint8_t rx1_buff[1000];
-                // nrf_drv_usbd_transfer_t transfer =
-                //     {
-                //         .p_data = {.rx = rx1_buff},
-                //         .size = 1000};
+                uint8_t tx_buff[1000] = {0xA4, 0x06, 0x54, 0x08, 0x03, 0x00, 0xBA, 0x36, 0x00, 0x71};
+                nrf_drv_usbd_transfer_t transfer =
+                    {
+                        .p_data = {.rx = tx_buff},
+                        .size = 10};
                 ret_code_t ret = nrf_drv_usbd_ep_transfer(NRF_DRV_USBD_EPOUT1, &ep1_transfer);
+
+                ret = nrf_drv_usbd_ep_transfer(NRF_DRV_USBD_EPIN1, &transfer);
+
 
                 if (ret != NRF_SUCCESS)
                 {

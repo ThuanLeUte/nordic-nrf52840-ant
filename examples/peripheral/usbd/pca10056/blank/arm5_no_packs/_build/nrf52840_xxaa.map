@@ -89,8 +89,9 @@ Section Cross References
     main.o(i.usbd_event_handler) refers to boards.o(i.bsp_board_led_invert) for bsp_board_led_invert
     main.o(i.usbd_event_handler) refers to nrf_log_frontend.o(i.nrf_log_frontend_std_1) for nrf_log_frontend_std_1
     main.o(i.usbd_event_handler) refers to nrfx_usbd.o(i.nrfx_usbd_setup_stall) for nrfx_usbd_setup_stall
-    main.o(i.usbd_event_handler) refers to nrfx_usbd.o(i.nrfx_usbd_ep_transfer) for nrfx_usbd_ep_transfer
     main.o(i.usbd_event_handler) refers to nrfx_usbd.o(i.nrfx_usbd_setup_clear) for nrfx_usbd_setup_clear
+    main.o(i.usbd_event_handler) refers to memseta.o(.text) for __aeabi_memclr4
+    main.o(i.usbd_event_handler) refers to nrfx_usbd.o(i.nrfx_usbd_ep_transfer) for nrfx_usbd_ep_transfer
     main.o(i.usbd_event_handler) refers to nrfx_usbd.o(i.nrfx_usbd_setup_get) for nrfx_usbd_setup_get
     main.o(i.usbd_event_handler) refers to main.o(i.usbd_setup_GetStatus) for usbd_setup_GetStatus
     main.o(i.usbd_event_handler) refers to main.o(i.usbd_setup_ClearFeature) for usbd_setup_ClearFeature
@@ -3090,7 +3091,7 @@ Image Symbol Table
     i.init_bsp                               0x000047f8   Section        0  main.o(i.init_bsp)
     init_bsp                                 0x000047f9   Thumb Code    74  main.o(i.init_bsp)
     i.init_cli                               0x0000484c   Section        0  main.o(i.init_cli)
-    init_cli                                 0x0000484d   Thumb Code   102  main.o(i.init_cli)
+    init_cli                                 0x0000484d   Thumb Code    98  main.o(i.init_cli)
     i.init_power_clock                       0x000048c0   Section        0  main.o(i.init_power_clock)
     init_power_clock                         0x000048c1   Thumb Code    88  main.o(i.init_power_clock)
     i.int_print                              0x00004928   Section        0  nrf_fprintf_format.o(i.int_print)
@@ -3590,281 +3591,281 @@ Image Symbol Table
     i.usbd_errata_187_211_end                0x0000c1fc   Section        0  nrfx_usbd.o(i.usbd_errata_187_211_end)
     usbd_errata_187_211_end                  0x0000c1fd   Thumb Code    42  nrfx_usbd.o(i.usbd_errata_187_211_end)
     i.usbd_event_handler                     0x0000c230   Section        0  main.o(i.usbd_event_handler)
-    usbd_event_handler                       0x0000c231   Thumb Code   480  main.o(i.usbd_event_handler)
-    i.usbd_int_rise                          0x0000c5b8   Section        0  nrfx_usbd.o(i.usbd_int_rise)
-    usbd_int_rise                            0x0000c5b9   Thumb Code    10  nrfx_usbd.o(i.usbd_int_rise)
-    i.usbd_setup_ClearFeature                0x0000c5c8   Section        0  main.o(i.usbd_setup_ClearFeature)
-    usbd_setup_ClearFeature                  0x0000c5c9   Thumb Code    82  main.o(i.usbd_setup_ClearFeature)
-    i.usbd_setup_GetDescriptor               0x0000c648   Section        0  main.o(i.usbd_setup_GetDescriptor)
-    usbd_setup_GetDescriptor                 0x0000c649   Thumb Code   250  main.o(i.usbd_setup_GetDescriptor)
-    i.usbd_setup_GetStatus                   0x0000c758   Section        0  main.o(i.usbd_setup_GetStatus)
-    usbd_setup_GetStatus                     0x0000c759   Thumb Code   152  main.o(i.usbd_setup_GetStatus)
-    i.usbd_setup_SetConfig                   0x0000c81c   Section        0  main.o(i.usbd_setup_SetConfig)
-    usbd_setup_SetConfig                     0x0000c81d   Thumb Code    76  main.o(i.usbd_setup_SetConfig)
-    i.usbd_setup_SetFeature                  0x0000c8a8   Section        0  main.o(i.usbd_setup_SetFeature)
-    usbd_setup_SetFeature                    0x0000c8a9   Thumb Code    80  main.o(i.usbd_setup_SetFeature)
-    i.usr_event                              0x0000c920   Section        0  app_button.o(i.usr_event)
-    usr_event                                0x0000c921   Thumb Code    32  app_button.o(i.usr_event)
-    i.vt100_bgcolor_set                      0x0000c940   Section        0  nrf_cli.o(i.vt100_bgcolor_set)
-    vt100_bgcolor_set                        0x0000c941   Thumb Code    48  nrf_cli.o(i.vt100_bgcolor_set)
-    i.vt100_color_set                        0x0000c97c   Section        0  nrf_cli.o(i.vt100_color_set)
-    vt100_color_set                          0x0000c97d   Thumb Code    64  nrf_cli.o(i.vt100_color_set)
-    .constdata                               0x0000c9cc   Section        4  main.o(.constdata)
-    m_cli_uart_transport_timer               0x0000c9cc   Data           4  main.o(.constdata)
-    .constdata                               0x0000c9d0   Section       12  main.o(.constdata)
-    m_cli_uart_transport_tx_ringbuf          0x0000c9d0   Data          12  main.o(.constdata)
-    .constdata                               0x0000c9dc   Section       12  main.o(.constdata)
-    m_cli_uart_transport_rx_ringbuf          0x0000c9dc   Data          12  main.o(.constdata)
-    .constdata                               0x0000c9e8   Section       20  main.o(.constdata)
-    m_cli_uart_transport_uart                0x0000c9e8   Data          20  main.o(.constdata)
-    .constdata                               0x0000c9fc   Section       24  main.o(.constdata)
-    m_cli_uart_transport                     0x0000c9fc   Data          24  main.o(.constdata)
-    .constdata                               0x0000ca14   Section      292  main.o(.constdata)
-    get_config_resp_configured               0x0000ca14   Data           1  main.o(.constdata)
-    get_config_resp_unconfigured             0x0000ca15   Data           1  main.o(.constdata)
-    get_status_device_resp_nrwu              0x0000ca16   Data           2  main.o(.constdata)
-    get_status_device_resp_rwu               0x0000ca18   Data           2  main.o(.constdata)
-    get_status_interface_resp                0x0000ca1a   Data           2  main.o(.constdata)
-    get_status_ep_halted_resp                0x0000ca1c   Data           2  main.o(.constdata)
-    get_status_ep_active_resp                0x0000ca1e   Data           2  main.o(.constdata)
-    get_descriptor_string_lang               0x0000ca20   Data           4  main.o(.constdata)
-    config                                   0x0000ca24   Data           4  main.o(.constdata)
-    get_descriptor_string_serial             0x0000ca28   Data           8  main.o(.constdata)
-    m_cli_uart                               0x0000ca30   Data          24  main.o(.constdata)
-    get_descriptor_device                    0x0000ca48   Data          18  main.o(.constdata)
-    get_descriptor_configuration             0x0000ca5a   Data          32  main.o(.constdata)
-    get_descriptor_string_manuf              0x0000ca7a   Data          46  main.o(.constdata)
-    get_descriptor_string_prod               0x0000caa8   Data          28  main.o(.constdata)
-    get_descriptor_report_interface_0        0x0000cac4   Data          46  main.o(.constdata)
-    ep1_transfer                             0x0000cb00   Data          12  main.o(.constdata)
-    transfer                                 0x0000cb0c   Data          12  main.o(.constdata)
-    .constdata                               0x0000cb38   Section        8  boards.o(.constdata)
-    m_board_led_list                         0x0000cb38   Data           4  boards.o(.constdata)
-    m_board_btn_list                         0x0000cb3c   Data           4  boards.o(.constdata)
-    .constdata                               0x0000cb40   Section       44  bsp.o(.constdata)
-    m_bsp_leds_tmr                           0x0000cb40   Data           4  bsp.o(.constdata)
-    m_bsp_alert_tmr                          0x0000cb44   Data           4  bsp.o(.constdata)
-    m_bsp_button_tmr                         0x0000cb48   Data           4  bsp.o(.constdata)
-    app_buttons                              0x0000cb4c   Data          32  bsp.o(.constdata)
-    .constdata                               0x0000cb6c   Section        8  bsp_cli.o(.constdata)
-    m_sub_bsp                                0x0000cb6c   Data           8  bsp_cli.o(.constdata)
-    .constdata                               0x0000cb74   Section       48  bsp_cli.o(.constdata)
-    m_sub_bsp_raw                            0x0000cb74   Data          48  bsp_cli.o(.constdata)
-    .constdata                               0x0000cba4   Section       16  bsp_cli.o(.constdata)
-    .constdata                               0x0000cbb4   Section        1  nrf_drv_power.o(.constdata)
-    m_drv_power_config_default               0x0000cbb4   Data           1  nrf_drv_power.o(.constdata)
-    .constdata                               0x0000cbb8   Section        8  nrfx_gpiote.o(.constdata)
-    .constdata                               0x0000cbc0   Section        4  nrfx_uart.o(.constdata)
-    irq_handlers                             0x0000cbc0   Data           4  nrfx_uart.o(.constdata)
-    .constdata                               0x0000cbc4   Section        4  nrfx_uarte.o(.constdata)
-    irq_handlers                             0x0000cbc4   Data           4  nrfx_uarte.o(.constdata)
-    .constdata                               0x0000cbc8   Section      206  nrfx_usbd.o(.constdata)
-    m_isr                                    0x0000cbfc   Data         100  nrfx_usbd.o(.constdata)
-    epin_endev                               0x0000cc60   Data          18  nrfx_usbd.o(.constdata)
-    epout_endev                              0x0000cc72   Data          18  nrfx_usbd.o(.constdata)
-    epin_bitpos                              0x0000cc84   Data           9  nrfx_usbd.o(.constdata)
-    epout_bitpos                             0x0000cc8d   Data           9  nrfx_usbd.o(.constdata)
-    .constdata                               0x0000cc98   Section        8  app_button.o(.constdata)
-    m_detection_delay_timer_id               0x0000cc9c   Data           4  app_button.o(.constdata)
-    .constdata                               0x0000cca0   Section       20  app_timer2.o(.constdata)
-    m_req_fifo                               0x0000cca0   Data           4  app_timer2.o(.constdata)
-    m_app_timer_sortlist                     0x0000cca8   Data          12  app_timer2.o(.constdata)
-    .constdata                               0x0000ccc0   Section        6  drv_rtc.o(.constdata)
-    delay_machine_code                       0x0000ccc0   Data           6  drv_rtc.o(.constdata)
-    .constdata                               0x0000ccc8   Section        8  nrf_balloc.o(.constdata)
-    nrf_balloc_commands                      0x0000ccc8   Data           8  nrf_balloc.o(.constdata)
-    .constdata                               0x0000ccd0   Section       32  nrf_balloc.o(.constdata)
-    nrf_balloc_commands_raw                  0x0000ccd0   Data          32  nrf_balloc.o(.constdata)
-    .constdata                               0x0000ccf0   Section       16  nrf_balloc.o(.constdata)
-    .constdata                               0x0000cd00   Section       12  nrf_cli.o(.constdata)
-    .constdata                               0x0000cd0c   Section        8  nrf_cli.o(.constdata)
-    m_sub_colors                             0x0000cd0c   Data           8  nrf_cli.o(.constdata)
-    .constdata                               0x0000cd14   Section       48  nrf_cli.o(.constdata)
-    m_sub_colors_raw                         0x0000cd14   Data          48  nrf_cli.o(.constdata)
-    .constdata                               0x0000cd44   Section        8  nrf_cli.o(.constdata)
-    m_sub_echo                               0x0000cd44   Data           8  nrf_cli.o(.constdata)
-    .constdata                               0x0000cd4c   Section       48  nrf_cli.o(.constdata)
-    m_sub_echo_raw                           0x0000cd4c   Data          48  nrf_cli.o(.constdata)
-    .constdata                               0x0000cd7c   Section        8  nrf_cli.o(.constdata)
-    m_sub_cli_stats                          0x0000cd7c   Data           8  nrf_cli.o(.constdata)
-    .constdata                               0x0000cd84   Section       48  nrf_cli.o(.constdata)
-    m_sub_cli_stats_raw                      0x0000cd84   Data          48  nrf_cli.o(.constdata)
-    .constdata                               0x0000cdb4   Section        8  nrf_cli.o(.constdata)
-    m_sub_cli                                0x0000cdb4   Data           8  nrf_cli.o(.constdata)
-    .constdata                               0x0000cdbc   Section       64  nrf_cli.o(.constdata)
-    m_sub_cli_raw                            0x0000cdbc   Data          64  nrf_cli.o(.constdata)
-    .constdata                               0x0000cdfc   Section        8  nrf_cli.o(.constdata)
-    m_sub_resize                             0x0000cdfc   Data           8  nrf_cli.o(.constdata)
-    .constdata                               0x0000ce04   Section       32  nrf_cli.o(.constdata)
-    m_sub_resize_raw                         0x0000ce04   Data          32  nrf_cli.o(.constdata)
-    .constdata                               0x0000ce24   Section       16  nrf_cli.o(.constdata)
-    .constdata                               0x0000ce34   Section       16  nrf_cli.o(.constdata)
-    .constdata                               0x0000ce44   Section       16  nrf_cli.o(.constdata)
-    .constdata                               0x0000ce54   Section       16  nrf_cli.o(.constdata)
-    .constdata                               0x0000ce70   Section       71  nrf_cli.o(.constdata)
-    cmd                                      0x0000ce70   Data           3  nrf_cli.o(.constdata)
-    cmd                                      0x0000ce73   Data           3  nrf_cli.o(.constdata)
-    opt_sep                                  0x0000ce76   Data           3  nrf_cli.o(.constdata)
-    cmd                                      0x0000ce79   Data           4  nrf_cli.o(.constdata)
-    cmd                                      0x0000ce7d   Data           4  nrf_cli.o(.constdata)
-    cmd_bspace                               0x0000ce81   Data           4  nrf_cli.o(.constdata)
-    cmd                                      0x0000ce85   Data           4  nrf_cli.o(.constdata)
-    cmd_sep                                  0x0000ce89   Data           4  nrf_cli.o(.constdata)
-    cmd                                      0x0000ce8d   Data           4  nrf_cli.o(.constdata)
-    cmd_get_terminal_size                    0x0000ce91   Data           5  nrf_cli.o(.constdata)
-    cmd                                      0x0000ce96   Data           5  nrf_cli.o(.constdata)
-    delay_machine_code                       0x0000cea0   Data           6  nrf_cli.o(.constdata)
-    cmd                                      0x0000cea6   Data           6  nrf_cli.o(.constdata)
-    help                                     0x0000ceac   Data          11  nrf_cli.o(.constdata)
-    .constdata                               0x0000ceb8   Section       20  nrf_cli_uart.o(.constdata)
-    .constdata                               0x0000cecc   Section       16  nrf_fprintf_format.o(.constdata)
-    _aV2C                                    0x0000cecc   Data          16  nrf_fprintf_format.o(.constdata)
-    .constdata                               0x0000cedc   Section        8  nrf_queue.o(.constdata)
-    nrf_queue_commands                       0x0000cedc   Data           8  nrf_queue.o(.constdata)
-    .constdata                               0x0000cee4   Section       32  nrf_queue.o(.constdata)
-    nrf_queue_commands_raw                   0x0000cee4   Data          32  nrf_queue.o(.constdata)
-    .constdata                               0x0000cf04   Section       16  nrf_queue.o(.constdata)
-    .constdata                               0x0000cf14   Section      300  nrf_strerror.o(.constdata)
-    m_unknown_str                            0x0000cf14   Data          19  nrf_strerror.o(.constdata)
-    nrf_strerror_array                       0x0000cf28   Data         280  nrf_strerror.o(.constdata)
-    .constdata                               0x0000d040   Section       12  nrf_log_backend_rtt.o(.constdata)
-    .constdata                               0x0000d050   Section        6  nrf_log_backend_rtt.o(.constdata)
-    delay_machine_code                       0x0000d050   Data           6  nrf_log_backend_rtt.o(.constdata)
-    .constdata                               0x0000d058   Section       12  nrf_log_backend_uart.o(.constdata)
-    .constdata                               0x0000d064   Section       32  nrf_log_backend_uart.o(.constdata)
-    .constdata                               0x0000d084   Section       28  nrf_log_frontend.o(.constdata)
-    m_module_name                            0x0000d084   Data           8  nrf_log_frontend.o(.constdata)
-    m_sub_log_backend                        0x0000d08c   Data           8  nrf_log_frontend.o(.constdata)
-    m_log_push_ringbuf                       0x0000d094   Data          12  nrf_log_frontend.o(.constdata)
-    .constdata                               0x0000d0a0   Section        8  nrf_log_frontend.o(.constdata)
-    m_severity_lvl                           0x0000d0a0   Data           8  nrf_log_frontend.o(.constdata)
-    .constdata                               0x0000d0a8   Section       96  nrf_log_frontend.o(.constdata)
-    m_sub_log_backend_raw                    0x0000d0a8   Data          96  nrf_log_frontend.o(.constdata)
-    .constdata                               0x0000d108   Section        8  nrf_log_frontend.o(.constdata)
-    m_backend_name_dynamic                   0x0000d108   Data           8  nrf_log_frontend.o(.constdata)
-    .constdata                               0x0000d110   Section        8  nrf_log_frontend.o(.constdata)
-    m_sub_log_config                         0x0000d110   Data           8  nrf_log_frontend.o(.constdata)
-    .constdata                               0x0000d118   Section       48  nrf_log_frontend.o(.constdata)
-    m_sub_log_config_raw                     0x0000d118   Data          48  nrf_log_frontend.o(.constdata)
-    .constdata                               0x0000d148   Section        8  nrf_log_frontend.o(.constdata)
-    m_sub_log_stat                           0x0000d148   Data           8  nrf_log_frontend.o(.constdata)
-    .constdata                               0x0000d150   Section      144  nrf_log_frontend.o(.constdata)
-    m_sub_log_stat_raw                       0x0000d150   Data         144  nrf_log_frontend.o(.constdata)
-    .constdata                               0x0000d1e0   Section       16  nrf_log_frontend.o(.constdata)
-    .constdata                               0x0000d1f0   Section      129  ctype_o.o(.constdata)
-    .constdata                               0x0000d274   Section        4  ctype_o.o(.constdata)
-    table                                    0x0000d274   Data           4  ctype_o.o(.constdata)
-    .conststring                             0x0000d278   Section       81  main.o(.conststring)
-    .conststring                             0x0000d2cc   Section       45  bsp_cli.o(.conststring)
-    .conststring                             0x0000d2fc   Section        4  bsp_cli.o(.conststring)
-    .conststring                             0x0000d300   Section     1301  hardfault_implementation.o(.conststring)
-    .conststring                             0x0000d818   Section       43  nrf_balloc.o(.conststring)
-    .conststring                             0x0000d844   Section       39  nrf_balloc.o(.conststring)
-    .conststring                             0x0000d86c   Section      142  nrf_balloc.o(.conststring)
-    .conststring                             0x0000d8fc   Section       55  nrf_cli.o(.conststring)
-    .conststring                             0x0000d934   Section      109  nrf_cli.o(.conststring)
-    .conststring                             0x0000d9a4   Section      101  nrf_cli.o(.conststring)
-    .conststring                             0x0000da0c   Section       82  nrf_cli.o(.conststring)
-    .conststring                             0x0000da60   Section       76  nrf_cli.o(.conststring)
-    .conststring                             0x0000daac   Section       22  nrf_cli.o(.conststring)
-    .conststring                             0x0000dac4   Section       40  nrf_cli.o(.conststring)
-    .conststring                             0x0000daec   Section       28  nrf_cli.o(.conststring)
-    .conststring                             0x0000db08   Section      167  nrf_cli.o(.conststring)
-    .conststring                             0x0000dbb0   Section        3  nrf_cli.o(.conststring)
-    .conststring                             0x0000dbb4   Section       33  nrf_queue.o(.conststring)
-    .conststring                             0x0000dbd8   Section        6  nrf_queue.o(.conststring)
-    .conststring                             0x0000dbe0   Section      124  nrf_queue.o(.conststring)
-    .conststring                             0x0000dc5c   Section      959  nrf_strerror.o(.conststring)
-    .conststring                             0x0000e01c   Section       70  nrf_log_backend_uart.o(.conststring)
-    .conststring                             0x0000e064   Section       97  nrf_log_frontend.o(.conststring)
-    .conststring                             0x0000e0c8   Section      313  nrf_log_frontend.o(.conststring)
-    .conststring                             0x0000e204   Section      118  nrf_log_frontend.o(.conststring)
-    .conststring                             0x0000e27c   Section      110  nrf_log_frontend.o(.conststring)
-    .conststring                             0x0000e2ec   Section       36  nrf_log_frontend.o(.conststring)
-    .conststring                             0x0000e310   Section       72  nrf_log_str_formatter.o(.conststring)
-    .conststrlit                             0x0000e358   Section      195  main.o(.conststrlit)
-    .conststrlit                             0x0000e41c   Section       83  bsp.o(.conststrlit)
-    .conststrlit                             0x0000e470   Section        6  nrf_drv_clock.o(.conststrlit)
-    .conststrlit                             0x0000e478   Section        6  nrfx_clock.o(.conststrlit)
-    .conststrlit                             0x0000e480   Section        7  nrfx_gpiote.o(.conststrlit)
-    .conststrlit                             0x0000e488   Section        4  nrfx_prs.o(.conststrlit)
-    .conststrlit                             0x0000e48c   Section        5  nrfx_uart.o(.conststrlit)
-    .conststrlit                             0x0000e494   Section        6  nrfx_uarte.o(.conststrlit)
-    .conststrlit                             0x0000e49c   Section        5  nrfx_usbd.o(.conststrlit)
-    .conststrlit                             0x0000e4a4   Section       49  app_button.o(.conststrlit)
-    .conststrlit                             0x0000e4d8   Section       30  app_timer2.o(.conststrlit)
-    .conststrlit                             0x0000e4f8   Section       10  hardfault_implementation.o(.conststrlit)
-    .conststrlit                             0x0000e504   Section        9  nrf_cli_uart.o(.conststrlit)
-    .conststrlit                             0x0000e510   Section        9  nrf_pwr_mgmt.o(.conststrlit)
-    .conststrlit                             0x0000e51c   Section        9  nrf_sortlist.o(.conststrlit)
-    .conststrlit                             0x0000e528   Section       33  nrf_log_default_backends.o(.conststrlit)
-    .conststrlit                             0x0000e54c   Section       36  nrf_log_frontend.o(.conststrlit)
-    cli_command                              0x0000e590   Section        8  bsp_cli.o(cli_command)
-    __tagsym$$used                           0x0000e590   Number         0  bsp_cli.o(cli_command)
-    cli_command                              0x0000e598   Section        8  nrf_balloc.o(cli_command)
-    __tagsym$$used                           0x0000e598   Number         0  nrf_balloc.o(cli_command)
-    cli_command                              0x0000e5a0   Section       32  nrf_cli.o(cli_command)
-    __tagsym$$used                           0x0000e5a0   Number         0  nrf_cli.o(cli_command)
-    __tagsym$$used                           0x0000e5a8   Number         0  nrf_cli.o(cli_command)
-    __tagsym$$used                           0x0000e5b0   Number         0  nrf_cli.o(cli_command)
-    __tagsym$$used                           0x0000e5b8   Number         0  nrf_cli.o(cli_command)
-    cli_command                              0x0000e5c0   Section        8  nrf_queue.o(cli_command)
-    __tagsym$$used                           0x0000e5c0   Number         0  nrf_queue.o(cli_command)
-    cli_command                              0x0000e5c8   Section        8  nrf_log_frontend.o(cli_command)
-    __tagsym$$used                           0x0000e5c8   Number         0  nrf_log_frontend.o(cli_command)
-    log_backends                             0x0000e5d0   Section       16  main.o(log_backends)
-    __tagsym$$used                           0x0000e5d0   Number         0  main.o(log_backends)
-    m_cli_uart_log_backend                   0x0000e5d0   Data          16  main.o(log_backends)
-    log_backends                             0x0000e5e0   Section       32  nrf_log_default_backends.o(log_backends)
-    __tagsym$$used                           0x0000e5e0   Number         0  nrf_log_default_backends.o(log_backends)
-    rtt_log_backend                          0x0000e5e0   Data          16  nrf_log_default_backends.o(log_backends)
-    __tagsym$$used                           0x0000e5f0   Number         0  nrf_log_default_backends.o(log_backends)
-    uart_log_backend                         0x0000e5f0   Data          16  nrf_log_default_backends.o(log_backends)
-    log_const_data                           0x0000e600   Section       24  main.o(log_const_data)
-    __tagsym$$used                           0x0000e600   Number         0  main.o(log_const_data)
-    __tagsym$$used                           0x0000e608   Number         0  main.o(log_const_data)
-    __tagsym$$used                           0x0000e610   Number         0  main.o(log_const_data)
-    log_const_data                           0x0000e618   Section       24  bsp.o(log_const_data)
-    __tagsym$$used                           0x0000e618   Number         0  bsp.o(log_const_data)
-    __tagsym$$used                           0x0000e620   Number         0  bsp.o(log_const_data)
-    __tagsym$$used                           0x0000e628   Number         0  bsp.o(log_const_data)
-    log_const_data                           0x0000e630   Section        8  nrf_drv_clock.o(log_const_data)
-    __tagsym$$used                           0x0000e630   Number         0  nrf_drv_clock.o(log_const_data)
-    log_const_data                           0x0000e638   Section        8  nrfx_clock.o(log_const_data)
-    __tagsym$$used                           0x0000e638   Number         0  nrfx_clock.o(log_const_data)
-    log_const_data                           0x0000e640   Section        8  nrfx_gpiote.o(log_const_data)
-    __tagsym$$used                           0x0000e640   Number         0  nrfx_gpiote.o(log_const_data)
-    log_const_data                           0x0000e648   Section        8  nrfx_prs.o(log_const_data)
-    __tagsym$$used                           0x0000e648   Number         0  nrfx_prs.o(log_const_data)
-    log_const_data                           0x0000e650   Section        8  nrfx_uart.o(log_const_data)
-    __tagsym$$used                           0x0000e650   Number         0  nrfx_uart.o(log_const_data)
-    log_const_data                           0x0000e658   Section        8  nrfx_uarte.o(log_const_data)
-    __tagsym$$used                           0x0000e658   Number         0  nrfx_uarte.o(log_const_data)
-    log_const_data                           0x0000e660   Section        8  nrfx_usbd.o(log_const_data)
-    __tagsym$$used                           0x0000e660   Number         0  nrfx_usbd.o(log_const_data)
-    log_const_data                           0x0000e668   Section       16  app_button.o(log_const_data)
-    __tagsym$$used                           0x0000e668   Number         0  app_button.o(log_const_data)
-    __tagsym$$used                           0x0000e670   Number         0  app_button.o(log_const_data)
-    log_const_data                           0x0000e678   Section       16  app_timer2.o(log_const_data)
-    __tagsym$$used                           0x0000e678   Number         0  app_timer2.o(log_const_data)
-    __tagsym$$used                           0x0000e680   Number         0  app_timer2.o(log_const_data)
-    log_const_data                           0x0000e688   Section        8  hardfault_implementation.o(log_const_data)
-    __tagsym$$used                           0x0000e688   Number         0  hardfault_implementation.o(log_const_data)
-    log_const_data                           0x0000e690   Section        8  nrf_cli_uart.o(log_const_data)
-    __tagsym$$used                           0x0000e690   Number         0  nrf_cli_uart.o(log_const_data)
-    log_const_data                           0x0000e698   Section        8  nrf_pwr_mgmt.o(log_const_data)
-    __tagsym$$used                           0x0000e698   Number         0  nrf_pwr_mgmt.o(log_const_data)
-    log_const_data                           0x0000e6a0   Section        8  nrf_sortlist.o(log_const_data)
-    __tagsym$$used                           0x0000e6a0   Number         0  nrf_sortlist.o(log_const_data)
-    log_const_data                           0x0000e6a8   Section       16  nrf_log_frontend.o(log_const_data)
-    __tagsym$$used                           0x0000e6a8   Number         0  nrf_log_frontend.o(log_const_data)
-    __tagsym$$used                           0x0000e6b0   Number         0  nrf_log_frontend.o(log_const_data)
-    nrf_balloc                               0x0000e6b8   Section       28  main.o(nrf_balloc)
-    __tagsym$$used                           0x0000e6b8   Number         0  main.o(nrf_balloc)
-    nrf_balloc                               0x0000e6d4   Section       28  nrf_log_frontend.o(nrf_balloc)
-    __tagsym$$used                           0x0000e6d4   Number         0  nrf_log_frontend.o(nrf_balloc)
-    nrf_queue                                0x0000e6f0   Section       28  main.o(nrf_queue)
-    __tagsym$$used                           0x0000e6f0   Number         0  main.o(nrf_queue)
+    usbd_event_handler                       0x0000c231   Thumb Code   544  main.o(i.usbd_event_handler)
+    i.usbd_int_rise                          0x0000c5f8   Section        0  nrfx_usbd.o(i.usbd_int_rise)
+    usbd_int_rise                            0x0000c5f9   Thumb Code    10  nrfx_usbd.o(i.usbd_int_rise)
+    i.usbd_setup_ClearFeature                0x0000c608   Section        0  main.o(i.usbd_setup_ClearFeature)
+    usbd_setup_ClearFeature                  0x0000c609   Thumb Code    82  main.o(i.usbd_setup_ClearFeature)
+    i.usbd_setup_GetDescriptor               0x0000c688   Section        0  main.o(i.usbd_setup_GetDescriptor)
+    usbd_setup_GetDescriptor                 0x0000c689   Thumb Code   250  main.o(i.usbd_setup_GetDescriptor)
+    i.usbd_setup_GetStatus                   0x0000c798   Section        0  main.o(i.usbd_setup_GetStatus)
+    usbd_setup_GetStatus                     0x0000c799   Thumb Code   152  main.o(i.usbd_setup_GetStatus)
+    i.usbd_setup_SetConfig                   0x0000c85c   Section        0  main.o(i.usbd_setup_SetConfig)
+    usbd_setup_SetConfig                     0x0000c85d   Thumb Code    76  main.o(i.usbd_setup_SetConfig)
+    i.usbd_setup_SetFeature                  0x0000c8e8   Section        0  main.o(i.usbd_setup_SetFeature)
+    usbd_setup_SetFeature                    0x0000c8e9   Thumb Code    80  main.o(i.usbd_setup_SetFeature)
+    i.usr_event                              0x0000c960   Section        0  app_button.o(i.usr_event)
+    usr_event                                0x0000c961   Thumb Code    32  app_button.o(i.usr_event)
+    i.vt100_bgcolor_set                      0x0000c980   Section        0  nrf_cli.o(i.vt100_bgcolor_set)
+    vt100_bgcolor_set                        0x0000c981   Thumb Code    48  nrf_cli.o(i.vt100_bgcolor_set)
+    i.vt100_color_set                        0x0000c9bc   Section        0  nrf_cli.o(i.vt100_color_set)
+    vt100_color_set                          0x0000c9bd   Thumb Code    64  nrf_cli.o(i.vt100_color_set)
+    .constdata                               0x0000ca0c   Section        4  main.o(.constdata)
+    m_cli_uart_transport_timer               0x0000ca0c   Data           4  main.o(.constdata)
+    .constdata                               0x0000ca10   Section       12  main.o(.constdata)
+    m_cli_uart_transport_tx_ringbuf          0x0000ca10   Data          12  main.o(.constdata)
+    .constdata                               0x0000ca1c   Section       12  main.o(.constdata)
+    m_cli_uart_transport_rx_ringbuf          0x0000ca1c   Data          12  main.o(.constdata)
+    .constdata                               0x0000ca28   Section       20  main.o(.constdata)
+    m_cli_uart_transport_uart                0x0000ca28   Data          20  main.o(.constdata)
+    .constdata                               0x0000ca3c   Section       24  main.o(.constdata)
+    m_cli_uart_transport                     0x0000ca3c   Data          24  main.o(.constdata)
+    .constdata                               0x0000ca54   Section      316  main.o(.constdata)
+    get_config_resp_configured               0x0000ca54   Data           1  main.o(.constdata)
+    get_config_resp_unconfigured             0x0000ca55   Data           1  main.o(.constdata)
+    get_status_device_resp_nrwu              0x0000ca56   Data           2  main.o(.constdata)
+    get_status_device_resp_rwu               0x0000ca58   Data           2  main.o(.constdata)
+    get_status_interface_resp                0x0000ca5a   Data           2  main.o(.constdata)
+    get_status_ep_halted_resp                0x0000ca5c   Data           2  main.o(.constdata)
+    get_status_ep_active_resp                0x0000ca5e   Data           2  main.o(.constdata)
+    get_descriptor_string_lang               0x0000ca60   Data           4  main.o(.constdata)
+    config                                   0x0000ca64   Data           4  main.o(.constdata)
+    get_descriptor_string_serial             0x0000ca68   Data           8  main.o(.constdata)
+    m_cli_uart                               0x0000ca70   Data          24  main.o(.constdata)
+    get_descriptor_device                    0x0000ca88   Data          18  main.o(.constdata)
+    get_descriptor_configuration             0x0000ca9a   Data          32  main.o(.constdata)
+    get_descriptor_string_manuf              0x0000caba   Data          46  main.o(.constdata)
+    get_descriptor_string_prod               0x0000cae8   Data          28  main.o(.constdata)
+    get_descriptor_report_interface_0        0x0000cb04   Data          46  main.o(.constdata)
+    ep1_transfer                             0x0000cb40   Data          12  main.o(.constdata)
+    transfer                                 0x0000cb64   Data          12  main.o(.constdata)
+    .constdata                               0x0000cb90   Section        8  boards.o(.constdata)
+    m_board_led_list                         0x0000cb90   Data           4  boards.o(.constdata)
+    m_board_btn_list                         0x0000cb94   Data           4  boards.o(.constdata)
+    .constdata                               0x0000cb98   Section       44  bsp.o(.constdata)
+    m_bsp_leds_tmr                           0x0000cb98   Data           4  bsp.o(.constdata)
+    m_bsp_alert_tmr                          0x0000cb9c   Data           4  bsp.o(.constdata)
+    m_bsp_button_tmr                         0x0000cba0   Data           4  bsp.o(.constdata)
+    app_buttons                              0x0000cba4   Data          32  bsp.o(.constdata)
+    .constdata                               0x0000cbc4   Section        8  bsp_cli.o(.constdata)
+    m_sub_bsp                                0x0000cbc4   Data           8  bsp_cli.o(.constdata)
+    .constdata                               0x0000cbcc   Section       48  bsp_cli.o(.constdata)
+    m_sub_bsp_raw                            0x0000cbcc   Data          48  bsp_cli.o(.constdata)
+    .constdata                               0x0000cbfc   Section       16  bsp_cli.o(.constdata)
+    .constdata                               0x0000cc0c   Section        1  nrf_drv_power.o(.constdata)
+    m_drv_power_config_default               0x0000cc0c   Data           1  nrf_drv_power.o(.constdata)
+    .constdata                               0x0000cc10   Section        8  nrfx_gpiote.o(.constdata)
+    .constdata                               0x0000cc18   Section        4  nrfx_uart.o(.constdata)
+    irq_handlers                             0x0000cc18   Data           4  nrfx_uart.o(.constdata)
+    .constdata                               0x0000cc1c   Section        4  nrfx_uarte.o(.constdata)
+    irq_handlers                             0x0000cc1c   Data           4  nrfx_uarte.o(.constdata)
+    .constdata                               0x0000cc20   Section      206  nrfx_usbd.o(.constdata)
+    m_isr                                    0x0000cc54   Data         100  nrfx_usbd.o(.constdata)
+    epin_endev                               0x0000ccb8   Data          18  nrfx_usbd.o(.constdata)
+    epout_endev                              0x0000ccca   Data          18  nrfx_usbd.o(.constdata)
+    epin_bitpos                              0x0000ccdc   Data           9  nrfx_usbd.o(.constdata)
+    epout_bitpos                             0x0000cce5   Data           9  nrfx_usbd.o(.constdata)
+    .constdata                               0x0000ccf0   Section        8  app_button.o(.constdata)
+    m_detection_delay_timer_id               0x0000ccf4   Data           4  app_button.o(.constdata)
+    .constdata                               0x0000ccf8   Section       20  app_timer2.o(.constdata)
+    m_req_fifo                               0x0000ccf8   Data           4  app_timer2.o(.constdata)
+    m_app_timer_sortlist                     0x0000cd00   Data          12  app_timer2.o(.constdata)
+    .constdata                               0x0000cd10   Section        6  drv_rtc.o(.constdata)
+    delay_machine_code                       0x0000cd10   Data           6  drv_rtc.o(.constdata)
+    .constdata                               0x0000cd18   Section        8  nrf_balloc.o(.constdata)
+    nrf_balloc_commands                      0x0000cd18   Data           8  nrf_balloc.o(.constdata)
+    .constdata                               0x0000cd20   Section       32  nrf_balloc.o(.constdata)
+    nrf_balloc_commands_raw                  0x0000cd20   Data          32  nrf_balloc.o(.constdata)
+    .constdata                               0x0000cd40   Section       16  nrf_balloc.o(.constdata)
+    .constdata                               0x0000cd50   Section       12  nrf_cli.o(.constdata)
+    .constdata                               0x0000cd5c   Section        8  nrf_cli.o(.constdata)
+    m_sub_colors                             0x0000cd5c   Data           8  nrf_cli.o(.constdata)
+    .constdata                               0x0000cd64   Section       48  nrf_cli.o(.constdata)
+    m_sub_colors_raw                         0x0000cd64   Data          48  nrf_cli.o(.constdata)
+    .constdata                               0x0000cd94   Section        8  nrf_cli.o(.constdata)
+    m_sub_echo                               0x0000cd94   Data           8  nrf_cli.o(.constdata)
+    .constdata                               0x0000cd9c   Section       48  nrf_cli.o(.constdata)
+    m_sub_echo_raw                           0x0000cd9c   Data          48  nrf_cli.o(.constdata)
+    .constdata                               0x0000cdcc   Section        8  nrf_cli.o(.constdata)
+    m_sub_cli_stats                          0x0000cdcc   Data           8  nrf_cli.o(.constdata)
+    .constdata                               0x0000cdd4   Section       48  nrf_cli.o(.constdata)
+    m_sub_cli_stats_raw                      0x0000cdd4   Data          48  nrf_cli.o(.constdata)
+    .constdata                               0x0000ce04   Section        8  nrf_cli.o(.constdata)
+    m_sub_cli                                0x0000ce04   Data           8  nrf_cli.o(.constdata)
+    .constdata                               0x0000ce0c   Section       64  nrf_cli.o(.constdata)
+    m_sub_cli_raw                            0x0000ce0c   Data          64  nrf_cli.o(.constdata)
+    .constdata                               0x0000ce4c   Section        8  nrf_cli.o(.constdata)
+    m_sub_resize                             0x0000ce4c   Data           8  nrf_cli.o(.constdata)
+    .constdata                               0x0000ce54   Section       32  nrf_cli.o(.constdata)
+    m_sub_resize_raw                         0x0000ce54   Data          32  nrf_cli.o(.constdata)
+    .constdata                               0x0000ce74   Section       16  nrf_cli.o(.constdata)
+    .constdata                               0x0000ce84   Section       16  nrf_cli.o(.constdata)
+    .constdata                               0x0000ce94   Section       16  nrf_cli.o(.constdata)
+    .constdata                               0x0000cea4   Section       16  nrf_cli.o(.constdata)
+    .constdata                               0x0000cec0   Section       71  nrf_cli.o(.constdata)
+    cmd                                      0x0000cec0   Data           3  nrf_cli.o(.constdata)
+    cmd                                      0x0000cec3   Data           3  nrf_cli.o(.constdata)
+    opt_sep                                  0x0000cec6   Data           3  nrf_cli.o(.constdata)
+    cmd                                      0x0000cec9   Data           4  nrf_cli.o(.constdata)
+    cmd                                      0x0000cecd   Data           4  nrf_cli.o(.constdata)
+    cmd_bspace                               0x0000ced1   Data           4  nrf_cli.o(.constdata)
+    cmd                                      0x0000ced5   Data           4  nrf_cli.o(.constdata)
+    cmd_sep                                  0x0000ced9   Data           4  nrf_cli.o(.constdata)
+    cmd                                      0x0000cedd   Data           4  nrf_cli.o(.constdata)
+    cmd_get_terminal_size                    0x0000cee1   Data           5  nrf_cli.o(.constdata)
+    cmd                                      0x0000cee6   Data           5  nrf_cli.o(.constdata)
+    delay_machine_code                       0x0000cef0   Data           6  nrf_cli.o(.constdata)
+    cmd                                      0x0000cef6   Data           6  nrf_cli.o(.constdata)
+    help                                     0x0000cefc   Data          11  nrf_cli.o(.constdata)
+    .constdata                               0x0000cf08   Section       20  nrf_cli_uart.o(.constdata)
+    .constdata                               0x0000cf1c   Section       16  nrf_fprintf_format.o(.constdata)
+    _aV2C                                    0x0000cf1c   Data          16  nrf_fprintf_format.o(.constdata)
+    .constdata                               0x0000cf2c   Section        8  nrf_queue.o(.constdata)
+    nrf_queue_commands                       0x0000cf2c   Data           8  nrf_queue.o(.constdata)
+    .constdata                               0x0000cf34   Section       32  nrf_queue.o(.constdata)
+    nrf_queue_commands_raw                   0x0000cf34   Data          32  nrf_queue.o(.constdata)
+    .constdata                               0x0000cf54   Section       16  nrf_queue.o(.constdata)
+    .constdata                               0x0000cf64   Section      300  nrf_strerror.o(.constdata)
+    m_unknown_str                            0x0000cf64   Data          19  nrf_strerror.o(.constdata)
+    nrf_strerror_array                       0x0000cf78   Data         280  nrf_strerror.o(.constdata)
+    .constdata                               0x0000d090   Section       12  nrf_log_backend_rtt.o(.constdata)
+    .constdata                               0x0000d0a0   Section        6  nrf_log_backend_rtt.o(.constdata)
+    delay_machine_code                       0x0000d0a0   Data           6  nrf_log_backend_rtt.o(.constdata)
+    .constdata                               0x0000d0a8   Section       12  nrf_log_backend_uart.o(.constdata)
+    .constdata                               0x0000d0b4   Section       32  nrf_log_backend_uart.o(.constdata)
+    .constdata                               0x0000d0d4   Section       28  nrf_log_frontend.o(.constdata)
+    m_module_name                            0x0000d0d4   Data           8  nrf_log_frontend.o(.constdata)
+    m_sub_log_backend                        0x0000d0dc   Data           8  nrf_log_frontend.o(.constdata)
+    m_log_push_ringbuf                       0x0000d0e4   Data          12  nrf_log_frontend.o(.constdata)
+    .constdata                               0x0000d0f0   Section        8  nrf_log_frontend.o(.constdata)
+    m_severity_lvl                           0x0000d0f0   Data           8  nrf_log_frontend.o(.constdata)
+    .constdata                               0x0000d0f8   Section       96  nrf_log_frontend.o(.constdata)
+    m_sub_log_backend_raw                    0x0000d0f8   Data          96  nrf_log_frontend.o(.constdata)
+    .constdata                               0x0000d158   Section        8  nrf_log_frontend.o(.constdata)
+    m_backend_name_dynamic                   0x0000d158   Data           8  nrf_log_frontend.o(.constdata)
+    .constdata                               0x0000d160   Section        8  nrf_log_frontend.o(.constdata)
+    m_sub_log_config                         0x0000d160   Data           8  nrf_log_frontend.o(.constdata)
+    .constdata                               0x0000d168   Section       48  nrf_log_frontend.o(.constdata)
+    m_sub_log_config_raw                     0x0000d168   Data          48  nrf_log_frontend.o(.constdata)
+    .constdata                               0x0000d198   Section        8  nrf_log_frontend.o(.constdata)
+    m_sub_log_stat                           0x0000d198   Data           8  nrf_log_frontend.o(.constdata)
+    .constdata                               0x0000d1a0   Section      144  nrf_log_frontend.o(.constdata)
+    m_sub_log_stat_raw                       0x0000d1a0   Data         144  nrf_log_frontend.o(.constdata)
+    .constdata                               0x0000d230   Section       16  nrf_log_frontend.o(.constdata)
+    .constdata                               0x0000d240   Section      129  ctype_o.o(.constdata)
+    .constdata                               0x0000d2c4   Section        4  ctype_o.o(.constdata)
+    table                                    0x0000d2c4   Data           4  ctype_o.o(.constdata)
+    .conststring                             0x0000d2c8   Section       81  main.o(.conststring)
+    .conststring                             0x0000d31c   Section       45  bsp_cli.o(.conststring)
+    .conststring                             0x0000d34c   Section        4  bsp_cli.o(.conststring)
+    .conststring                             0x0000d350   Section     1301  hardfault_implementation.o(.conststring)
+    .conststring                             0x0000d868   Section       43  nrf_balloc.o(.conststring)
+    .conststring                             0x0000d894   Section       39  nrf_balloc.o(.conststring)
+    .conststring                             0x0000d8bc   Section      142  nrf_balloc.o(.conststring)
+    .conststring                             0x0000d94c   Section       55  nrf_cli.o(.conststring)
+    .conststring                             0x0000d984   Section      109  nrf_cli.o(.conststring)
+    .conststring                             0x0000d9f4   Section      101  nrf_cli.o(.conststring)
+    .conststring                             0x0000da5c   Section       82  nrf_cli.o(.conststring)
+    .conststring                             0x0000dab0   Section       76  nrf_cli.o(.conststring)
+    .conststring                             0x0000dafc   Section       22  nrf_cli.o(.conststring)
+    .conststring                             0x0000db14   Section       40  nrf_cli.o(.conststring)
+    .conststring                             0x0000db3c   Section       28  nrf_cli.o(.conststring)
+    .conststring                             0x0000db58   Section      167  nrf_cli.o(.conststring)
+    .conststring                             0x0000dc00   Section        3  nrf_cli.o(.conststring)
+    .conststring                             0x0000dc04   Section       33  nrf_queue.o(.conststring)
+    .conststring                             0x0000dc28   Section        6  nrf_queue.o(.conststring)
+    .conststring                             0x0000dc30   Section      124  nrf_queue.o(.conststring)
+    .conststring                             0x0000dcac   Section      959  nrf_strerror.o(.conststring)
+    .conststring                             0x0000e06c   Section       70  nrf_log_backend_uart.o(.conststring)
+    .conststring                             0x0000e0b4   Section       97  nrf_log_frontend.o(.conststring)
+    .conststring                             0x0000e118   Section      313  nrf_log_frontend.o(.conststring)
+    .conststring                             0x0000e254   Section      118  nrf_log_frontend.o(.conststring)
+    .conststring                             0x0000e2cc   Section      110  nrf_log_frontend.o(.conststring)
+    .conststring                             0x0000e33c   Section       36  nrf_log_frontend.o(.conststring)
+    .conststring                             0x0000e360   Section       72  nrf_log_str_formatter.o(.conststring)
+    .conststrlit                             0x0000e3a8   Section      195  main.o(.conststrlit)
+    .conststrlit                             0x0000e46c   Section       83  bsp.o(.conststrlit)
+    .conststrlit                             0x0000e4c0   Section        6  nrf_drv_clock.o(.conststrlit)
+    .conststrlit                             0x0000e4c8   Section        6  nrfx_clock.o(.conststrlit)
+    .conststrlit                             0x0000e4d0   Section        7  nrfx_gpiote.o(.conststrlit)
+    .conststrlit                             0x0000e4d8   Section        4  nrfx_prs.o(.conststrlit)
+    .conststrlit                             0x0000e4dc   Section        5  nrfx_uart.o(.conststrlit)
+    .conststrlit                             0x0000e4e4   Section        6  nrfx_uarte.o(.conststrlit)
+    .conststrlit                             0x0000e4ec   Section        5  nrfx_usbd.o(.conststrlit)
+    .conststrlit                             0x0000e4f4   Section       49  app_button.o(.conststrlit)
+    .conststrlit                             0x0000e528   Section       30  app_timer2.o(.conststrlit)
+    .conststrlit                             0x0000e548   Section       10  hardfault_implementation.o(.conststrlit)
+    .conststrlit                             0x0000e554   Section        9  nrf_cli_uart.o(.conststrlit)
+    .conststrlit                             0x0000e560   Section        9  nrf_pwr_mgmt.o(.conststrlit)
+    .conststrlit                             0x0000e56c   Section        9  nrf_sortlist.o(.conststrlit)
+    .conststrlit                             0x0000e578   Section       33  nrf_log_default_backends.o(.conststrlit)
+    .conststrlit                             0x0000e59c   Section       36  nrf_log_frontend.o(.conststrlit)
+    cli_command                              0x0000e5e0   Section        8  bsp_cli.o(cli_command)
+    __tagsym$$used                           0x0000e5e0   Number         0  bsp_cli.o(cli_command)
+    cli_command                              0x0000e5e8   Section        8  nrf_balloc.o(cli_command)
+    __tagsym$$used                           0x0000e5e8   Number         0  nrf_balloc.o(cli_command)
+    cli_command                              0x0000e5f0   Section       32  nrf_cli.o(cli_command)
+    __tagsym$$used                           0x0000e5f0   Number         0  nrf_cli.o(cli_command)
+    __tagsym$$used                           0x0000e5f8   Number         0  nrf_cli.o(cli_command)
+    __tagsym$$used                           0x0000e600   Number         0  nrf_cli.o(cli_command)
+    __tagsym$$used                           0x0000e608   Number         0  nrf_cli.o(cli_command)
+    cli_command                              0x0000e610   Section        8  nrf_queue.o(cli_command)
+    __tagsym$$used                           0x0000e610   Number         0  nrf_queue.o(cli_command)
+    cli_command                              0x0000e618   Section        8  nrf_log_frontend.o(cli_command)
+    __tagsym$$used                           0x0000e618   Number         0  nrf_log_frontend.o(cli_command)
+    log_backends                             0x0000e620   Section       16  main.o(log_backends)
+    __tagsym$$used                           0x0000e620   Number         0  main.o(log_backends)
+    m_cli_uart_log_backend                   0x0000e620   Data          16  main.o(log_backends)
+    log_backends                             0x0000e630   Section       32  nrf_log_default_backends.o(log_backends)
+    __tagsym$$used                           0x0000e630   Number         0  nrf_log_default_backends.o(log_backends)
+    rtt_log_backend                          0x0000e630   Data          16  nrf_log_default_backends.o(log_backends)
+    __tagsym$$used                           0x0000e640   Number         0  nrf_log_default_backends.o(log_backends)
+    uart_log_backend                         0x0000e640   Data          16  nrf_log_default_backends.o(log_backends)
+    log_const_data                           0x0000e650   Section       24  main.o(log_const_data)
+    __tagsym$$used                           0x0000e650   Number         0  main.o(log_const_data)
+    __tagsym$$used                           0x0000e658   Number         0  main.o(log_const_data)
+    __tagsym$$used                           0x0000e660   Number         0  main.o(log_const_data)
+    log_const_data                           0x0000e668   Section       24  bsp.o(log_const_data)
+    __tagsym$$used                           0x0000e668   Number         0  bsp.o(log_const_data)
+    __tagsym$$used                           0x0000e670   Number         0  bsp.o(log_const_data)
+    __tagsym$$used                           0x0000e678   Number         0  bsp.o(log_const_data)
+    log_const_data                           0x0000e680   Section        8  nrf_drv_clock.o(log_const_data)
+    __tagsym$$used                           0x0000e680   Number         0  nrf_drv_clock.o(log_const_data)
+    log_const_data                           0x0000e688   Section        8  nrfx_clock.o(log_const_data)
+    __tagsym$$used                           0x0000e688   Number         0  nrfx_clock.o(log_const_data)
+    log_const_data                           0x0000e690   Section        8  nrfx_gpiote.o(log_const_data)
+    __tagsym$$used                           0x0000e690   Number         0  nrfx_gpiote.o(log_const_data)
+    log_const_data                           0x0000e698   Section        8  nrfx_prs.o(log_const_data)
+    __tagsym$$used                           0x0000e698   Number         0  nrfx_prs.o(log_const_data)
+    log_const_data                           0x0000e6a0   Section        8  nrfx_uart.o(log_const_data)
+    __tagsym$$used                           0x0000e6a0   Number         0  nrfx_uart.o(log_const_data)
+    log_const_data                           0x0000e6a8   Section        8  nrfx_uarte.o(log_const_data)
+    __tagsym$$used                           0x0000e6a8   Number         0  nrfx_uarte.o(log_const_data)
+    log_const_data                           0x0000e6b0   Section        8  nrfx_usbd.o(log_const_data)
+    __tagsym$$used                           0x0000e6b0   Number         0  nrfx_usbd.o(log_const_data)
+    log_const_data                           0x0000e6b8   Section       16  app_button.o(log_const_data)
+    __tagsym$$used                           0x0000e6b8   Number         0  app_button.o(log_const_data)
+    __tagsym$$used                           0x0000e6c0   Number         0  app_button.o(log_const_data)
+    log_const_data                           0x0000e6c8   Section       16  app_timer2.o(log_const_data)
+    __tagsym$$used                           0x0000e6c8   Number         0  app_timer2.o(log_const_data)
+    __tagsym$$used                           0x0000e6d0   Number         0  app_timer2.o(log_const_data)
+    log_const_data                           0x0000e6d8   Section        8  hardfault_implementation.o(log_const_data)
+    __tagsym$$used                           0x0000e6d8   Number         0  hardfault_implementation.o(log_const_data)
+    log_const_data                           0x0000e6e0   Section        8  nrf_cli_uart.o(log_const_data)
+    __tagsym$$used                           0x0000e6e0   Number         0  nrf_cli_uart.o(log_const_data)
+    log_const_data                           0x0000e6e8   Section        8  nrf_pwr_mgmt.o(log_const_data)
+    __tagsym$$used                           0x0000e6e8   Number         0  nrf_pwr_mgmt.o(log_const_data)
+    log_const_data                           0x0000e6f0   Section        8  nrf_sortlist.o(log_const_data)
+    __tagsym$$used                           0x0000e6f0   Number         0  nrf_sortlist.o(log_const_data)
+    log_const_data                           0x0000e6f8   Section       16  nrf_log_frontend.o(log_const_data)
+    __tagsym$$used                           0x0000e6f8   Number         0  nrf_log_frontend.o(log_const_data)
+    __tagsym$$used                           0x0000e700   Number         0  nrf_log_frontend.o(log_const_data)
+    nrf_balloc                               0x0000e708   Section       28  main.o(nrf_balloc)
+    __tagsym$$used                           0x0000e708   Number         0  main.o(nrf_balloc)
+    nrf_balloc                               0x0000e724   Section       28  nrf_log_frontend.o(nrf_balloc)
+    __tagsym$$used                           0x0000e724   Number         0  nrf_log_frontend.o(nrf_balloc)
+    nrf_queue                                0x0000e740   Section       28  main.o(nrf_queue)
+    __tagsym$$used                           0x0000e740   Number         0  main.o(nrf_queue)
     .data                                    0x20000000   Section       32  main.o(.data)
     m_cli_uart_transport_timer_data          0x20000000   Data          32  main.o(.data)
     .data                                    0x20000020   Section       24  main.o(.data)
@@ -4470,66 +4471,66 @@ Image Symbol Table
     nrfx_usbd_wakeup_req                     0x0000ac41   Thumb Code    72  nrfx_usbd.o(i.nrfx_usbd_wakeup_req)
     nvmc_config                              0x0000ac95   Thumb Code    14  system_nrf52.o(i.nvmc_config)
     privilege_level_get                      0x0000b0cd   Thumb Code    26  app_util_platform.o(i.privilege_level_get)
-    ep1_transfer                             0x0000caf4   Data          12  main.o(.constdata)
-    nrf_cli_bsp_raw                          0x0000cba4   Data          16  bsp_cli.o(.constdata)
-    nrf_cli_balloc_raw                       0x0000ccf0   Data          16  nrf_balloc.o(.constdata)
-    nrf_log_backend_cli_api                  0x0000cd00   Data          12  nrf_cli.o(.constdata)
-    nrf_cli_clear_raw                        0x0000ce24   Data          16  nrf_cli.o(.constdata)
-    nrf_cli_cli_raw                          0x0000ce34   Data          16  nrf_cli.o(.constdata)
-    nrf_cli_history_raw                      0x0000ce44   Data          16  nrf_cli.o(.constdata)
-    nrf_cli_resize_raw                       0x0000ce54   Data          16  nrf_cli.o(.constdata)
-    nrf_cli_uart_transport_api               0x0000ceb8   Data          20  nrf_cli_uart.o(.constdata)
-    nrf_cli_queue_raw                        0x0000cf04   Data          16  nrf_queue.o(.constdata)
-    nrf_log_backend_rtt_api                  0x0000d040   Data          12  nrf_log_backend_rtt.o(.constdata)
-    nrf_log_backend_uart_api                 0x0000d058   Data          12  nrf_log_backend_uart.o(.constdata)
-    nrf_cli_log_raw                          0x0000d1e0   Data          16  nrf_log_frontend.o(.constdata)
-    __ctype_table                            0x0000d1f0   Data         129  ctype_o.o(.constdata)
-    Region$$Table$$Base                      0x0000e570   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x0000e590   Number         0  anon$$obj.o(Region$$Table)
-    cli_command$$Base                        0x0000e590   Number         0  bsp_cli.o(cli_command)
-    nrf_cli_bsp_const                        0x0000e590   Data           8  bsp_cli.o(cli_command)
-    nrf_cli_balloc_const                     0x0000e598   Data           8  nrf_balloc.o(cli_command)
-    nrf_cli_clear_const                      0x0000e5a0   Data           8  nrf_cli.o(cli_command)
-    nrf_cli_cli_const                        0x0000e5a8   Data           8  nrf_cli.o(cli_command)
-    nrf_cli_history_const                    0x0000e5b0   Data           8  nrf_cli.o(cli_command)
-    nrf_cli_resize_const                     0x0000e5b8   Data           8  nrf_cli.o(cli_command)
-    nrf_cli_queue_const                      0x0000e5c0   Data           8  nrf_queue.o(cli_command)
-    nrf_cli_log_const                        0x0000e5c8   Data           8  nrf_log_frontend.o(cli_command)
-    cli_command$$Limit                       0x0000e5d0   Number         0  nrf_log_frontend.o(cli_command)
-    log_backends$$Base                       0x0000e5d0   Number         0  main.o(log_backends)
-    log_backends$$Limit                      0x0000e600   Number         0  nrf_log_default_backends.o(log_backends)
-    log_const_data$$Base                     0x0000e600   Number         0  main.o(log_const_data)
-    m_nrf_log_app_timer_m_cli_uart_transport_timer_logs_data_const 0x0000e600   Data           8  main.o(log_const_data)
-    m_nrf_log_queue_m_cli_uart_log_backend_queue_logs_data_const 0x0000e608   Data           8  main.o(log_const_data)
-    m_nrf_log_balloc_m_cli_uart_cmd_hist_memobj_logs_data_const 0x0000e610   Data           8  main.o(log_const_data)
-    m_nrf_log_app_timer_m_bsp_leds_tmr_logs_data_const 0x0000e618   Data           8  bsp.o(log_const_data)
-    m_nrf_log_app_timer_m_bsp_alert_tmr_logs_data_const 0x0000e620   Data           8  bsp.o(log_const_data)
-    m_nrf_log_app_timer_m_bsp_button_tmr_logs_data_const 0x0000e628   Data           8  bsp.o(log_const_data)
-    m_nrf_log_clock_logs_data_const          0x0000e630   Data           8  nrf_drv_clock.o(log_const_data)
-    m_nrf_log_CLOCK_logs_data_const          0x0000e638   Data           8  nrfx_clock.o(log_const_data)
-    m_nrf_log_GPIOTE_logs_data_const         0x0000e640   Data           8  nrfx_gpiote.o(log_const_data)
-    m_nrf_log_PRS_logs_data_const            0x0000e648   Data           8  nrfx_prs.o(log_const_data)
-    m_nrf_log_UART_logs_data_const           0x0000e650   Data           8  nrfx_uart.o(log_const_data)
-    m_nrf_log_UARTE_logs_data_const          0x0000e658   Data           8  nrfx_uarte.o(log_const_data)
-    m_nrf_log_USBD_logs_data_const           0x0000e660   Data           8  nrfx_usbd.o(log_const_data)
-    m_nrf_log_app_button_logs_data_const     0x0000e668   Data           8  app_button.o(log_const_data)
-    m_nrf_log_app_timer_m_detection_delay_timer_id_logs_data_const 0x0000e670   Data           8  app_button.o(log_const_data)
-    m_nrf_log_app_timer_logs_data_const      0x0000e678   Data           8  app_timer2.o(log_const_data)
-    m_nrf_log_atfifo_m_req_fifo_logs_data_const 0x0000e680   Data           8  app_timer2.o(log_const_data)
-    m_nrf_log_hardfault_logs_data_const      0x0000e688   Data           8  hardfault_implementation.o(log_const_data)
-    m_nrf_log_cli_uart_logs_data_const       0x0000e690   Data           8  nrf_cli_uart.o(log_const_data)
-    m_nrf_log_pwr_mgmt_logs_data_const       0x0000e698   Data           8  nrf_pwr_mgmt.o(log_const_data)
-    m_nrf_log_sortlist_logs_data_const       0x0000e6a0   Data           8  nrf_sortlist.o(log_const_data)
-    m_nrf_log_balloc_log_mempool_logs_data_const 0x0000e6a8   Data           8  nrf_log_frontend.o(log_const_data)
-    m_nrf_log_app_logs_data_const            0x0000e6b0   Data           8  nrf_log_frontend.o(log_const_data)
-    log_const_data$$Limit                    0x0000e6b8   Number         0  nrf_log_frontend.o(log_const_data)
-    m_cli_uart_cmd_hist_memobj               0x0000e6b8   Data          28  main.o(nrf_balloc)
-    nrf_balloc$$Base                         0x0000e6b8   Number         0  main.o(nrf_balloc)
-    log_mempool                              0x0000e6d4   Data          28  nrf_log_frontend.o(nrf_balloc)
-    m_cli_uart_log_backend_queue             0x0000e6f0   Data          28  main.o(nrf_queue)
-    nrf_balloc$$Limit                        0x0000e6f0   Number         0  nrf_log_frontend.o(nrf_balloc)
-    nrf_queue$$Base                          0x0000e6f0   Number         0  main.o(nrf_queue)
-    nrf_queue$$Limit                         0x0000e70c   Number         0  main.o(nrf_queue)
+    ep1_transfer                             0x0000cb34   Data          12  main.o(.constdata)
+    nrf_cli_bsp_raw                          0x0000cbfc   Data          16  bsp_cli.o(.constdata)
+    nrf_cli_balloc_raw                       0x0000cd40   Data          16  nrf_balloc.o(.constdata)
+    nrf_log_backend_cli_api                  0x0000cd50   Data          12  nrf_cli.o(.constdata)
+    nrf_cli_clear_raw                        0x0000ce74   Data          16  nrf_cli.o(.constdata)
+    nrf_cli_cli_raw                          0x0000ce84   Data          16  nrf_cli.o(.constdata)
+    nrf_cli_history_raw                      0x0000ce94   Data          16  nrf_cli.o(.constdata)
+    nrf_cli_resize_raw                       0x0000cea4   Data          16  nrf_cli.o(.constdata)
+    nrf_cli_uart_transport_api               0x0000cf08   Data          20  nrf_cli_uart.o(.constdata)
+    nrf_cli_queue_raw                        0x0000cf54   Data          16  nrf_queue.o(.constdata)
+    nrf_log_backend_rtt_api                  0x0000d090   Data          12  nrf_log_backend_rtt.o(.constdata)
+    nrf_log_backend_uart_api                 0x0000d0a8   Data          12  nrf_log_backend_uart.o(.constdata)
+    nrf_cli_log_raw                          0x0000d230   Data          16  nrf_log_frontend.o(.constdata)
+    __ctype_table                            0x0000d240   Data         129  ctype_o.o(.constdata)
+    Region$$Table$$Base                      0x0000e5c0   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x0000e5e0   Number         0  anon$$obj.o(Region$$Table)
+    cli_command$$Base                        0x0000e5e0   Number         0  bsp_cli.o(cli_command)
+    nrf_cli_bsp_const                        0x0000e5e0   Data           8  bsp_cli.o(cli_command)
+    nrf_cli_balloc_const                     0x0000e5e8   Data           8  nrf_balloc.o(cli_command)
+    nrf_cli_clear_const                      0x0000e5f0   Data           8  nrf_cli.o(cli_command)
+    nrf_cli_cli_const                        0x0000e5f8   Data           8  nrf_cli.o(cli_command)
+    nrf_cli_history_const                    0x0000e600   Data           8  nrf_cli.o(cli_command)
+    nrf_cli_resize_const                     0x0000e608   Data           8  nrf_cli.o(cli_command)
+    nrf_cli_queue_const                      0x0000e610   Data           8  nrf_queue.o(cli_command)
+    nrf_cli_log_const                        0x0000e618   Data           8  nrf_log_frontend.o(cli_command)
+    cli_command$$Limit                       0x0000e620   Number         0  nrf_log_frontend.o(cli_command)
+    log_backends$$Base                       0x0000e620   Number         0  main.o(log_backends)
+    log_backends$$Limit                      0x0000e650   Number         0  nrf_log_default_backends.o(log_backends)
+    log_const_data$$Base                     0x0000e650   Number         0  main.o(log_const_data)
+    m_nrf_log_app_timer_m_cli_uart_transport_timer_logs_data_const 0x0000e650   Data           8  main.o(log_const_data)
+    m_nrf_log_queue_m_cli_uart_log_backend_queue_logs_data_const 0x0000e658   Data           8  main.o(log_const_data)
+    m_nrf_log_balloc_m_cli_uart_cmd_hist_memobj_logs_data_const 0x0000e660   Data           8  main.o(log_const_data)
+    m_nrf_log_app_timer_m_bsp_leds_tmr_logs_data_const 0x0000e668   Data           8  bsp.o(log_const_data)
+    m_nrf_log_app_timer_m_bsp_alert_tmr_logs_data_const 0x0000e670   Data           8  bsp.o(log_const_data)
+    m_nrf_log_app_timer_m_bsp_button_tmr_logs_data_const 0x0000e678   Data           8  bsp.o(log_const_data)
+    m_nrf_log_clock_logs_data_const          0x0000e680   Data           8  nrf_drv_clock.o(log_const_data)
+    m_nrf_log_CLOCK_logs_data_const          0x0000e688   Data           8  nrfx_clock.o(log_const_data)
+    m_nrf_log_GPIOTE_logs_data_const         0x0000e690   Data           8  nrfx_gpiote.o(log_const_data)
+    m_nrf_log_PRS_logs_data_const            0x0000e698   Data           8  nrfx_prs.o(log_const_data)
+    m_nrf_log_UART_logs_data_const           0x0000e6a0   Data           8  nrfx_uart.o(log_const_data)
+    m_nrf_log_UARTE_logs_data_const          0x0000e6a8   Data           8  nrfx_uarte.o(log_const_data)
+    m_nrf_log_USBD_logs_data_const           0x0000e6b0   Data           8  nrfx_usbd.o(log_const_data)
+    m_nrf_log_app_button_logs_data_const     0x0000e6b8   Data           8  app_button.o(log_const_data)
+    m_nrf_log_app_timer_m_detection_delay_timer_id_logs_data_const 0x0000e6c0   Data           8  app_button.o(log_const_data)
+    m_nrf_log_app_timer_logs_data_const      0x0000e6c8   Data           8  app_timer2.o(log_const_data)
+    m_nrf_log_atfifo_m_req_fifo_logs_data_const 0x0000e6d0   Data           8  app_timer2.o(log_const_data)
+    m_nrf_log_hardfault_logs_data_const      0x0000e6d8   Data           8  hardfault_implementation.o(log_const_data)
+    m_nrf_log_cli_uart_logs_data_const       0x0000e6e0   Data           8  nrf_cli_uart.o(log_const_data)
+    m_nrf_log_pwr_mgmt_logs_data_const       0x0000e6e8   Data           8  nrf_pwr_mgmt.o(log_const_data)
+    m_nrf_log_sortlist_logs_data_const       0x0000e6f0   Data           8  nrf_sortlist.o(log_const_data)
+    m_nrf_log_balloc_log_mempool_logs_data_const 0x0000e6f8   Data           8  nrf_log_frontend.o(log_const_data)
+    m_nrf_log_app_logs_data_const            0x0000e700   Data           8  nrf_log_frontend.o(log_const_data)
+    log_const_data$$Limit                    0x0000e708   Number         0  nrf_log_frontend.o(log_const_data)
+    m_cli_uart_cmd_hist_memobj               0x0000e708   Data          28  main.o(nrf_balloc)
+    nrf_balloc$$Base                         0x0000e708   Number         0  main.o(nrf_balloc)
+    log_mempool                              0x0000e724   Data          28  nrf_log_frontend.o(nrf_balloc)
+    m_cli_uart_log_backend_queue             0x0000e740   Data          28  main.o(nrf_queue)
+    nrf_balloc$$Limit                        0x0000e740   Number         0  nrf_log_frontend.o(nrf_balloc)
+    nrf_queue$$Base                          0x0000e740   Number         0  main.o(nrf_queue)
+    nrf_queue$$Limit                         0x0000e75c   Number         0  main.o(nrf_queue)
     nrf_drv_uart_use_easy_dma                0x200000e8   Data           2  nrf_drv_uart.o(.data)
     nrfx_clock_irq_enabled                   0x200000fc   Data           1  nrfx_clock.o(.data)
     nrfx_power_irq_enabled                   0x20000108   Data           1  nrfx_power.o(.data)
@@ -4607,9 +4608,9 @@ Memory Map of the image
 
   Image Entry point : 0x00000201
 
-  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x0000eaac, Max: 0x00100000, ABSOLUTE, COMPRESSED[0x0000e7cc])
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x0000eafc, Max: 0x00100000, ABSOLUTE, COMPRESSED[0x0000e81c])
 
-    Execution Region ER_IROM1 (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x0000e70c, Max: 0x00100000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x0000e75c, Max: 0x00100000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -5161,195 +5162,195 @@ Memory Map of the image
     0x0000c16c   0x0000c16c   0x0000005c   Code   RO         2500    i.usbd_ep_data_handler  nrfx_usbd.o
     0x0000c1c8   0x0000c1c8   0x00000034   Code   RO         2501    i.usbd_errata_187_211_begin  nrfx_usbd.o
     0x0000c1fc   0x0000c1fc   0x00000034   Code   RO         2502    i.usbd_errata_187_211_end  nrfx_usbd.o
-    0x0000c230   0x0000c230   0x00000388   Code   RO           14    i.usbd_event_handler  main.o
-    0x0000c5b8   0x0000c5b8   0x00000010   Code   RO         2503    i.usbd_int_rise     nrfx_usbd.o
-    0x0000c5c8   0x0000c5c8   0x00000080   Code   RO           15    i.usbd_setup_ClearFeature  main.o
-    0x0000c648   0x0000c648   0x00000110   Code   RO           16    i.usbd_setup_GetDescriptor  main.o
-    0x0000c758   0x0000c758   0x000000c4   Code   RO           17    i.usbd_setup_GetStatus  main.o
-    0x0000c81c   0x0000c81c   0x0000008c   Code   RO           18    i.usbd_setup_SetConfig  main.o
-    0x0000c8a8   0x0000c8a8   0x00000078   Code   RO           19    i.usbd_setup_SetFeature  main.o
-    0x0000c920   0x0000c920   0x00000020   Code   RO         3033    i.usr_event         app_button.o
-    0x0000c940   0x0000c940   0x0000003c   Code   RO         4109    i.vt100_bgcolor_set  nrf_cli.o
-    0x0000c97c   0x0000c97c   0x00000050   Code   RO         4110    i.vt100_color_set   nrf_cli.o
-    0x0000c9cc   0x0000c9cc   0x00000004   Data   RO           31    .constdata          main.o
-    0x0000c9d0   0x0000c9d0   0x0000000c   Data   RO           32    .constdata          main.o
-    0x0000c9dc   0x0000c9dc   0x0000000c   Data   RO           33    .constdata          main.o
-    0x0000c9e8   0x0000c9e8   0x00000014   Data   RO           34    .constdata          main.o
-    0x0000c9fc   0x0000c9fc   0x00000018   Data   RO           35    .constdata          main.o
-    0x0000ca14   0x0000ca14   0x00000124   Data   RO           36    .constdata          main.o
-    0x0000cb38   0x0000cb38   0x00000008   Data   RO          454    .constdata          boards.o
-    0x0000cb40   0x0000cb40   0x0000002c   Data   RO          573    .constdata          bsp.o
-    0x0000cb6c   0x0000cb6c   0x00000008   Data   RO          686    .constdata          bsp_cli.o
-    0x0000cb74   0x0000cb74   0x00000030   Data   RO          687    .constdata          bsp_cli.o
-    0x0000cba4   0x0000cba4   0x00000010   Data   RO          688    .constdata          bsp_cli.o
-    0x0000cbb4   0x0000cbb4   0x00000001   Data   RO          913    .constdata          nrf_drv_power.o
-    0x0000cbb5   0x0000cbb5   0x00000003   PAD
-    0x0000cbb8   0x0000cbb8   0x00000008   Data   RO         1482    .constdata          nrfx_gpiote.o
-    0x0000cbc0   0x0000cbc0   0x00000004   Data   RO         2061    .constdata          nrfx_uart.o
-    0x0000cbc4   0x0000cbc4   0x00000004   Data   RO         2257    .constdata          nrfx_uarte.o
-    0x0000cbc8   0x0000cbc8   0x000000ce   Data   RO         2505    .constdata          nrfx_usbd.o
-    0x0000cc96   0x0000cc96   0x00000002   PAD
-    0x0000cc98   0x0000cc98   0x00000008   Data   RO         3035    .constdata          app_button.o
-    0x0000cca0   0x0000cca0   0x00000014   Data   RO         3284    .constdata          app_timer2.o
-    0x0000ccb4   0x0000ccb4   0x0000000c   PAD
-    0x0000ccc0   0x0000ccc0   0x00000006   Data   RO         3490    .constdata          drv_rtc.o
-    0x0000ccc6   0x0000ccc6   0x00000002   PAD
-    0x0000ccc8   0x0000ccc8   0x00000008   Data   RO         3977    .constdata          nrf_balloc.o
-    0x0000ccd0   0x0000ccd0   0x00000020   Data   RO         3978    .constdata          nrf_balloc.o
-    0x0000ccf0   0x0000ccf0   0x00000010   Data   RO         3979    .constdata          nrf_balloc.o
-    0x0000cd00   0x0000cd00   0x0000000c   Data   RO         4111    .constdata          nrf_cli.o
-    0x0000cd0c   0x0000cd0c   0x00000008   Data   RO         4112    .constdata          nrf_cli.o
-    0x0000cd14   0x0000cd14   0x00000030   Data   RO         4113    .constdata          nrf_cli.o
-    0x0000cd44   0x0000cd44   0x00000008   Data   RO         4114    .constdata          nrf_cli.o
-    0x0000cd4c   0x0000cd4c   0x00000030   Data   RO         4115    .constdata          nrf_cli.o
-    0x0000cd7c   0x0000cd7c   0x00000008   Data   RO         4116    .constdata          nrf_cli.o
-    0x0000cd84   0x0000cd84   0x00000030   Data   RO         4117    .constdata          nrf_cli.o
-    0x0000cdb4   0x0000cdb4   0x00000008   Data   RO         4118    .constdata          nrf_cli.o
-    0x0000cdbc   0x0000cdbc   0x00000040   Data   RO         4119    .constdata          nrf_cli.o
-    0x0000cdfc   0x0000cdfc   0x00000008   Data   RO         4120    .constdata          nrf_cli.o
-    0x0000ce04   0x0000ce04   0x00000020   Data   RO         4121    .constdata          nrf_cli.o
-    0x0000ce24   0x0000ce24   0x00000010   Data   RO         4122    .constdata          nrf_cli.o
-    0x0000ce34   0x0000ce34   0x00000010   Data   RO         4123    .constdata          nrf_cli.o
-    0x0000ce44   0x0000ce44   0x00000010   Data   RO         4124    .constdata          nrf_cli.o
-    0x0000ce54   0x0000ce54   0x00000010   Data   RO         4125    .constdata          nrf_cli.o
-    0x0000ce64   0x0000ce64   0x0000000c   PAD
-    0x0000ce70   0x0000ce70   0x00000047   Data   RO         4126    .constdata          nrf_cli.o
-    0x0000ceb7   0x0000ceb7   0x00000001   PAD
-    0x0000ceb8   0x0000ceb8   0x00000014   Data   RO         4493    .constdata          nrf_cli_uart.o
-    0x0000cecc   0x0000cecc   0x00000010   Data   RO         4605    .constdata          nrf_fprintf_format.o
-    0x0000cedc   0x0000cedc   0x00000008   Data   RO         4820    .constdata          nrf_queue.o
-    0x0000cee4   0x0000cee4   0x00000020   Data   RO         4821    .constdata          nrf_queue.o
-    0x0000cf04   0x0000cf04   0x00000010   Data   RO         4822    .constdata          nrf_queue.o
-    0x0000cf14   0x0000cf14   0x0000012c   Data   RO         5092    .constdata          nrf_strerror.o
-    0x0000d040   0x0000d040   0x0000000c   Data   RO         5129    .constdata          nrf_log_backend_rtt.o
-    0x0000d04c   0x0000d04c   0x00000004   PAD
-    0x0000d050   0x0000d050   0x00000006   Data   RO         5130    .constdata          nrf_log_backend_rtt.o
-    0x0000d056   0x0000d056   0x00000002   PAD
-    0x0000d058   0x0000d058   0x0000000c   Data   RO         5231    .constdata          nrf_log_backend_uart.o
-    0x0000d064   0x0000d064   0x00000020   Data   RO         5232    .constdata          nrf_log_backend_uart.o
-    0x0000d084   0x0000d084   0x0000001c   Data   RO         5386    .constdata          nrf_log_frontend.o
-    0x0000d0a0   0x0000d0a0   0x00000008   Data   RO         5387    .constdata          nrf_log_frontend.o
-    0x0000d0a8   0x0000d0a8   0x00000060   Data   RO         5388    .constdata          nrf_log_frontend.o
-    0x0000d108   0x0000d108   0x00000008   Data   RO         5389    .constdata          nrf_log_frontend.o
-    0x0000d110   0x0000d110   0x00000008   Data   RO         5390    .constdata          nrf_log_frontend.o
-    0x0000d118   0x0000d118   0x00000030   Data   RO         5391    .constdata          nrf_log_frontend.o
-    0x0000d148   0x0000d148   0x00000008   Data   RO         5392    .constdata          nrf_log_frontend.o
-    0x0000d150   0x0000d150   0x00000090   Data   RO         5393    .constdata          nrf_log_frontend.o
-    0x0000d1e0   0x0000d1e0   0x00000010   Data   RO         5394    .constdata          nrf_log_frontend.o
-    0x0000d1f0   0x0000d1f0   0x00000081   Data   RO         6130    .constdata          mc_w.l(ctype_o.o)
-    0x0000d271   0x0000d271   0x00000003   PAD
-    0x0000d274   0x0000d274   0x00000004   Data   RO         6131    .constdata          mc_w.l(ctype_o.o)
-    0x0000d278   0x0000d278   0x00000051   Data   RO           38    .conststring        main.o
-    0x0000d2c9   0x0000d2c9   0x00000003   PAD
-    0x0000d2cc   0x0000d2cc   0x0000002d   Data   RO          689    .conststring        bsp_cli.o
-    0x0000d2f9   0x0000d2f9   0x00000003   PAD
-    0x0000d2fc   0x0000d2fc   0x00000004   Data   RO          690    .conststring        bsp_cli.o
-    0x0000d300   0x0000d300   0x00000515   Data   RO         3697    .conststring        hardfault_implementation.o
-    0x0000d815   0x0000d815   0x00000003   PAD
-    0x0000d818   0x0000d818   0x0000002b   Data   RO         3980    .conststring        nrf_balloc.o
-    0x0000d843   0x0000d843   0x00000001   PAD
-    0x0000d844   0x0000d844   0x00000027   Data   RO         3981    .conststring        nrf_balloc.o
-    0x0000d86b   0x0000d86b   0x00000001   PAD
-    0x0000d86c   0x0000d86c   0x0000008e   Data   RO         3982    .conststring        nrf_balloc.o
-    0x0000d8fa   0x0000d8fa   0x00000002   PAD
-    0x0000d8fc   0x0000d8fc   0x00000037   Data   RO         4127    .conststring        nrf_cli.o
-    0x0000d933   0x0000d933   0x00000001   PAD
-    0x0000d934   0x0000d934   0x0000006d   Data   RO         4128    .conststring        nrf_cli.o
-    0x0000d9a1   0x0000d9a1   0x00000003   PAD
-    0x0000d9a4   0x0000d9a4   0x00000065   Data   RO         4129    .conststring        nrf_cli.o
-    0x0000da09   0x0000da09   0x00000003   PAD
-    0x0000da0c   0x0000da0c   0x00000052   Data   RO         4130    .conststring        nrf_cli.o
-    0x0000da5e   0x0000da5e   0x00000002   PAD
-    0x0000da60   0x0000da60   0x0000004c   Data   RO         4131    .conststring        nrf_cli.o
-    0x0000daac   0x0000daac   0x00000016   Data   RO         4132    .conststring        nrf_cli.o
-    0x0000dac2   0x0000dac2   0x00000002   PAD
-    0x0000dac4   0x0000dac4   0x00000028   Data   RO         4133    .conststring        nrf_cli.o
-    0x0000daec   0x0000daec   0x0000001c   Data   RO         4134    .conststring        nrf_cli.o
-    0x0000db08   0x0000db08   0x000000a7   Data   RO         4135    .conststring        nrf_cli.o
-    0x0000dbaf   0x0000dbaf   0x00000001   PAD
-    0x0000dbb0   0x0000dbb0   0x00000003   Data   RO         4136    .conststring        nrf_cli.o
-    0x0000dbb3   0x0000dbb3   0x00000001   PAD
-    0x0000dbb4   0x0000dbb4   0x00000021   Data   RO         4823    .conststring        nrf_queue.o
-    0x0000dbd5   0x0000dbd5   0x00000003   PAD
-    0x0000dbd8   0x0000dbd8   0x00000006   Data   RO         4824    .conststring        nrf_queue.o
-    0x0000dbde   0x0000dbde   0x00000002   PAD
-    0x0000dbe0   0x0000dbe0   0x0000007c   Data   RO         4825    .conststring        nrf_queue.o
-    0x0000dc5c   0x0000dc5c   0x000003bf   Data   RO         5093    .conststring        nrf_strerror.o
-    0x0000e01b   0x0000e01b   0x00000001   PAD
-    0x0000e01c   0x0000e01c   0x00000046   Data   RO         5233    .conststring        nrf_log_backend_uart.o
-    0x0000e062   0x0000e062   0x00000002   PAD
-    0x0000e064   0x0000e064   0x00000061   Data   RO         5395    .conststring        nrf_log_frontend.o
-    0x0000e0c5   0x0000e0c5   0x00000003   PAD
-    0x0000e0c8   0x0000e0c8   0x00000139   Data   RO         5396    .conststring        nrf_log_frontend.o
-    0x0000e201   0x0000e201   0x00000003   PAD
-    0x0000e204   0x0000e204   0x00000076   Data   RO         5397    .conststring        nrf_log_frontend.o
-    0x0000e27a   0x0000e27a   0x00000002   PAD
-    0x0000e27c   0x0000e27c   0x0000006e   Data   RO         5398    .conststring        nrf_log_frontend.o
-    0x0000e2ea   0x0000e2ea   0x00000002   PAD
-    0x0000e2ec   0x0000e2ec   0x00000024   Data   RO         5399    .conststring        nrf_log_frontend.o
-    0x0000e310   0x0000e310   0x00000048   Data   RO         5660    .conststring        nrf_log_str_formatter.o
-    0x0000e358   0x0000e358   0x000000c3   Data   RO           39    .conststrlit        main.o
-    0x0000e41b   0x0000e41b   0x00000001   PAD
-    0x0000e41c   0x0000e41c   0x00000053   Data   RO          574    .conststrlit        bsp.o
-    0x0000e46f   0x0000e46f   0x00000001   PAD
-    0x0000e470   0x0000e470   0x00000006   Data   RO          783    .conststrlit        nrf_drv_clock.o
-    0x0000e476   0x0000e476   0x00000002   PAD
-    0x0000e478   0x0000e478   0x00000006   Data   RO         1304    .conststrlit        nrfx_clock.o
-    0x0000e47e   0x0000e47e   0x00000002   PAD
-    0x0000e480   0x0000e480   0x00000007   Data   RO         1486    .conststrlit        nrfx_gpiote.o
-    0x0000e487   0x0000e487   0x00000001   PAD
-    0x0000e488   0x0000e488   0x00000004   Data   RO         1918    .conststrlit        nrfx_prs.o
-    0x0000e48c   0x0000e48c   0x00000005   Data   RO         2064    .conststrlit        nrfx_uart.o
-    0x0000e491   0x0000e491   0x00000003   PAD
-    0x0000e494   0x0000e494   0x00000006   Data   RO         2260    .conststrlit        nrfx_uarte.o
-    0x0000e49a   0x0000e49a   0x00000002   PAD
-    0x0000e49c   0x0000e49c   0x00000005   Data   RO         2506    .conststrlit        nrfx_usbd.o
-    0x0000e4a1   0x0000e4a1   0x00000003   PAD
-    0x0000e4a4   0x0000e4a4   0x00000031   Data   RO         3036    .conststrlit        app_button.o
-    0x0000e4d5   0x0000e4d5   0x00000003   PAD
-    0x0000e4d8   0x0000e4d8   0x0000001e   Data   RO         3285    .conststrlit        app_timer2.o
-    0x0000e4f6   0x0000e4f6   0x00000002   PAD
-    0x0000e4f8   0x0000e4f8   0x0000000a   Data   RO         3698    .conststrlit        hardfault_implementation.o
-    0x0000e502   0x0000e502   0x00000002   PAD
-    0x0000e504   0x0000e504   0x00000009   Data   RO         4494    .conststrlit        nrf_cli_uart.o
-    0x0000e50d   0x0000e50d   0x00000003   PAD
-    0x0000e510   0x0000e510   0x00000009   Data   RO         4727    .conststrlit        nrf_pwr_mgmt.o
-    0x0000e519   0x0000e519   0x00000003   PAD
-    0x0000e51c   0x0000e51c   0x00000009   Data   RO         5041    .conststrlit        nrf_sortlist.o
+    0x0000c230   0x0000c230   0x000003c8   Code   RO           14    i.usbd_event_handler  main.o
+    0x0000c5f8   0x0000c5f8   0x00000010   Code   RO         2503    i.usbd_int_rise     nrfx_usbd.o
+    0x0000c608   0x0000c608   0x00000080   Code   RO           15    i.usbd_setup_ClearFeature  main.o
+    0x0000c688   0x0000c688   0x00000110   Code   RO           16    i.usbd_setup_GetDescriptor  main.o
+    0x0000c798   0x0000c798   0x000000c4   Code   RO           17    i.usbd_setup_GetStatus  main.o
+    0x0000c85c   0x0000c85c   0x0000008c   Code   RO           18    i.usbd_setup_SetConfig  main.o
+    0x0000c8e8   0x0000c8e8   0x00000078   Code   RO           19    i.usbd_setup_SetFeature  main.o
+    0x0000c960   0x0000c960   0x00000020   Code   RO         3033    i.usr_event         app_button.o
+    0x0000c980   0x0000c980   0x0000003c   Code   RO         4109    i.vt100_bgcolor_set  nrf_cli.o
+    0x0000c9bc   0x0000c9bc   0x00000050   Code   RO         4110    i.vt100_color_set   nrf_cli.o
+    0x0000ca0c   0x0000ca0c   0x00000004   Data   RO           31    .constdata          main.o
+    0x0000ca10   0x0000ca10   0x0000000c   Data   RO           32    .constdata          main.o
+    0x0000ca1c   0x0000ca1c   0x0000000c   Data   RO           33    .constdata          main.o
+    0x0000ca28   0x0000ca28   0x00000014   Data   RO           34    .constdata          main.o
+    0x0000ca3c   0x0000ca3c   0x00000018   Data   RO           35    .constdata          main.o
+    0x0000ca54   0x0000ca54   0x0000013c   Data   RO           36    .constdata          main.o
+    0x0000cb90   0x0000cb90   0x00000008   Data   RO          454    .constdata          boards.o
+    0x0000cb98   0x0000cb98   0x0000002c   Data   RO          573    .constdata          bsp.o
+    0x0000cbc4   0x0000cbc4   0x00000008   Data   RO          686    .constdata          bsp_cli.o
+    0x0000cbcc   0x0000cbcc   0x00000030   Data   RO          687    .constdata          bsp_cli.o
+    0x0000cbfc   0x0000cbfc   0x00000010   Data   RO          688    .constdata          bsp_cli.o
+    0x0000cc0c   0x0000cc0c   0x00000001   Data   RO          913    .constdata          nrf_drv_power.o
+    0x0000cc0d   0x0000cc0d   0x00000003   PAD
+    0x0000cc10   0x0000cc10   0x00000008   Data   RO         1482    .constdata          nrfx_gpiote.o
+    0x0000cc18   0x0000cc18   0x00000004   Data   RO         2061    .constdata          nrfx_uart.o
+    0x0000cc1c   0x0000cc1c   0x00000004   Data   RO         2257    .constdata          nrfx_uarte.o
+    0x0000cc20   0x0000cc20   0x000000ce   Data   RO         2505    .constdata          nrfx_usbd.o
+    0x0000ccee   0x0000ccee   0x00000002   PAD
+    0x0000ccf0   0x0000ccf0   0x00000008   Data   RO         3035    .constdata          app_button.o
+    0x0000ccf8   0x0000ccf8   0x00000014   Data   RO         3284    .constdata          app_timer2.o
+    0x0000cd0c   0x0000cd0c   0x00000004   PAD
+    0x0000cd10   0x0000cd10   0x00000006   Data   RO         3490    .constdata          drv_rtc.o
+    0x0000cd16   0x0000cd16   0x00000002   PAD
+    0x0000cd18   0x0000cd18   0x00000008   Data   RO         3977    .constdata          nrf_balloc.o
+    0x0000cd20   0x0000cd20   0x00000020   Data   RO         3978    .constdata          nrf_balloc.o
+    0x0000cd40   0x0000cd40   0x00000010   Data   RO         3979    .constdata          nrf_balloc.o
+    0x0000cd50   0x0000cd50   0x0000000c   Data   RO         4111    .constdata          nrf_cli.o
+    0x0000cd5c   0x0000cd5c   0x00000008   Data   RO         4112    .constdata          nrf_cli.o
+    0x0000cd64   0x0000cd64   0x00000030   Data   RO         4113    .constdata          nrf_cli.o
+    0x0000cd94   0x0000cd94   0x00000008   Data   RO         4114    .constdata          nrf_cli.o
+    0x0000cd9c   0x0000cd9c   0x00000030   Data   RO         4115    .constdata          nrf_cli.o
+    0x0000cdcc   0x0000cdcc   0x00000008   Data   RO         4116    .constdata          nrf_cli.o
+    0x0000cdd4   0x0000cdd4   0x00000030   Data   RO         4117    .constdata          nrf_cli.o
+    0x0000ce04   0x0000ce04   0x00000008   Data   RO         4118    .constdata          nrf_cli.o
+    0x0000ce0c   0x0000ce0c   0x00000040   Data   RO         4119    .constdata          nrf_cli.o
+    0x0000ce4c   0x0000ce4c   0x00000008   Data   RO         4120    .constdata          nrf_cli.o
+    0x0000ce54   0x0000ce54   0x00000020   Data   RO         4121    .constdata          nrf_cli.o
+    0x0000ce74   0x0000ce74   0x00000010   Data   RO         4122    .constdata          nrf_cli.o
+    0x0000ce84   0x0000ce84   0x00000010   Data   RO         4123    .constdata          nrf_cli.o
+    0x0000ce94   0x0000ce94   0x00000010   Data   RO         4124    .constdata          nrf_cli.o
+    0x0000cea4   0x0000cea4   0x00000010   Data   RO         4125    .constdata          nrf_cli.o
+    0x0000ceb4   0x0000ceb4   0x0000000c   PAD
+    0x0000cec0   0x0000cec0   0x00000047   Data   RO         4126    .constdata          nrf_cli.o
+    0x0000cf07   0x0000cf07   0x00000001   PAD
+    0x0000cf08   0x0000cf08   0x00000014   Data   RO         4493    .constdata          nrf_cli_uart.o
+    0x0000cf1c   0x0000cf1c   0x00000010   Data   RO         4605    .constdata          nrf_fprintf_format.o
+    0x0000cf2c   0x0000cf2c   0x00000008   Data   RO         4820    .constdata          nrf_queue.o
+    0x0000cf34   0x0000cf34   0x00000020   Data   RO         4821    .constdata          nrf_queue.o
+    0x0000cf54   0x0000cf54   0x00000010   Data   RO         4822    .constdata          nrf_queue.o
+    0x0000cf64   0x0000cf64   0x0000012c   Data   RO         5092    .constdata          nrf_strerror.o
+    0x0000d090   0x0000d090   0x0000000c   Data   RO         5129    .constdata          nrf_log_backend_rtt.o
+    0x0000d09c   0x0000d09c   0x00000004   PAD
+    0x0000d0a0   0x0000d0a0   0x00000006   Data   RO         5130    .constdata          nrf_log_backend_rtt.o
+    0x0000d0a6   0x0000d0a6   0x00000002   PAD
+    0x0000d0a8   0x0000d0a8   0x0000000c   Data   RO         5231    .constdata          nrf_log_backend_uart.o
+    0x0000d0b4   0x0000d0b4   0x00000020   Data   RO         5232    .constdata          nrf_log_backend_uart.o
+    0x0000d0d4   0x0000d0d4   0x0000001c   Data   RO         5386    .constdata          nrf_log_frontend.o
+    0x0000d0f0   0x0000d0f0   0x00000008   Data   RO         5387    .constdata          nrf_log_frontend.o
+    0x0000d0f8   0x0000d0f8   0x00000060   Data   RO         5388    .constdata          nrf_log_frontend.o
+    0x0000d158   0x0000d158   0x00000008   Data   RO         5389    .constdata          nrf_log_frontend.o
+    0x0000d160   0x0000d160   0x00000008   Data   RO         5390    .constdata          nrf_log_frontend.o
+    0x0000d168   0x0000d168   0x00000030   Data   RO         5391    .constdata          nrf_log_frontend.o
+    0x0000d198   0x0000d198   0x00000008   Data   RO         5392    .constdata          nrf_log_frontend.o
+    0x0000d1a0   0x0000d1a0   0x00000090   Data   RO         5393    .constdata          nrf_log_frontend.o
+    0x0000d230   0x0000d230   0x00000010   Data   RO         5394    .constdata          nrf_log_frontend.o
+    0x0000d240   0x0000d240   0x00000081   Data   RO         6130    .constdata          mc_w.l(ctype_o.o)
+    0x0000d2c1   0x0000d2c1   0x00000003   PAD
+    0x0000d2c4   0x0000d2c4   0x00000004   Data   RO         6131    .constdata          mc_w.l(ctype_o.o)
+    0x0000d2c8   0x0000d2c8   0x00000051   Data   RO           38    .conststring        main.o
+    0x0000d319   0x0000d319   0x00000003   PAD
+    0x0000d31c   0x0000d31c   0x0000002d   Data   RO          689    .conststring        bsp_cli.o
+    0x0000d349   0x0000d349   0x00000003   PAD
+    0x0000d34c   0x0000d34c   0x00000004   Data   RO          690    .conststring        bsp_cli.o
+    0x0000d350   0x0000d350   0x00000515   Data   RO         3697    .conststring        hardfault_implementation.o
+    0x0000d865   0x0000d865   0x00000003   PAD
+    0x0000d868   0x0000d868   0x0000002b   Data   RO         3980    .conststring        nrf_balloc.o
+    0x0000d893   0x0000d893   0x00000001   PAD
+    0x0000d894   0x0000d894   0x00000027   Data   RO         3981    .conststring        nrf_balloc.o
+    0x0000d8bb   0x0000d8bb   0x00000001   PAD
+    0x0000d8bc   0x0000d8bc   0x0000008e   Data   RO         3982    .conststring        nrf_balloc.o
+    0x0000d94a   0x0000d94a   0x00000002   PAD
+    0x0000d94c   0x0000d94c   0x00000037   Data   RO         4127    .conststring        nrf_cli.o
+    0x0000d983   0x0000d983   0x00000001   PAD
+    0x0000d984   0x0000d984   0x0000006d   Data   RO         4128    .conststring        nrf_cli.o
+    0x0000d9f1   0x0000d9f1   0x00000003   PAD
+    0x0000d9f4   0x0000d9f4   0x00000065   Data   RO         4129    .conststring        nrf_cli.o
+    0x0000da59   0x0000da59   0x00000003   PAD
+    0x0000da5c   0x0000da5c   0x00000052   Data   RO         4130    .conststring        nrf_cli.o
+    0x0000daae   0x0000daae   0x00000002   PAD
+    0x0000dab0   0x0000dab0   0x0000004c   Data   RO         4131    .conststring        nrf_cli.o
+    0x0000dafc   0x0000dafc   0x00000016   Data   RO         4132    .conststring        nrf_cli.o
+    0x0000db12   0x0000db12   0x00000002   PAD
+    0x0000db14   0x0000db14   0x00000028   Data   RO         4133    .conststring        nrf_cli.o
+    0x0000db3c   0x0000db3c   0x0000001c   Data   RO         4134    .conststring        nrf_cli.o
+    0x0000db58   0x0000db58   0x000000a7   Data   RO         4135    .conststring        nrf_cli.o
+    0x0000dbff   0x0000dbff   0x00000001   PAD
+    0x0000dc00   0x0000dc00   0x00000003   Data   RO         4136    .conststring        nrf_cli.o
+    0x0000dc03   0x0000dc03   0x00000001   PAD
+    0x0000dc04   0x0000dc04   0x00000021   Data   RO         4823    .conststring        nrf_queue.o
+    0x0000dc25   0x0000dc25   0x00000003   PAD
+    0x0000dc28   0x0000dc28   0x00000006   Data   RO         4824    .conststring        nrf_queue.o
+    0x0000dc2e   0x0000dc2e   0x00000002   PAD
+    0x0000dc30   0x0000dc30   0x0000007c   Data   RO         4825    .conststring        nrf_queue.o
+    0x0000dcac   0x0000dcac   0x000003bf   Data   RO         5093    .conststring        nrf_strerror.o
+    0x0000e06b   0x0000e06b   0x00000001   PAD
+    0x0000e06c   0x0000e06c   0x00000046   Data   RO         5233    .conststring        nrf_log_backend_uart.o
+    0x0000e0b2   0x0000e0b2   0x00000002   PAD
+    0x0000e0b4   0x0000e0b4   0x00000061   Data   RO         5395    .conststring        nrf_log_frontend.o
+    0x0000e115   0x0000e115   0x00000003   PAD
+    0x0000e118   0x0000e118   0x00000139   Data   RO         5396    .conststring        nrf_log_frontend.o
+    0x0000e251   0x0000e251   0x00000003   PAD
+    0x0000e254   0x0000e254   0x00000076   Data   RO         5397    .conststring        nrf_log_frontend.o
+    0x0000e2ca   0x0000e2ca   0x00000002   PAD
+    0x0000e2cc   0x0000e2cc   0x0000006e   Data   RO         5398    .conststring        nrf_log_frontend.o
+    0x0000e33a   0x0000e33a   0x00000002   PAD
+    0x0000e33c   0x0000e33c   0x00000024   Data   RO         5399    .conststring        nrf_log_frontend.o
+    0x0000e360   0x0000e360   0x00000048   Data   RO         5660    .conststring        nrf_log_str_formatter.o
+    0x0000e3a8   0x0000e3a8   0x000000c3   Data   RO           39    .conststrlit        main.o
+    0x0000e46b   0x0000e46b   0x00000001   PAD
+    0x0000e46c   0x0000e46c   0x00000053   Data   RO          574    .conststrlit        bsp.o
+    0x0000e4bf   0x0000e4bf   0x00000001   PAD
+    0x0000e4c0   0x0000e4c0   0x00000006   Data   RO          783    .conststrlit        nrf_drv_clock.o
+    0x0000e4c6   0x0000e4c6   0x00000002   PAD
+    0x0000e4c8   0x0000e4c8   0x00000006   Data   RO         1304    .conststrlit        nrfx_clock.o
+    0x0000e4ce   0x0000e4ce   0x00000002   PAD
+    0x0000e4d0   0x0000e4d0   0x00000007   Data   RO         1486    .conststrlit        nrfx_gpiote.o
+    0x0000e4d7   0x0000e4d7   0x00000001   PAD
+    0x0000e4d8   0x0000e4d8   0x00000004   Data   RO         1918    .conststrlit        nrfx_prs.o
+    0x0000e4dc   0x0000e4dc   0x00000005   Data   RO         2064    .conststrlit        nrfx_uart.o
+    0x0000e4e1   0x0000e4e1   0x00000003   PAD
+    0x0000e4e4   0x0000e4e4   0x00000006   Data   RO         2260    .conststrlit        nrfx_uarte.o
+    0x0000e4ea   0x0000e4ea   0x00000002   PAD
+    0x0000e4ec   0x0000e4ec   0x00000005   Data   RO         2506    .conststrlit        nrfx_usbd.o
+    0x0000e4f1   0x0000e4f1   0x00000003   PAD
+    0x0000e4f4   0x0000e4f4   0x00000031   Data   RO         3036    .conststrlit        app_button.o
     0x0000e525   0x0000e525   0x00000003   PAD
-    0x0000e528   0x0000e528   0x00000021   Data   RO         5293    .conststrlit        nrf_log_default_backends.o
-    0x0000e549   0x0000e549   0x00000003   PAD
-    0x0000e54c   0x0000e54c   0x00000024   Data   RO         5400    .conststrlit        nrf_log_frontend.o
-    0x0000e570   0x0000e570   0x00000020   Data   RO         6218    Region$$Table       anon$$obj.o
-    0x0000e590   0x0000e590   0x00000008   Data   RO          692    cli_command         bsp_cli.o
-    0x0000e598   0x0000e598   0x00000008   Data   RO         3983    cli_command         nrf_balloc.o
-    0x0000e5a0   0x0000e5a0   0x00000020   Data   RO         4138    cli_command         nrf_cli.o
-    0x0000e5c0   0x0000e5c0   0x00000008   Data   RO         4826    cli_command         nrf_queue.o
-    0x0000e5c8   0x0000e5c8   0x00000008   Data   RO         5404    cli_command         nrf_log_frontend.o
-    0x0000e5d0   0x0000e5d0   0x00000010   Data   RO           47    log_backends        main.o
-    0x0000e5e0   0x0000e5e0   0x00000020   Data   RO         5296    log_backends        nrf_log_default_backends.o
-    0x0000e600   0x0000e600   0x00000018   Data   RO           48    log_const_data      main.o
-    0x0000e618   0x0000e618   0x00000018   Data   RO          579    log_const_data      bsp.o
-    0x0000e630   0x0000e630   0x00000008   Data   RO          784    log_const_data      nrf_drv_clock.o
-    0x0000e638   0x0000e638   0x00000008   Data   RO         1306    log_const_data      nrfx_clock.o
-    0x0000e640   0x0000e640   0x00000008   Data   RO         1487    log_const_data      nrfx_gpiote.o
-    0x0000e648   0x0000e648   0x00000008   Data   RO         1920    log_const_data      nrfx_prs.o
-    0x0000e650   0x0000e650   0x00000008   Data   RO         2065    log_const_data      nrfx_uart.o
-    0x0000e658   0x0000e658   0x00000008   Data   RO         2261    log_const_data      nrfx_uarte.o
-    0x0000e660   0x0000e660   0x00000008   Data   RO         2509    log_const_data      nrfx_usbd.o
-    0x0000e668   0x0000e668   0x00000010   Data   RO         3039    log_const_data      app_button.o
-    0x0000e678   0x0000e678   0x00000010   Data   RO         3289    log_const_data      app_timer2.o
-    0x0000e688   0x0000e688   0x00000008   Data   RO         3700    log_const_data      hardfault_implementation.o
-    0x0000e690   0x0000e690   0x00000008   Data   RO         4495    log_const_data      nrf_cli_uart.o
-    0x0000e698   0x0000e698   0x00000008   Data   RO         4729    log_const_data      nrf_pwr_mgmt.o
-    0x0000e6a0   0x0000e6a0   0x00000008   Data   RO         5042    log_const_data      nrf_sortlist.o
-    0x0000e6a8   0x0000e6a8   0x00000010   Data   RO         5406    log_const_data      nrf_log_frontend.o
-    0x0000e6b8   0x0000e6b8   0x0000001c   Data   RO           51    nrf_balloc          main.o
-    0x0000e6d4   0x0000e6d4   0x0000001c   Data   RO         5409    nrf_balloc          nrf_log_frontend.o
-    0x0000e6f0   0x0000e6f0   0x0000001c   Data   RO           52    nrf_queue           main.o
+    0x0000e528   0x0000e528   0x0000001e   Data   RO         3285    .conststrlit        app_timer2.o
+    0x0000e546   0x0000e546   0x00000002   PAD
+    0x0000e548   0x0000e548   0x0000000a   Data   RO         3698    .conststrlit        hardfault_implementation.o
+    0x0000e552   0x0000e552   0x00000002   PAD
+    0x0000e554   0x0000e554   0x00000009   Data   RO         4494    .conststrlit        nrf_cli_uart.o
+    0x0000e55d   0x0000e55d   0x00000003   PAD
+    0x0000e560   0x0000e560   0x00000009   Data   RO         4727    .conststrlit        nrf_pwr_mgmt.o
+    0x0000e569   0x0000e569   0x00000003   PAD
+    0x0000e56c   0x0000e56c   0x00000009   Data   RO         5041    .conststrlit        nrf_sortlist.o
+    0x0000e575   0x0000e575   0x00000003   PAD
+    0x0000e578   0x0000e578   0x00000021   Data   RO         5293    .conststrlit        nrf_log_default_backends.o
+    0x0000e599   0x0000e599   0x00000003   PAD
+    0x0000e59c   0x0000e59c   0x00000024   Data   RO         5400    .conststrlit        nrf_log_frontend.o
+    0x0000e5c0   0x0000e5c0   0x00000020   Data   RO         6218    Region$$Table       anon$$obj.o
+    0x0000e5e0   0x0000e5e0   0x00000008   Data   RO          692    cli_command         bsp_cli.o
+    0x0000e5e8   0x0000e5e8   0x00000008   Data   RO         3983    cli_command         nrf_balloc.o
+    0x0000e5f0   0x0000e5f0   0x00000020   Data   RO         4138    cli_command         nrf_cli.o
+    0x0000e610   0x0000e610   0x00000008   Data   RO         4826    cli_command         nrf_queue.o
+    0x0000e618   0x0000e618   0x00000008   Data   RO         5404    cli_command         nrf_log_frontend.o
+    0x0000e620   0x0000e620   0x00000010   Data   RO           47    log_backends        main.o
+    0x0000e630   0x0000e630   0x00000020   Data   RO         5296    log_backends        nrf_log_default_backends.o
+    0x0000e650   0x0000e650   0x00000018   Data   RO           48    log_const_data      main.o
+    0x0000e668   0x0000e668   0x00000018   Data   RO          579    log_const_data      bsp.o
+    0x0000e680   0x0000e680   0x00000008   Data   RO          784    log_const_data      nrf_drv_clock.o
+    0x0000e688   0x0000e688   0x00000008   Data   RO         1306    log_const_data      nrfx_clock.o
+    0x0000e690   0x0000e690   0x00000008   Data   RO         1487    log_const_data      nrfx_gpiote.o
+    0x0000e698   0x0000e698   0x00000008   Data   RO         1920    log_const_data      nrfx_prs.o
+    0x0000e6a0   0x0000e6a0   0x00000008   Data   RO         2065    log_const_data      nrfx_uart.o
+    0x0000e6a8   0x0000e6a8   0x00000008   Data   RO         2261    log_const_data      nrfx_uarte.o
+    0x0000e6b0   0x0000e6b0   0x00000008   Data   RO         2509    log_const_data      nrfx_usbd.o
+    0x0000e6b8   0x0000e6b8   0x00000010   Data   RO         3039    log_const_data      app_button.o
+    0x0000e6c8   0x0000e6c8   0x00000010   Data   RO         3289    log_const_data      app_timer2.o
+    0x0000e6d8   0x0000e6d8   0x00000008   Data   RO         3700    log_const_data      hardfault_implementation.o
+    0x0000e6e0   0x0000e6e0   0x00000008   Data   RO         4495    log_const_data      nrf_cli_uart.o
+    0x0000e6e8   0x0000e6e8   0x00000008   Data   RO         4729    log_const_data      nrf_pwr_mgmt.o
+    0x0000e6f0   0x0000e6f0   0x00000008   Data   RO         5042    log_const_data      nrf_sortlist.o
+    0x0000e6f8   0x0000e6f8   0x00000010   Data   RO         5406    log_const_data      nrf_log_frontend.o
+    0x0000e708   0x0000e708   0x0000001c   Data   RO           51    nrf_balloc          main.o
+    0x0000e724   0x0000e724   0x0000001c   Data   RO         5409    nrf_balloc          nrf_log_frontend.o
+    0x0000e740   0x0000e740   0x0000001c   Data   RO           52    nrf_queue           main.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x0000e70c, Size: 0x00003750, Max: 0x00040000, ABSOLUTE, COMPRESSED[0x000000c0])
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x0000e75c, Size: 0x00003750, Max: 0x00040000, ABSOLUTE, COMPRESSED[0x000000c0])
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -5480,7 +5481,7 @@ Image component sizes
       1422        580          6         12          0      49843   drv_rtc.o
         52         14          0          0          0        608   hardfault_handler_keil.o
        552        280       1319        112          0      33890   hardfault_implementation.o
-      3380       1084        736        132       1920     145911   main.o
+      3444       1088        760        132       1920     146075   main.o
         20          0          0          0          0       2986   nrf_assert.o
        326          0          0          0          0       5859   nrf_atfifo.o
        328          0          0          0          0       9883   nrf_atomic.o
@@ -5517,9 +5518,9 @@ Image component sizes
        500         66          0          4          0      31377   system_nrf52.o
 
     ----------------------------------------------------------------------
-     49110      12460       7864        928      13232    1049504   Object Totals
+     49174      12464       7880        928      13232    1049668   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        68          0        116         10          4          0   (incl. Padding)
+        68          0        108         10          4          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -5575,15 +5576,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     51148      12500       8000        928      13232    1002392   Grand Totals
-     51148      12500       8000        192      13232    1002392   ELF Image Totals (compressed)
-     51148      12500       8000        192          0          0   ROM Totals
+     51212      12504       8016        928      13232    1002556   Grand Totals
+     51212      12504       8016        192      13232    1002556   ELF Image Totals (compressed)
+     51212      12504       8016        192          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                59148 (  57.76kB)
+    Total RO  Size (Code + RO Data)                59228 (  57.84kB)
     Total RW  Size (RW Data + ZI Data)             14160 (  13.83kB)
-    Total ROM Size (Code + RO Data + RW Data)      59340 (  57.95kB)
+    Total ROM Size (Code + RO Data + RW Data)      59420 (  58.03kB)
 
 ==============================================================================
 

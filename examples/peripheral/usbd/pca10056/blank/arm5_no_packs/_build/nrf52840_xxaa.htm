@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\_build\nrf52840_xxaa.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\_build\nrf52840_xxaa.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Apr 11 11:32:58 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Apr 11 11:57:39 2022
 <BR><P>
-<H3>Maximum Stack Usage =        768 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =       1392 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-main &rArr; nrf_cli_process &rArr; cli_state_collect &rArr; cli_tab_handle &rArr; option_print &rArr; nrf_cli_fprintf &rArr; vt100_color_set &rArr; nrf_fprintf &rArr; nrf_fprintf_fmt &rArr; int_print &rArr; unsigned_print &rArr; buffer_add &rArr;  buffer_add (Cycle)
+usbd_event_handler &rArr; usbd_setup_SetConfig &rArr; ep_configuration &rArr; nrfx_usbd_ep_disable &rArr; usbd_ep_abort &rArr; nrfx_usbd_transfer_out_drop &rArr; ep2bit &rArr; assert_nrf_callback &rArr; app_error_fault_handler &rArr; nrf_log_frontend_std_5 &rArr; std_n &rArr;  assert_nrf_callback (Cycle)
 <P>
 <H3>
 Mutually Recursive functions
@@ -596,7 +596,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[143]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_cli_instance_init
+<BR><BR>[Called By]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usbd_event_handler
+<LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_cli_instance_init
 <LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cursor_position_get
 <LI><a href="#[1db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_log_backend_serial_put
 </UL>
@@ -2408,8 +2409,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_nrf_callback
 <LI><a href="#[1ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prs_box_get
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_uart_uninit
-<LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_uarte_uninit
+<BR>[Called By]<UL><LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_uarte_uninit
+<LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_uart_uninit
 </UL>
 
 <P><STRONG><a name="[5d]"></a>nrfx_uart_0_irq_handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, nrfx_uart.o(i.nrfx_uart_0_irq_handler))
@@ -2846,7 +2847,7 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[175]"></a>init_cli</STRONG> (Thumb, 102 bytes, Stack size 40 bytes, main.o(i.init_cli))
+<P><STRONG><a name="[175]"></a>init_cli</STRONG> (Thumb, 98 bytes, Stack size 40 bytes, main.o(i.init_cli))
 <BR><BR>[Stack]<UL><LI>Max Depth = 560<LI>Call Chain = init_cli &rArr; nrf_cli_start &rArr; cli_state_set &rArr; nrf_cli_fprintf &rArr; vt100_color_set &rArr; nrf_fprintf &rArr; nrf_fprintf_fmt &rArr; int_print &rArr; unsigned_print &rArr; buffer_add &rArr;  buffer_add (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_cli_start
@@ -2917,8 +2918,8 @@ Local Symbols
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usbd_event_handler
 </UL>
 
-<P><STRONG><a name="[4b]"></a>usbd_event_handler</STRONG> (Thumb, 480 bytes, Stack size 32 bytes, main.o(i.usbd_event_handler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 384<LI>Call Chain = usbd_event_handler &rArr; usbd_setup_SetConfig &rArr; ep_configuration &rArr; nrfx_usbd_ep_disable &rArr; usbd_ep_abort &rArr; nrfx_usbd_transfer_out_drop &rArr; ep2bit &rArr; assert_nrf_callback &rArr; app_error_fault_handler &rArr; nrf_log_frontend_std_5 &rArr; std_n &rArr;  assert_nrf_callback (Cycle)
+<P><STRONG><a name="[4b]"></a>usbd_event_handler</STRONG> (Thumb, 544 bytes, Stack size 1040 bytes, main.o(i.usbd_event_handler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1392<LI>Call Chain = usbd_event_handler &rArr; usbd_setup_SetConfig &rArr; ep_configuration &rArr; nrfx_usbd_ep_disable &rArr; usbd_ep_abort &rArr; nrfx_usbd_transfer_out_drop &rArr; ep2bit &rArr; assert_nrf_callback &rArr; app_error_fault_handler &rArr; nrf_log_frontend_std_5 &rArr; std_n &rArr;  assert_nrf_callback (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[21d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_usbd_setup_stall
 <LI><a href="#[236]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_usbd_setup_get
@@ -2935,6 +2936,7 @@ Local Symbols
 <LI><a href="#[238]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usbd_setup_ClearFeature
 <LI><a href="#[226]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;respond_setup_data
 <LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ep_configuration
+<LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(i.main)
 </UL>
@@ -4074,8 +4076,8 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 344<LI>Call Chain = detection_delay_timeout_handler &rArr; evt_handle &rArr; usr_event &rArr; button_get &rArr; assert_nrf_callback &rArr; app_error_fault_handler &rArr; nrf_log_frontend_std_5 &rArr; std_n &rArr;  assert_nrf_callback (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_gpiote_in_is_set
-<LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_start
 <LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;evt_handle
+<LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_start
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> app_button.o(i.app_button_init)
 </UL>
@@ -4083,8 +4085,8 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 296<LI>Call Chain = gpiote_event_handler &rArr; nrfx_gpiote_in_is_set &rArr; nrf_gpio_pin_read &rArr; nrf_gpio_pin_port_decode &rArr; assert_nrf_callback &rArr; app_error_fault_handler &rArr; nrf_log_frontend_std_5 &rArr; std_n &rArr;  assert_nrf_callback (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_gpiote_in_is_set
-<LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_start
 <LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;button_get
+<LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_start
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> app_button.o(i.app_button_init)
 </UL>
@@ -5000,7 +5002,7 @@ Local Symbols
 <BR>[Address Reference Count : 1]<UL><LI> nrf_cli_uart.o(.constdata)
 </UL>
 <P><STRONG><a name="[8c]"></a>cli_uart_uninit</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, nrf_cli_uart.o(i.cli_uart_uninit))
-<BR><BR>[Stack]<UL><LI>Max Depth = 368<LI>Call Chain = cli_uart_uninit &rArr; nrf_drv_uart_uninit &rArr; nrfx_uart_uninit &rArr; nrf_gpio_cfg_default &rArr; nrf_gpio_cfg &rArr; nrf_gpio_pin_port_decode &rArr; assert_nrf_callback &rArr; app_error_fault_handler &rArr; nrf_log_frontend_std_5 &rArr; std_n &rArr;  assert_nrf_callback (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 368<LI>Call Chain = cli_uart_uninit &rArr; nrf_drv_uart_uninit &rArr; nrfx_uarte_uninit &rArr; nrf_gpio_cfg_default &rArr; nrf_gpio_cfg &rArr; nrf_gpio_pin_port_decode &rArr; assert_nrf_callback &rArr; app_error_fault_handler &rArr; nrf_log_frontend_std_5 &rArr; std_n &rArr;  assert_nrf_callback (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_timer_stop
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_drv_uart_uninit
@@ -5031,10 +5033,10 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[135]"></a>nrf_drv_uart_uninit</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, nrf_cli_uart.o(i.nrf_drv_uart_uninit))
-<BR><BR>[Stack]<UL><LI>Max Depth = 360<LI>Call Chain = nrf_drv_uart_uninit &rArr; nrfx_uart_uninit &rArr; nrf_gpio_cfg_default &rArr; nrf_gpio_cfg &rArr; nrf_gpio_pin_port_decode &rArr; assert_nrf_callback &rArr; app_error_fault_handler &rArr; nrf_log_frontend_std_5 &rArr; std_n &rArr;  assert_nrf_callback (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 360<LI>Call Chain = nrf_drv_uart_uninit &rArr; nrfx_uarte_uninit &rArr; nrf_gpio_cfg_default &rArr; nrf_gpio_cfg &rArr; nrf_gpio_pin_port_decode &rArr; assert_nrf_callback &rArr; app_error_fault_handler &rArr; nrf_log_frontend_std_5 &rArr; std_n &rArr;  assert_nrf_callback (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_uart_uninit
-<LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_uarte_uninit
+<BR>[Calls]<UL><LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_uarte_uninit
+<LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_uart_uninit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cli_uart_uninit
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cli_uart_enable
@@ -5165,8 +5167,8 @@ Local Symbols
 <P><STRONG><a name="[95]"></a>nrf_log_backend_uart_panic_set</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, nrf_log_backend_uart.o(i.nrf_log_backend_uart_panic_set))
 <BR><BR>[Stack]<UL><LI>Max Depth = 472<LI>Call Chain = nrf_log_backend_uart_panic_set &rArr; uart_init &rArr; nrf_drv_uart_init &rArr; nrfx_uarte_init &rArr; apply_config &rArr; nrf_gpio_cfg_output &rArr; nrf_gpio_cfg &rArr; nrf_gpio_pin_port_decode &rArr; assert_nrf_callback &rArr; app_error_fault_handler &rArr; nrf_log_frontend_std_5 &rArr; std_n &rArr;  assert_nrf_callback (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_uart_uninit
-<LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_uarte_uninit
+<BR>[Calls]<UL><LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_uarte_uninit
+<LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_uart_uninit
 <LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> nrf_log_backend_uart.o(.constdata)
