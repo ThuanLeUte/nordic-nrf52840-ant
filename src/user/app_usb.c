@@ -28,6 +28,7 @@
 #define CDC_ACM_DATA_EPOUT      NRF_DRV_USBD_EPOUT1
 
 #define TX_BUFFER               256
+#define RX_BUFFER               64
 
 /* Private macros ----------------------------------------------------- */
 /* Private enumerate/structure ---------------------------------------- */
@@ -42,6 +43,13 @@ static void m_usb_init(const app_usbd_config_t* usb_cfg, const app_usbd_cdc_acm_
 
 /* Private variables -------------------------------------------------- */
 static char m_tx_buffer[TX_BUFFER];
+static char m_rx_buffer[RX_BUFFER];
+static const nrf_drv_usbd_transfer_t m_ep1_transfer =
+  {
+    .p_data = {.rx = &m_rx_buffer},
+    .size   = sizeof(m_rx_buffer)
+  };
+
 static const app_usbd_cdc_acm_t* m_cdc_cfg;
 
 /** @brief CDC_ACM class instance */
@@ -86,6 +94,10 @@ static void m_cdc_acm_user_ev_handler(app_usbd_class_inst_t const *p_inst,
   case APP_USBD_CDC_ACM_USER_EVT_PORT_OPEN:
   {
     /*Set up the first transfer*/
+    app_usbd_cdc_acm_read(&m_app_cdc_acm,
+                          m_rx_buffer,
+                          RX_BUFFER);
+
     NRF_LOG_INFO("APP_USBD_CDC_ACM_USER_EVT_PORT_OPEN");
     break;
   }
@@ -100,6 +112,10 @@ static void m_cdc_acm_user_ev_handler(app_usbd_class_inst_t const *p_inst,
 
   case APP_USBD_CDC_ACM_USER_EVT_RX_DONE:
   {
+    app_usbd_cdc_acm_read(&m_app_cdc_acm,
+                          m_rx_buffer,
+                          RX_BUFFER);
+
     NRF_LOG_INFO("APP_USBD_CDC_ACM_USER_EVT_RX_DONE");
     break;
   }
@@ -154,6 +170,7 @@ static void m_usbd_user_ev_handler(app_usbd_event_type_t event)
   break;
 
   default:
+    nrf_drv_usbd_ep_transfer(NRF_DRV_USBD_EPOUT1, &m_ep1_transfer);
     break;
   }
 }
