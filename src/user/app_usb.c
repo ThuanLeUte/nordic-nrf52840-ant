@@ -20,10 +20,10 @@
 #include "app_ant.h"
 
 /* Private defines ---------------------------------------------------- */
-#define CDC_ACM_COMM_INTERFACE  0
+#define CDC_ACM_COMM_INTERFACE  1
 #define CDC_ACM_COMM_EPIN       NRF_DRV_USBD_EPIN2
 
-#define CDC_ACM_DATA_INTERFACE  1
+#define CDC_ACM_DATA_INTERFACE  0
 #define CDC_ACM_DATA_EPIN       NRF_DRV_USBD_EPIN1
 #define CDC_ACM_DATA_EPOUT      NRF_DRV_USBD_EPOUT1
 
@@ -57,24 +57,11 @@ APP_USBD_CDC_ACM_GLOBAL_DEF(m_app_cdc_acm,
 /* Function definitions ----------------------------------------------- */
 int app_usb_init(void)
 {
-  // ret_code_t ret;
   static const app_usbd_config_t usbd_config =
   {
     .ev_state_proc = m_usbd_user_ev_handler
   };
   m_usb_init(&usbd_config, &m_app_cdc_acm);
-  // app_usbd_serial_num_generate();
-  
-  // m_cdc_cfg = cdc_cfg;
-  // ret = app_usbd_init(usb_cfg);
-  // APP_ERROR_CHECK(ret);
-
-  // app_usbd_class_inst_t const * class_cdc_acm = app_usbd_cdc_acm_class_inst_get(m_cdc_cfg);
-  // ret = app_usbd_class_append(class_cdc_acm);
-  // APP_ERROR_CHECK(ret);
-
-  // ret = app_usbd_power_events_enable();
-  // APP_ERROR_CHECK(ret);
   
   return NRF_SUCCESS;
 }
@@ -187,5 +174,6 @@ static void m_usb_init(const app_usbd_config_t* usb_cfg, const app_usbd_cdc_acm_
   ret = app_usbd_power_events_enable();
   APP_ERROR_CHECK(ret);
 }
+
 /* End of file -------------------------------------------------------- */
 

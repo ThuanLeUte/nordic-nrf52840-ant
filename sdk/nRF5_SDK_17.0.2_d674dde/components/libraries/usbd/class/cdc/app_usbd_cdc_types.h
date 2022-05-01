@@ -62,7 +62,7 @@ extern "C" {
  * Used for control interface in communication class.
  * @ref app_usbd_descriptor_iface_t::bInterfaceClass
  */
-#define APP_USBD_CDC_COMM_CLASS 0x02
+#define APP_USBD_CDC_COMM_CLASS 0xFF
 
 /**
  * @brief Data Class Interface code.
@@ -70,7 +70,7 @@ extern "C" {
  * Used for data interface in communication class.
  * @ref app_usbd_descriptor_iface_t::bInterfaceClass
  */
-#define APP_USBD_CDC_DATA_CLASS 0x0A
+#define APP_USBD_CDC_DATA_CLASS 0xFF
 
 /**
  * @brief CDC subclass possible values.

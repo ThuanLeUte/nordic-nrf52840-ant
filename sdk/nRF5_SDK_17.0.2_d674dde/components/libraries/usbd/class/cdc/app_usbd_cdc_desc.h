@@ -92,7 +92,7 @@ extern "C" {
     /*.bInterfaceClass =    */ APP_USBD_CDC_COMM_CLASS,                        \
     /*.bInterfaceSubClass = */ subclass,                                       \
     /*.bInterfaceProtocol = */ protocol,                                       \
-    /*.iInterface = 0,      */ 0x00,                                           \
+    /*.iInterface = 0,      */ 0x02,                                           \
 
 
 /**
@@ -111,7 +111,7 @@ extern "C" {
     /*.bInterfaceClass =    */ APP_USBD_CDC_DATA_CLASS,                       \
     /*.bInterfaceSubClass = */ subclass,                                      \
     /*.bInterfaceProtocol = */ protocol,                                      \
-    /*.iInterface = 0,      */ 0x00,                                          \
+    /*.iInterface = 0,      */ 0x02,                                          \
 
 
 
@@ -142,13 +142,13 @@ extern "C" {
     /*.bEndpointAddress = */ endpoint_in,                            \
     /*.bmAttributes =     */ APP_USBD_DESCRIPTOR_EP_ATTR_TYPE_BULK,  \
     /*.wMaxPacketSize =   */ APP_USBD_U16_TO_RAW_DSC(ep_size),       \
-    /*.bInterval =        */ 0,                                      \
+    /*.bInterval =        */ 1,                                      \
     /*.bLength =          */ sizeof(app_usbd_descriptor_ep_t),       \
     /*.bDescriptorType =  */ APP_USBD_DESCRIPTOR_ENDPOINT,           \
     /*.bEndpointAddress = */ endpoint_out,                           \
     /*.bmAttributes =     */ APP_USBD_DESCRIPTOR_EP_ATTR_TYPE_BULK,  \
     /*.wMaxPacketSize =   */ APP_USBD_U16_TO_RAW_DSC(ep_size),       \
-    /*.bInterval =        */ 0,                                      \
+    /*.bInterval =        */ 1,                                      \
 
 /**
  * @brief Initializer of endpoint descriptors for CDC header descriptor.

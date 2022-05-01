@@ -58,7 +58,7 @@ extern "C" {
 /**
  * @brief Number of bytes in the endpoint.
  */
-#define NRFX_USBD_EPSIZE 64
+#define NRFX_USBD_EPSIZE 32
 
 /**
  * @brief Number of bytes for isochronous endpoints.

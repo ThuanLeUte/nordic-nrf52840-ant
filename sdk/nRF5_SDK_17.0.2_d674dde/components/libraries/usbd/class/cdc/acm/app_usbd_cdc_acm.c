@@ -826,7 +826,7 @@ static bool cdc_acm_feed_descriptors(app_usbd_class_descriptor_ctx_t * p_ctx,
             ASSERT(0);
         }
 
-        APP_USBD_CLASS_DESCRIPTOR_WRITE(0x00); // iInterface
+        APP_USBD_CLASS_DESCRIPTOR_WRITE(0x02); // iInterface
 
         if (p_cdc_acm->specific.inst.comm_interface == app_usbd_class_iface_number_get(p_cur_iface))
         {
@@ -897,8 +897,8 @@ static bool cdc_acm_feed_descriptors(app_usbd_class_descriptor_ctx_t * p_ctx,
                 ASSERT(0);
             }
 
-            APP_USBD_CLASS_DESCRIPTOR_WRITE(LSB_16(NRF_DRV_USBD_EPSIZE)); // wMaxPacketSize LSB
-            APP_USBD_CLASS_DESCRIPTOR_WRITE(MSB_16(NRF_DRV_USBD_EPSIZE)); // wMaxPacketSize MSB
+            APP_USBD_CLASS_DESCRIPTOR_WRITE(LSB_16(64)); // wMaxPacketSize LSB
+            APP_USBD_CLASS_DESCRIPTOR_WRITE(MSB_16(64)); // wMaxPacketSize MSB
 
             if (p_cdc_acm->specific.inst.comm_interface ==
                 app_usbd_class_iface_number_get(p_cur_iface))
@@ -908,7 +908,7 @@ static bool cdc_acm_feed_descriptors(app_usbd_class_descriptor_ctx_t * p_ctx,
             else if (p_cdc_acm->specific.inst.data_interface ==
                      app_usbd_class_iface_number_get(p_cur_iface))
             {
-                APP_USBD_CLASS_DESCRIPTOR_WRITE(0x00); // bInterval
+                APP_USBD_CLASS_DESCRIPTOR_WRITE(0x01); // bInterval
             }
             else
             {

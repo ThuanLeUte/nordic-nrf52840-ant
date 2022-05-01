@@ -7247,7 +7247,7 @@
 // <i> Setting string to NULL disables that string.
 // <i> The order of manufacturer names must be the same like in @ref APP_USBD_STRINGS_LANGIDS.
 #ifndef APP_USBD_STRINGS_MANUFACTURER
-#define APP_USBD_STRINGS_MANUFACTURER APP_USBD_STRING_DESC("Nordic Semiconductor")
+#define APP_USBD_STRINGS_MANUFACTURER APP_USBD_STRING_DESC("Dynastream Innovations")
 #endif
 
 // </e>
@@ -7271,7 +7271,7 @@
 // <i> Note: This value is not editable in Configuration Wizard.
 // <i> List of product names that is defined the same way like in @ref APP_USBD_STRINGS_MANUFACTURER.
 #ifndef APP_USBD_STRINGS_PRODUCT
-#define APP_USBD_STRINGS_PRODUCT APP_USBD_STRING_DESC("nRF52 USB CDC BLE Demo")
+#define APP_USBD_STRINGS_PRODUCT APP_USBD_STRING_DESC("ANT USBStick2")
 #endif
 
 // </e>
@@ -7305,7 +7305,7 @@
 // <i> Setting ID to 0 disables the string.
 //==========================================================
 #ifndef APP_USBD_STRING_ID_CONFIGURATION
-#define APP_USBD_STRING_ID_CONFIGURATION 4
+#define APP_USBD_STRING_ID_CONFIGURATION 2
 #endif
 // <q> APP_USBD_STRING_CONFIGURATION_EXTERN  - Define whether @ref APP_USBD_STRINGS_CONFIGURATION is created by macro or declared as global variable.
  
