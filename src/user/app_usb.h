@@ -24,6 +24,7 @@
 /* Public function prototypes ----------------------------------------- */
 int app_usb_init(void);
 int app_usb_send(const char* data);
+void app_usb_send_end_pin1(uint8_t *data, uint16_t len);
 
 #endif // __APP_USB_H
 /* End of file -------------------------------------------------------- */
