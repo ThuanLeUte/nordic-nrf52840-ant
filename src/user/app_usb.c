@@ -82,12 +82,12 @@ int app_usb_send(const char* data)
   return NRF_SUCCESS;
 }
 
-void app_usb_send_end_pin1(uint8_t *data, uint16_t len)
+void app_usb_send_epin1(uint8_t *data, uint16_t len)
 {
   nrf_drv_usbd_transfer_t transfer =
   {
     .p_data = { .tx = data },
-    .size   = 10
+    .size   = len
   };
 
   nrf_drv_usbd_ep_transfer(NRF_DRV_USBD_EPIN1, &transfer);
@@ -128,7 +128,7 @@ static void m_cdc_acm_user_ev_handler(app_usbd_class_inst_t const *p_inst,
                           RX_BUFFER);
 
     uint8_t tx_buff[100] = {0xA4, 0x06, 0x54, 0x08, 0x03, 0x00, 0xBA, 0x36, 0x00, 0x71};
-    app_usb_send_end_pin1(tx_buff, 10);
+    app_usb_send_epin1(tx_buff, 10);
 
     NRF_LOG_INFO("APP_USBD_CDC_ACM_USER_EVT_RX_DONE");
     break;
