@@ -59,6 +59,7 @@ typedef enum
   , MSG_ID_CHANNEL_RESPONSE                    = 0x40
   , MSG_ID_REQ_RES_CHANNEL_STATUS              = 0x52
   , MSG_ID_TEST_CW_INIT                        = 0x53
+  , MSG_ID_CAPABILITIES                        = 0x54
 }
 ant_msg_id_t;
 

@@ -1,30 +1,30 @@
 /**
-* @file       app_usb.h
-* @copyright  Copyright (C) 2020 Fiot Co., Ltd. All rights reserved.
-* @license    This project is released under the Fiot License.
+* @file       bsp_ant.h
+* @copyright  Copyright (C) 2020 Hydratech. All rights reserved.
+* @license    This project is released under the Hydratech.
 * @version    1.0.0
 * @date       2021-07-08
-* @author     Hieu Doan
-*             
-* @brief      App USB
+* @author     Thuan Le
+* @brief      ANT+ BSP
 */
 
 /* Define to prevent recursive inclusion ------------------------------ */
-#ifndef __APP_USB_H
-#define __APP_USB_H
+#ifndef __BSP_ANT_H
+#define __BSP_ANT_H
 
 /* Includes ----------------------------------------------------------- */
-#include "app_usbd.h"
-#include "app_usbd_cdc_acm.h"
+#include "ant_msg_builder.h"
 
 /* Public defines ----------------------------------------------------- */
 /* Public macros ------------------------------------------------------ */
 /* Public enumerate/structure ----------------------------------------- */
 /* Public variables --------------------------------------------------- */
 /* Public function prototypes ----------------------------------------- */
-int app_usb_init(void);
-int app_usb_send(const char* data);
-void app_usb_send_epin1(uint8_t *data, uint16_t len);
+/**
+ * @brief Send capabilities
+ */
+void bsp_ant_send_capabilities(void);
 
-#endif // __APP_USB_H
+#endif // __BSP_ANT_H
+
 /* End of file -------------------------------------------------------- */
