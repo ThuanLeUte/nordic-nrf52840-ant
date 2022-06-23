@@ -21,10 +21,10 @@
 typedef struct
 {
   ant_msg_id_t msg_id;
-  uint8_t *in_data;
+  uint8_t in_data[ANT_MSG_MAX_DATA_SIZE];
   uint8_t in_len;
-  uint8_t *out_data;
-  uint16_t *out_len;
+  uint8_t out_data[ANT_MSG_MAX_SIZE];
+  uint16_t out_len;
 }
 ant_msg_transfer_t;
 

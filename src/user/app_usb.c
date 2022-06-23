@@ -18,6 +18,7 @@
 #include "app_usbd_serial_num.h"
 #include "nrf_log.h"
 #include "app_ant.h"
+#include "ant_msg_builder.h"
 
 /* Private defines ---------------------------------------------------- */
 #define CDC_ACM_COMM_INTERFACE  1
@@ -127,8 +128,24 @@ static void m_cdc_acm_user_ev_handler(app_usbd_class_inst_t const *p_inst,
                           m_rx_buffer,
                           RX_BUFFER);
 
-    uint8_t tx_buff[100] = {0xA4, 0x06, 0x54, 0x08, 0x03, 0x00, 0xBA, 0x36, 0x00, 0x71};
-    app_usb_send_epin1(tx_buff, 10);
+    ant_msg_transfer_t msg_transfer;
+
+    msg_transfer.msg_id = 0x54;
+    msg_transfer.in_len = 6;
+
+    msg_transfer.in_data[0] = 0x08;
+    msg_transfer.in_data[1] = 0x03;
+    msg_transfer.in_data[2] = 0x00;
+    msg_transfer.in_data[3] = 0xBA;
+    msg_transfer.in_data[4] = 0x36;
+    msg_transfer.in_data[5] = 0x00;
+
+    ant_msg_builder(&msg_transfer);
+
+    app_usb_send_epin1(msg_transfer.out_data, msg_transfer.out_len);
+
+    // uint8_t tx_buff[100] = {0xA4, 0x06, 0x54, 0x08, 0x03, 0x00, 0xBA, 0x36, 0x00, 0x71};
+    // app_usb_send_epin1(tx_buff, 10);
 
     NRF_LOG_INFO("APP_USBD_CDC_ACM_USER_EVT_RX_DONE");
     break;
