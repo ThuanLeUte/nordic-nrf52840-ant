@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "ant_msg.h": "c"
+        "ant_msg.h": "c",
+        "app_usb.h": "c"
     }
 }

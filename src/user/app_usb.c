@@ -19,7 +19,7 @@
 #include "nrf_log.h"
 #include "app_ant.h"
 #include "ant_msg_builder.h"
-#include "bsp_ant.h"
+#include "bsp_usb_ant.h"
 
 /* Private defines ---------------------------------------------------- */
 #define CDC_ACM_COMM_INTERFACE  1
@@ -129,7 +129,7 @@ static void m_cdc_acm_user_ev_handler(app_usbd_class_inst_t const *p_inst,
                           m_rx_buffer,
                           RX_BUFFER);
 
-    bsp_ant_send_capabilities();
+    bsp_usb_ant_send_capabilities();
     
     NRF_LOG_INFO("APP_USBD_CDC_ACM_USER_EVT_RX_DONE");
     break;

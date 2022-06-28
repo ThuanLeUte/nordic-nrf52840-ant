@@ -20,8 +20,8 @@
 #include "ant_hrm.h"
 #include "ant_bpwr.h"
 #include "ant_bsc.h"
-
 #include "app_usb.h"
+#include "bsp_usb_ant.h"
 
 /* Private defines ---------------------------------------------------- */
 #define WHEEL_CIRCUMFERENCE         2070                                         /**< Bike wheel circumference [mm] */
@@ -53,6 +53,9 @@ bsc_disp_calc_data_t;
 static void m_ant_hrm_evt_handler(ant_hrm_profile_t *p_profile, ant_hrm_evt_t event);
 static void m_ant_bpwr_evt_handler(ant_bpwr_profile_t *p_profile, ant_bpwr_evt_t event);
 static void m_ant_bsc_evt_handler(ant_bsc_profile_t *p_profile, ant_bsc_evt_t event);
+
+/*! Display EVT functions */
+static void m_ant_hrm_disp_evt_handler(ant_evt_t *p_ant_evt, void *p_context);
 
 /*! Support functions */
 static uint32_t m_calculate_speed(int32_t rev_cnt, int32_t evt_time);
@@ -115,7 +118,7 @@ int app_ant_init(void)
   APP_ERROR_CHECK(err_code);
 
   // Register a handler for ANT events.
-  NRF_SDH_ANT_OBSERVER(m_ant_hrm_observer, ANT_HRM_ANT_OBSERVER_PRIO, ant_hrm_disp_evt_handler, &m_ant_hrm);
+  NRF_SDH_ANT_OBSERVER(m_ant_hrm_observer, ANT_HRM_ANT_OBSERVER_PRIO, m_ant_hrm_disp_evt_handler, &m_ant_hrm);
 
   NRF_SDH_ANT_OBSERVER(m_ant_bpwr_observer, ANT_BPWR_ANT_OBSERVER_PRIO, ant_bpwr_disp_evt_handler, &m_ant_bpwr);
 
@@ -442,4 +445,32 @@ static uint32_t m_calculate_cadence(int32_t rev_cnt, int32_t evt_time)
 
   return (uint32_t)computed_cadence;
 }
+
+/* Display event handler----------------------------------------------- */
+static void m_ant_hrm_disp_evt_handler(ant_evt_t *p_ant_evt, void *p_context)
+{
+  ant_hrm_profile_t *p_profile = (ant_hrm_profile_t *)p_context;
+
+  if (p_ant_evt->channel == p_profile->channel_number)
+  {
+    switch (p_ant_evt->event)
+    {
+    case EVENT_RX:
+      if (p_ant_evt->message.ANT_MESSAGE_ucMesgID == MESG_BROADCAST_DATA_ID ||
+          p_ant_evt->message.ANT_MESSAGE_ucMesgID == MESG_ACKNOWLEDGED_DATA_ID ||
+          p_ant_evt->message.ANT_MESSAGE_ucMesgID == MESG_BURST_DATA_ID)
+      {
+        // disp_message_decode(p_profile, p_ant_evt->message.ANT_MESSAGE_aucPayload);
+
+        // Forward heart rate msg
+        bsp_usb_ant_send_broadcast_data(p_ant_evt->message.ANT_MESSAGE_aucPayload, 8);
+      }
+      break;
+
+    default:
+      break;
+    }
+  }
+}
+
 /* End of file -------------------------------------------------------- */

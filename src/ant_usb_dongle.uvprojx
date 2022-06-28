@@ -409,9 +409,9 @@
               <FilePath>.\user\ant_msg_builder.c</FilePath>
             </File>
             <File>
-              <FileName>bsp_ant.c</FileName>
+              <FileName>bsp_usb_ant.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\user\bsp_ant.c</FilePath>
+              <FilePath>.\user\bsp_usb_ant.c</FilePath>
             </File>
           </Files>
         </Group>

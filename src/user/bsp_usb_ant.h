@@ -23,7 +23,12 @@
 /**
  * @brief Send capabilities
  */
-void bsp_ant_send_capabilities(void);
+void bsp_usb_ant_send_capabilities(void);
+
+/**
+ * @brief Send broadcast data
+ */
+void bsp_usb_ant_send_broadcast_data(uint8_t *p_data, uint16_t len);
 
 #endif // __BSP_ANT_H
 
