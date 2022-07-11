@@ -34,12 +34,12 @@ void ant_msg_builder(ant_msg_transfer_t *p_transfer)
   memset(ant_msg_buffer, 0, sizeof(ant_msg_buffer));
 
   // Create ANT message structure ======= {
-  ant_msg_buffer[0] = ANT_MSG_SYNC_TX_VALUE;  // Sync
-  ant_msg_buffer[1] = p_transfer->in_len;     // Msg Length
-  ant_msg_buffer[2] = p_transfer->msg_id;     // Msg ID
+  ant_msg_buffer[ANT_MSG_POS_SYNC]   = ANT_MSG_SYNC_TX_VALUE;  // Sync
+  ant_msg_buffer[ANT_MSG_POS_LENGTH] = p_transfer->in_len;     // Msg Length
+  ant_msg_buffer[ANT_MSG_POS_ID]     = p_transfer->msg_id;     // Msg ID
   
   // Message content
-  memcpy(&ant_msg_buffer[3], p_transfer->in_data, p_transfer->in_len);
+  memcpy(&ant_msg_buffer[ANT_MSG_POS_CONTENT], p_transfer->in_data, p_transfer->in_len);
 
   // Check sum
   crc = ant_msg_builder_calculate_crc(ant_msg_buffer, 3 + p_transfer->in_len);

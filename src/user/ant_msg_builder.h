@@ -18,6 +18,15 @@
 /* Public defines ----------------------------------------------------- */
 /* Public macros ------------------------------------------------------ */
 /* Public enumerate/structure ----------------------------------------- */
+typedef enum
+{
+   ANT_MSG_POS_SYNC
+  ,ANT_MSG_POS_LENGTH
+  ,ANT_MSG_POS_ID
+  ,ANT_MSG_POS_CONTENT
+}
+ant_msg_pos_t;
+
 typedef struct
 {
   uint8_t msg_id;
