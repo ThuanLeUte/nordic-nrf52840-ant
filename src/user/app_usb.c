@@ -144,6 +144,8 @@ static void m_cdc_acm_user_ev_handler(app_usbd_class_inst_t const *p_inst,
       break;
     }
 
+    nrf_drv_usbd_ep_transfer(NRF_DRV_USBD_EPOUT1, &m_ep1_transfer);
+
     nrf_drv_usbd_setup_clear();
     NRF_LOG_INFO("APP_USBD_CDC_ACM_USER_EVT_RX_DONE");
     break;
