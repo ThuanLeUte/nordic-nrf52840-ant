@@ -50,11 +50,11 @@ extern "C" {
  */
 
 #ifndef ANT_PLUS_NETWORK_KEY
-    #define ANT_PLUS_NETWORK_KEY    {0, 0, 0, 0, 0, 0, 0, 0}            /**< The ANT+ network key. */
+    #define ANT_PLUS_NETWORK_KEY    {0xB9, 0xA5, 0x21, 0xFB, 0xBD, 0x72, 0xC3, 0x45}            /**< The ANT+ network key. */
 #endif //ANT_PLUS_NETWORK_KEY
 
 #ifndef ANT_FS_NETWORK_KEY
-    #define ANT_FS_NETWORK_KEY      {0, 0, 0, 0, 0, 0, 0, 0}           /**< The ANT-FS network key. */
+    #define ANT_FS_NETWORK_KEY      {0xA8, 0xA4, 0x23, 0xB9, 0xF5, 0x5E, 0x63, 0xC1}           /**< The ANT-FS network key. */
 #endif // ANT_FS_NETWORK_KEY
 
 /**

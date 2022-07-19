@@ -84,15 +84,18 @@ int app_usb_send(const char* data)
   return NRF_SUCCESS;
 }
 
+nrfx_err_t err;
+
 void app_usb_send_epin1(uint8_t *data, uint16_t len)
 {
+
   nrf_drv_usbd_transfer_t transfer =
   {
     .p_data = { .tx = data },
     .size   = len
   };
 
-  nrf_drv_usbd_ep_transfer(NRF_DRV_USBD_EPIN1, &transfer);
+  err = nrf_drv_usbd_ep_transfer(NRF_DRV_USBD_EPIN1, &transfer);
 }
 
 /* Private function definitions --------------------------------------- */

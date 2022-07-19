@@ -47,6 +47,8 @@ typedef struct
 } 
 bsc_disp_calc_data_t;
 
+ant_evt_t ant_data;
+
 /* Public variables --------------------------------------------------- */
 /* Private function prototypes ---------------------------------------- */
 /*! EVT functions */
@@ -451,6 +453,8 @@ static void m_ant_hrm_disp_evt_handler(ant_evt_t *p_ant_evt, void *p_context)
 {
   ant_hrm_profile_t *p_profile = (ant_hrm_profile_t *)p_context;
 
+  memcpy((void *)&ant_data, p_ant_evt, sizeof(ant_data));
+
   if (p_ant_evt->channel == p_profile->channel_number)
   {
     switch (p_ant_evt->event)
@@ -463,7 +467,7 @@ static void m_ant_hrm_disp_evt_handler(ant_evt_t *p_ant_evt, void *p_context)
         // disp_message_decode(p_profile, p_ant_evt->message.ANT_MESSAGE_aucPayload);
 
         // Forward heart rate msg
-        bsp_usb_ant_send_broadcast_data(p_ant_evt->message.ANT_MESSAGE_aucPayload, 8);
+        bsp_usb_ant_send_broadcast_data(p_ant_evt->message.ANT_MESSAGE_aucMesgData, 9);
       }
       break;
 
