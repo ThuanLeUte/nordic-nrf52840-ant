@@ -21,6 +21,8 @@
 /* Private function prototypes ---------------------------------------- */
 static void sens_message_encode(ant_hrm_profile_t *p_profile, uint8_t page, uint8_t *p_message_payload);
 
+static void bsp_usb_ant_send_reponse_event_ant_msg_id(uint8_t channel, uint8_t msg_id);
+
 /* Function definitions ----------------------------------------------- */
 void bsp_usb_ant_receive_msg_handler(char *p_buf)
 {
@@ -34,6 +36,40 @@ void bsp_usb_ant_receive_msg_handler(char *p_buf)
       bsp_usb_ant_send_capabilities();
     }
     break;
+
+  // Flow setup by ANT+ simulation {
+  case MESG_ASSIGN_CHANNEL_ID:
+    bsp_usb_ant_send_reponse_event_ant_msg_id(p_buf[ANT_MSG_POS_CONTENT], p_buf[ANT_MSG_POS_ID]);
+    break;
+
+  case MESG_CHANNEL_ID_ID: // Set channel ID
+    bsp_usb_ant_send_reponse_event_ant_msg_id(p_buf[ANT_MSG_POS_CONTENT], p_buf[ANT_MSG_POS_ID]);
+    break;
+  
+  case MESG_CHANNEL_RADIO_FREQ_ID:
+    bsp_usb_ant_send_reponse_event_ant_msg_id(p_buf[ANT_MSG_POS_CONTENT], p_buf[ANT_MSG_POS_ID]);
+    break;
+
+  case MESG_CHANNEL_MESG_PERIOD_ID:
+    bsp_usb_ant_send_reponse_event_ant_msg_id(p_buf[ANT_MSG_POS_CONTENT], p_buf[ANT_MSG_POS_ID]);
+    break;
+
+  case MESG_PROX_SEARCH_CONFIG_ID:
+    bsp_usb_ant_send_reponse_event_ant_msg_id(p_buf[ANT_MSG_POS_CONTENT], p_buf[ANT_MSG_POS_ID]);
+    break;
+
+  case MESG_SET_LP_SEARCH_TIMEOUT_ID:
+    bsp_usb_ant_send_reponse_event_ant_msg_id(p_buf[ANT_MSG_POS_CONTENT], p_buf[ANT_MSG_POS_ID]);
+    break;
+
+  case MESG_CHANNEL_SEARCH_TIMEOUT_ID:
+    bsp_usb_ant_send_reponse_event_ant_msg_id(p_buf[ANT_MSG_POS_CONTENT], p_buf[ANT_MSG_POS_ID]);
+    break;
+
+  case MESG_OPEN_CHANNEL_ID:
+    bsp_usb_ant_send_reponse_event_ant_msg_id(p_buf[ANT_MSG_POS_CONTENT], p_buf[ANT_MSG_POS_ID]);
+    break;
+  // }
 
   default:
     break;
@@ -53,6 +89,22 @@ void bsp_usb_ant_send_capabilities(void)
   msg_transfer.in_data[3] = 0xBA;   // Advanced Option
   msg_transfer.in_data[4] = 0x36;   // Advanded Option 2
   msg_transfer.in_data[5] = 0x00;   // NUmber of SensRcore channels available
+
+  ant_msg_builder(&msg_transfer);
+
+  app_usb_send_epin1(msg_transfer.out_data, msg_transfer.out_len);
+}
+
+void bsp_usb_ant_send_reponse_event_ant_msg_id(uint8_t channel, uint8_t msg_id)
+{
+  ant_msg_transfer_t msg_transfer;
+
+  msg_transfer.msg_id = MESG_RESPONSE_EVENT_ID;
+  msg_transfer.in_len = 3;
+
+  msg_transfer.in_data[0] = channel;            // Channel
+  msg_transfer.in_data[1] = msg_id;             // Msg ID
+  msg_transfer.in_data[2] = RESPONSE_NO_ERROR;  // Msg code
 
   ant_msg_builder(&msg_transfer);
 
