@@ -22,6 +22,24 @@
 static void sens_message_encode(ant_hrm_profile_t *p_profile, uint8_t page, uint8_t *p_message_payload);
 
 /* Function definitions ----------------------------------------------- */
+void bsp_usb_ant_receive_msg_handler(char *p_buf)
+{
+  switch (p_buf[ANT_MSG_POS_ID])
+  {
+  case MESG_REQUEST_ID:
+    // 0x00 – Request Advanced Burst Capabilities
+    // 0x01 – Request Advanced Burst Current Configuration
+    if (p_buf[ANT_MSG_POS_CONTENT] == 0x00) //
+    {
+      bsp_usb_ant_send_capabilities();
+    }
+    break;
+
+  default:
+    break;
+  }
+}
+
 void bsp_usb_ant_send_capabilities(void)
 {
   ant_msg_transfer_t msg_transfer;

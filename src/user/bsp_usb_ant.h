@@ -21,6 +21,11 @@
 /* Public variables --------------------------------------------------- */
 /* Public function prototypes ----------------------------------------- */
 /**
+ * @brief USB ant receive msg handler
+ */
+void bsp_usb_ant_receive_msg_handler(char *p_buf);
+
+/**
  * @brief Send capabilities
  */
 void bsp_usb_ant_send_capabilities(void);

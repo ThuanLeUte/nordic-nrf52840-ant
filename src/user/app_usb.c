@@ -132,20 +132,7 @@ static void m_cdc_acm_user_ev_handler(app_usbd_class_inst_t const *p_inst,
                           m_rx_buffer,
                           RX_BUFFER);
 
-    switch (m_rx_buffer[ANT_MSG_POS_ID])
-    {
-    case MESG_REQUEST_ID:
-      // 0x00 – Request Advanced Burst Capabilities
-      // 0x01 – Request Advanced Burst Current Configuration
-      if (m_rx_buffer[ANT_MSG_POS_CONTENT] == 0x00) // 
-      {
-        bsp_usb_ant_send_capabilities();
-      }
-      break;
-
-    default:
-      break;
-    }
+    bsp_usb_ant_receive_msg_handler(m_rx_buffer);
 
     nrf_drv_usbd_ep_transfer(NRF_DRV_USBD_EPOUT1, &m_ep1_transfer);
 
