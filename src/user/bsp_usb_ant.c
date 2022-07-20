@@ -18,6 +18,8 @@
 /* Private enumerate/structure ---------------------------------------- */
 /* Public variables --------------------------------------------------- */
 /* Private variables -------------------------------------------------- */
+ant_msg_transfer_t msg_transfer;
+
 /* Private function prototypes ---------------------------------------- */
 static void sens_message_encode(ant_hrm_profile_t *p_profile, uint8_t page, uint8_t *p_message_payload);
 
@@ -78,8 +80,6 @@ void bsp_usb_ant_receive_msg_handler(char *p_buf)
 
 void bsp_usb_ant_send_capabilities(void)
 {
-  ant_msg_transfer_t msg_transfer;
-
   msg_transfer.msg_id = MESG_CAPABILITIES_ID;
   msg_transfer.in_len = 6;
 
@@ -97,8 +97,6 @@ void bsp_usb_ant_send_capabilities(void)
 
 void bsp_usb_ant_send_reponse_event_ant_msg_id(uint8_t channel, uint8_t msg_id)
 {
-  ant_msg_transfer_t msg_transfer;
-
   msg_transfer.msg_id = MESG_RESPONSE_EVENT_ID;
   msg_transfer.in_len = 3;
 
@@ -113,8 +111,6 @@ void bsp_usb_ant_send_reponse_event_ant_msg_id(uint8_t channel, uint8_t msg_id)
 
 void bsp_usb_ant_send_broadcast_data(uint8_t *p_data, uint16_t len)
 {
-  ant_msg_transfer_t msg_transfer;
-
   msg_transfer.msg_id = MESG_BROADCAST_DATA_ID;
   msg_transfer.in_len = len;
 
