@@ -30,9 +30,9 @@ ant_msg_pos_t;
 typedef struct
 {
   uint8_t msg_id;
-  uint8_t in_data[ANT_MSG_MAX_DATA_SIZE];
+  uint8_t in_data[2 * ANT_MSG_MAX_DATA_SIZE];
   uint8_t in_len;
-  uint8_t out_data[ANT_MSG_MAX_SIZE];
+  uint8_t out_data[2 * ANT_MSG_MAX_SIZE];
   uint16_t out_len;
 }
 ant_msg_transfer_t;

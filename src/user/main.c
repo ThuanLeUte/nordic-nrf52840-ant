@@ -1,116 +1,312 @@
 /**
- * Copyright (c) 2017 - 2020, Nordic Semiconductor ASA
- *
+ * This software is subject to the ANT+ Shared Source License
+ * www.thisisant.com/swlicenses
+ * Copyright (c) Garmin Canada Inc. 2013
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or
+ * without modification, are permitted provided that the following
+ * conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ *    1) Redistributions of source code must retain the above
+ *       copyright notice, this list of conditions and the following
+ *       disclaimer.
  *
- * 2. Redistributions in binary form, except as embedded into a Nordic
- *    Semiconductor ASA integrated circuit in a product or a software update for
- *    such product, must reproduce the above copyright notice, this list of
- *    conditions and the following disclaimer in the documentation and/or other
- *    materials provided with the distribution.
+ *    2) Redistributions in binary form must reproduce the above
+ *       copyright notice, this list of conditions and the following
+ *       disclaimer in the documentation and/or other materials
+ *       provided with the distribution.
  *
- * 3. Neither the name of Nordic Semiconductor ASA nor the names of its
- *    contributors may be used to endorse or promote products derived from this
- *    software without specific prior written permission.
+ *    3) Neither the name of Garmin nor the names of its
+ *       contributors may be used to endorse or promote products
+ *       derived from this software without specific prior
+ *       written permission.
  *
- * 4. This software, with or without modification, must only be used with a
- *    Nordic Semiconductor ASA integrated circuit.
+ * The following actions are prohibited:
  *
- * 5. Any software provided in binary form under this license must not be reverse
- *    engineered, decompiled, modified and/or disassembled.
+ *    1) Redistribution of source code containing the ANT+ Network
+ *       Key. The ANT+ Network Key is available to ANT+ Adopters.
+ *       Please refer to http://thisisant.com to become an ANT+
+ *       Adopter and access the key. 
  *
- * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
- * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
- * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
- * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *    2) Reverse engineering, decompilation, and/or disassembly of
+ *       software provided in binary form under this license.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND
+ * CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+ * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE HEREBY
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES(INCLUDING, 
+ * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
+ * SERVICES; DAMAGE TO ANY DEVICE, LOSS OF USE, DATA, OR 
+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN 
+ * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
+ * OF THE POSSIBILITY OF SUCH DAMAGE. SOME STATES DO NOT ALLOW 
+ * THE EXCLUSION OF INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THE
+ * ABOVE LIMITATIONS MAY NOT APPLY TO YOU.
  *
  */
-/** @file
- *
- * @defgroup usbd_ble_uart_example main.c
+/**@file
+ * @defgroup nrf_ant_background_scanning_demo ANT Background Scanning Example
  * @{
- * @ingroup  usbd_ble_uart_example
- * @brief    USBD CDC ACM over BLE application main file.
+ * @ingroup nrf_ant_background_scanning_demo
  *
- * This file contains the source code for a sample application that uses the Nordic UART service
- * and USBD CDC ACM library.
- * This application uses the @ref srvlib_conn_params module.
+ * @brief Example of ANT Background Scanning implementation.
+ *
+ * Before compiling this example for NRF52, complete the following steps:
+ * - Download the S212 SoftDevice from <a href="https://www.thisisant.com/developer/components/nrf52832" target="_blank">thisisant.com</a>.
+ * - Extract the downloaded zip file and copy the S212 SoftDevice headers to <tt>\<InstallFolder\>/components/softdevice/s212/headers</tt>.
+ * If you are using Keil packs, copy the files into a @c headers folder in your example folder.
+ * - Make sure that @ref ANT_LICENSE_KEY in @c nrf_sdm.h is uncommented.
  */
 
-#include <stdint.h>
-#include <string.h>
-#include "nordic_common.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include "nrf.h"
+#include "bsp.h"
+#include "ant_interface.h"
+#include "ant_parameters.h"
+#include "nrf_soc.h"
+#include "nrf_sdm.h"
+#include "app_error.h"
+#include "app_util.h"
+#include "hardfault.h"
+#include "nordic_common.h"
+#include "nrf_pwr_mgmt.h"
+#include "ant_channel_config.h"
+#include "ant_search_config.h"
+#include "app_timer.h"
 #include "nrf_sdh.h"
 #include "nrf_sdh_ant.h"
-#include "app_timer.h"
-#include "app_uart.h"
-#include "app_util_platform.h"
+#include "sdk_config.h"
 
 #include "nrf_log.h"
 #include "nrf_log_ctrl.h"
 #include "nrf_log_default_backends.h"
-
-#include "nrf_drv_usbd.h"
-#include "nrf_drv_clock.h"
-#include "nrf_gpio.h"
-#include "nrf_delay.h"
-#include "nrf_drv_power.h"
-
+#include "ant_hrm.h"
+#include "ant_key_manager.h"
+#include "ant_key_manager_config.h"
+#include "ant_interface.h"
+#include "nrf.h"
+#include "bsp.h"
+#include "ant_interface.h"
+#include "ant_parameters.h"
+#include "nrf_soc.h"
+#include "nrf_sdm.h"
 #include "app_error.h"
 #include "app_util.h"
-#include "app_usbd_core.h"
-#include "app_usbd.h"
-#include "app_usbd_string_desc.h"
-#include "app_usbd_cdc_acm.h"
-#include "app_usbd_serial_num.h"
+#include "hardfault.h"
+#include "nordic_common.h"
+#include "nrf_pwr_mgmt.h"
+#include "ant_channel_config.h"
+#include "ant_search_config.h"
 
-#include "ant_key_manager.h"
-#include "ant_hrm.h"
-#include "ant_state_indicator.h"
+#define ANT_NETWORK_NUMBER          ((uint8_t) 0)                       /**< Default public network number. */
+#define ANT_BEACON_PAGE             ((uint8_t) 1)
 
-#include "app_usb.h"
-#include "app_ant.h"
+#define APP_ANT_OBSERVER_PRIO       1                                  /**< Application's ANT observer priority. You shouldn't need to modify this value. */
 
-/** @brief Application main function. */
-int main(void)
+void ant_message_send(void);
+void background_scanner_process(ant_evt_t * p_ant_evt, void * p_context);
+void master_beacon_process(ant_evt_t * p_ant_evt, void * p_context);
+
+static uint8_t m_last_rssi       = 0;
+static uint16_t m_last_device_id = 0;
+static uint8_t m_recieved        = 0;
+
+/**@brief Function for setting payload for ANT message and sending it via
+ *        ANT master beacon channel.
+ *
+ * @details This function is called from the ANT stack event interrupt handler after an ANT stack
+ *          event has been received.
+ *
+ * @details   ANT_BEACON_PAGE message is queued. The format is:
+ *            byte[0]   = page (1 = ANT_BEACON_PAGE)
+ *            byte[1]   = last RSSI value received
+ *            byte[2-3] = channel ID of device corresponding to last RSSI value (little endian)
+ *            byte[6]   = counter that increases with every message period
+ *            byte[7]   = number of messages received on background scanning channel
+ */
+void ant_message_send()
 {
-  ret_code_t ret;
+    uint32_t       err_code;
+    uint8_t        tx_buffer[ANT_STANDARD_DATA_PAYLOAD_SIZE];
+    static uint8_t counter = 0;
 
-  // Initialize.
-  ret = NRF_LOG_INIT(NULL);
-  APP_ERROR_CHECK(ret);
+    tx_buffer[0] = ANT_BEACON_PAGE;
+    tx_buffer[1] = m_last_rssi;
+    tx_buffer[2] = (uint8_t) m_last_device_id;        // LSB
+    tx_buffer[3] = (uint8_t) (m_last_device_id >> 8); // MSB
+    tx_buffer[6] = counter++;
+    tx_buffer[7] = m_recieved;
 
-  NRF_LOG_DEFAULT_BACKENDS_INIT();
-
-  ret = nrf_drv_clock_init();
-  APP_ERROR_CHECK(ret);
-
-  NRF_LOG_INFO("USBD ANT+ started.");
-
-  app_usb_init();
-
-  // Enter main loop.
-  for (;;)
-  {
-    while (app_usbd_event_queue_process())
-    {
-      /* Nothing to do */
-    }
-
-    NRF_LOG_FLUSH();
-  }
+    err_code = sd_ant_broadcast_message_tx(0,
+                                           ANT_STANDARD_DATA_PAYLOAD_SIZE,
+                                           tx_buffer);
+    APP_ERROR_CHECK(err_code);
 }
 
+/**@brief Initialize application.
+ */
+static void application_initialize()
+{
+    /* Set library config to report RSSI and Device ID */
+    uint32_t err_code = sd_ant_lib_config_set(ANT_LIB_CONFIG_MESG_OUT_INC_RSSI
+                                            | ANT_LIB_CONFIG_MESG_OUT_INC_DEVICE_ID);
+    APP_ERROR_CHECK(err_code);
+
+    const uint16_t dev_num = (uint16_t)NRF_FICR->DEVICEID[0];
+
+    const ant_channel_config_t bs_channel_config =
+    {
+        .channel_number    = 0,
+        .channel_type      = CHANNEL_TYPE_SLAVE,
+        .ext_assign        = EXT_PARAM_ALWAYS_SEARCH,
+        .rf_freq           = HRM_ANTPLUS_RF_FREQ,
+        .transmission_type = CHAN_ID_TRANS_TYPE,
+        .device_type       = HRM_DEVICE_TYPE,
+        .device_number     = 0x00,              // Wild card
+        .channel_period    = 0x00,              // This is not taken into account.
+        .network_number    = 0,
+    };
+
+    const ant_search_config_t bs_search_config =
+    {
+        .channel_number        = 0,
+        .low_priority_timeout  = ANT_LOW_PRIORITY_TIMEOUT_DISABLE,
+        .high_priority_timeout = ANT_HIGH_PRIORITY_SEARCH_DISABLE,
+        .search_sharing_cycles = ANT_SEARCH_SHARING_CYCLES_DISABLE,
+        .search_priority       = ANT_SEARCH_PRIORITY_DEFAULT,
+        .waveform              = ANT_WAVEFORM_DEFAULT,
+    };
+
+    err_code = ant_channel_init(&bs_channel_config);
+    APP_ERROR_CHECK(err_code);
+
+    err_code = ant_search_init(&bs_search_config);
+    APP_ERROR_CHECK(err_code);
+
+    err_code = sd_ant_channel_open(0);
+    APP_ERROR_CHECK(err_code);
+}
+
+
+/**@brief Function for the Tracer initialization.
+ */
+static void utils_setup(void)
+{
+    ret_code_t err_code = app_timer_init();
+    APP_ERROR_CHECK(err_code);
+
+    err_code = bsp_init(BSP_INIT_LEDS, NULL);
+    APP_ERROR_CHECK(err_code);
+
+    err_code = nrf_pwr_mgmt_init();
+    APP_ERROR_CHECK(err_code);
+}
+
+
+/**@brief Function for ANT stack initialization.
+ *
+ * @details Initializes the SoftDevice and the ANT event interrupt.
+ */
+static void softdevice_setup(void)
+{
+    ret_code_t err_code = nrf_sdh_enable_request();
+    APP_ERROR_CHECK(err_code);
+
+    ASSERT(nrf_sdh_is_enabled());
+
+    err_code = nrf_sdh_ant_enable();
+    APP_ERROR_CHECK(err_code);
+
+    err_code = ant_plus_key_set(ANTPLUS_NETWORK_NUM);
+    APP_ERROR_CHECK(err_code);
+}
+
+
+/**
+ *@brief Function for initializing logging.
+ */
+static void log_init(void)
+{
+    ret_code_t err_code = NRF_LOG_INIT(NULL);
+    APP_ERROR_CHECK(err_code);
+
+    NRF_LOG_DEFAULT_BACKENDS_INIT();
+}
+
+
+/**@brief Process ANT message on ANT background scanning channel.
+ *
+ * @param[in] p_ant_evt   ANT message content.
+ * @param[in] p_context   Context.
+ */
+void background_scanner_process(ant_evt_t * p_ant_evt, void * p_context)
+{
+    uint32_t err_code;
+    UNUSED_PARAMETER(p_context);
+    if (p_ant_evt->channel != 0)
+    {
+        return;
+    }
+
+    switch (p_ant_evt->event)
+    {
+        case EVENT_RX:
+        {
+            err_code = bsp_indication_set(BSP_INDICATE_RCV_OK);
+            APP_ERROR_CHECK(err_code);
+
+            if (p_ant_evt->message.ANT_MESSAGE_stExtMesgBF.bANTDeviceID)
+            {
+                m_last_device_id = uint16_decode(p_ant_evt->message.ANT_MESSAGE_aucExtData);
+            }
+
+            if (p_ant_evt->message.ANT_MESSAGE_stExtMesgBF.bANTRssi)
+            {
+                m_last_rssi = p_ant_evt->message.ANT_MESSAGE_aucExtData[5];
+            }
+
+            NRF_LOG_INFO("Message number %d", m_recieved);
+            NRF_LOG_INFO("Device ID:     %d", m_last_device_id);
+            NRF_LOG_INFO("RSSI:          %d", m_last_rssi);
+
+            m_recieved++;
+            break;
+        }
+        default:
+        {
+            break;
+        }
+    }
+}
+
+NRF_SDH_ANT_OBSERVER(m_ant_bs_observer, APP_ANT_OBSERVER_PRIO, background_scanner_process, NULL);
+
+/* Main function */
+int main(void)
+{
+    log_init();
+    utils_setup();
+    softdevice_setup();
+    application_initialize();
+
+    NRF_LOG_INFO("ANT Background Scanning example started.");
+
+    // Enter main loop
+    for (;;)
+    {
+        NRF_LOG_FLUSH();
+        nrf_pwr_mgmt_run();
+    }
+}
+
+
+/**
+ *@}
+ **/

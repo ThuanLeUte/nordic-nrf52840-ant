@@ -38,6 +38,8 @@
  *
  */
 #include "sdk_common.h"
+#define ANT_SEARCH_CONFIG_ENABLED 1
+
 #if NRF_MODULE_ENABLED(ANT_SEARCH_CONFIG)
 
 #include "ant_search_config.h"

@@ -1,6 +1,9 @@
 {
     "files.associations": {
         "ant_msg.h": "c",
-        "app_usb.h": "c"
+        "app_usb.h": "c",
+        "bsp_usb_ant.h": "c",
+        "ant_msg_builder.h": "c",
+        "ant_parameters.h": "c"
     }
 }

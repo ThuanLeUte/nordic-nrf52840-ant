@@ -94,13 +94,17 @@ void bsp_usb_ant_receive_msg_handler(char *p_buf)
     bsp_usb_ant_send_reponse_event_ant_msg_id(p_buf[ANT_MSG_POS_CONTENT], MESG_EVENT_ID, EVENT_TRANSFER_TX_COMPLETED);
     break;
 
-  default:
-    bsp_usb_ant_send_reponse_event_ant_msg_id(p_buf[ANT_MSG_POS_CONTENT], p_buf[ANT_MSG_POS_ID], RESPONSE_NO_ERROR);
-    break;
+    case MESG_ANTLIB_CONFIG_ID: // 0x6E
+      // A4 02 6E 00 E0 28 00 00
+      bsp_usb_ant_send_reponse_event_ant_msg_id(p_buf[ANT_MSG_POS_CONTENT], MESG_EVENT_ID, RESPONSE_NO_ERROR);
+      break;
+
+    default:
+      bsp_usb_ant_send_reponse_event_ant_msg_id(p_buf[ANT_MSG_POS_CONTENT], p_buf[ANT_MSG_POS_ID], RESPONSE_NO_ERROR);
+      break;
   }
 
 
-  //  A4 02 6E 00 E0 28 00 00                           ¤.n.à(..
 }
 
 void bsp_usb_ant_send_capabilities(void)

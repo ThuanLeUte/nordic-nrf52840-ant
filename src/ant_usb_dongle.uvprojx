@@ -3637,6 +3637,11 @@
               <FileType>1</FileType>
               <FilePath>..\sdk\nRF5_SDK_17.0.2_d674dde\components\ant\ant_profiles\ant_bsc\pages\ant_bsc_page_3.c</FilePath>
             </File>
+            <File>
+              <FileName>ant_search_config.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk\nRF5_SDK_17.0.2_d674dde\components\ant\ant_search_config\ant_search_config.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

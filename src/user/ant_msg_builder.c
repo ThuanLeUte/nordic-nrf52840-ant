@@ -16,7 +16,7 @@
 /* Private enumerate/structure ---------------------------------------- */
 /* Public variables --------------------------------------------------- */
 /* Private variables -------------------------------------------------- */
-static uint8_t ant_msg_buffer[ANT_MSG_MAX_SIZE];
+static uint8_t ant_msg_buffer[2 * ANT_MSG_MAX_SIZE];
 
 /* Private function prototypes ---------------------------------------- */
 static uint8_t ant_msg_builder_calculate_crc(uint8_t *p_data, uint16_t len);
