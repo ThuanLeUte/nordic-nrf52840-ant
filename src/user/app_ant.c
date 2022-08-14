@@ -22,6 +22,7 @@
 #include "ant_bsc.h"
 #include "app_usb.h"
 #include "bsp_usb_ant.h"
+#include "ant_interface.h"
 
 /* Private defines ---------------------------------------------------- */
 #define WHEEL_CIRCUMFERENCE         2070                                         /**< Bike wheel circumference [mm] */
@@ -118,6 +119,9 @@ int app_ant_init(void)
 
   err_code = ant_plus_key_set(ANTPLUS_NETWORK_NUM);
   APP_ERROR_CHECK(err_code);
+
+  /* Set library config to report RSSI and Device ID */
+	sd_ant_lib_config_set(ANT_LIB_CONFIG_MESG_OUT_INC_RSSI | ANT_LIB_CONFIG_MESG_OUT_INC_DEVICE_ID);
 
   // Register a handler for ANT events.
   NRF_SDH_ANT_OBSERVER(m_ant_hrm_observer, ANT_HRM_ANT_OBSERVER_PRIO, m_ant_hrm_disp_evt_handler, &m_ant_hrm);
@@ -449,6 +453,10 @@ static uint32_t m_calculate_cadence(int32_t rev_cnt, int32_t evt_time)
 }
 
 /* Display event handler----------------------------------------------- */
+static uint8_t m_last_rssi       = 0;
+static uint16_t m_last_device_id = 0;
+static uint8_t m_recieved        = 0;
+
 static void m_ant_hrm_disp_evt_handler(ant_evt_t *p_ant_evt, void *p_context)
 {
   ant_hrm_profile_t *p_profile = (ant_hrm_profile_t *)p_context;
@@ -460,15 +468,26 @@ static void m_ant_hrm_disp_evt_handler(ant_evt_t *p_ant_evt, void *p_context)
     switch (p_ant_evt->event)
     {
     case EVENT_RX:
-      if (p_ant_evt->message.ANT_MESSAGE_ucMesgID == MESG_BROADCAST_DATA_ID ||
-          p_ant_evt->message.ANT_MESSAGE_ucMesgID == MESG_ACKNOWLEDGED_DATA_ID ||
-          p_ant_evt->message.ANT_MESSAGE_ucMesgID == MESG_BURST_DATA_ID)
+      if (p_ant_evt->message.ANT_MESSAGE_stExtMesgBF.bANTDeviceID)
       {
-        // disp_message_decode(p_profile, p_ant_evt->message.ANT_MESSAGE_aucPayload);
-
-        // Forward heart rate msg
-        bsp_usb_ant_send_broadcast_data(p_ant_evt->message.ANT_MESSAGE_aucMesgData, 9);
+        m_last_device_id = uint16_decode(p_ant_evt->message.ANT_MESSAGE_aucExtData);
       }
+
+      if (p_ant_evt->message.ANT_MESSAGE_stExtMesgBF.bANTRssi)
+      {
+        m_last_rssi = p_ant_evt->message.ANT_MESSAGE_aucExtData[5];
+
+        if (p_ant_evt->message.ANT_MESSAGE_ucMesgID == MESG_BROADCAST_DATA_ID ||
+            p_ant_evt->message.ANT_MESSAGE_ucMesgID == MESG_ACKNOWLEDGED_DATA_ID ||
+            p_ant_evt->message.ANT_MESSAGE_ucMesgID == MESG_BURST_DATA_ID)
+        {
+          // disp_message_decode(p_profile, p_ant_evt->message.ANT_MESSAGE_aucPayload);
+
+          // Forward heart rate msg
+          bsp_usb_ant_send_broadcast_data(p_ant_evt->message.ANT_MESSAGE_aucMesgData, p_ant_evt->message.ANT_MESSAGE_ucSize);
+        }
+      }
+
       break;
 
     default:
